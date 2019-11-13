@@ -43,7 +43,7 @@ const colors = {
     negativeLight: palette.redLight,
     positive: palette.green,
     positiveLight: palette.greenLight,
-    unknown: "#f0f",
+    unknown: '#f0f',
 }
 
 const fontSizes = {
@@ -59,8 +59,16 @@ const font = {
     ...fontSizes,
 }
 
+const spaces = {
+    none: "0",
+    small: "0.3em",
+    medium: "0.5em",
+    large: "1em",
+}
+
 export const baseTheme = {
     palette,
     colors,
     font,
+    spaces,
 }
