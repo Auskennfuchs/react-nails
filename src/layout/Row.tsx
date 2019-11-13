@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
-import MediaQuery from './MediaQuery'
 import { times } from 'lodash'
+import MediaQuery from './MediaQuery'
 
 export enum SpacingType {
     Small = "small",
@@ -17,45 +17,58 @@ interface Spacing {
 }
 
 const singleSpace = (space?: SpacingType) => css`
-    ${space === SpacingType.Small ? css`
+    ${space === SpacingType.Small && css`
         padding: 1em;
-    `: ''}
+    `}
     ${space === SpacingType.Medium && css`
         padding: 1.5em;
     `}
 `
 
-type MediaQueryFunc = (space?: SpacingType) => any
+const singleBackgroundColor = (color?: string) => css`
+    background-color: ${p => p.theme.colors[color || "unknown"]};
+`
 
-const applyMediaQuery = (func: MediaQueryFunc): any => ({ space }: Spacing) => {
+type MediaQueryFunc = (value?: any) => any
+
+const applyMediaQuery = (func: MediaQueryFunc, propName: string): any => (props: any) => {
     const spaceOrder: string[] = Object.keys(SpacingType)
-    if (Array.isArray(space)) {
-        if (space.length > 0 && space.length < spaceOrder.length) {
-            const lastValue: SpacingType = space[space.length - 1]
-            times(spaceOrder.length - space.length, () => {
-                space.push(lastValue)
-            })
+    const propObject: any = props[propName]
+    if (!propObject) {
+        return null
+    }
+    if (Array.isArray(propObject)) {
+        if (propObject.length > 0 && propObject.length < spaceOrder.length) {
+            const lastValue: any = propObject[propObject.length - 1]
+            times(spaceOrder.length - propObject.length, () => propObject.push(lastValue))
         }
-        return space.reduce<any>((res, s, idx): any => css`
-           ${res}
+        return propObject.reduce<any>((res, s, idx): any => css`
            ${MediaQuery[spaceOrder[idx]]`
                 ${func(s)}
             `}
-        `, undefined)
+            ${res}
+            `, undefined)
     }
-    return func(space)
+    return func(propObject)
 }
 
-const space = applyMediaQuery(singleSpace)
+const space = applyMediaQuery(singleSpace, 'space')
+
+const backgroundColor = applyMediaQuery(singleBackgroundColor, 'backgroundColor')
 
 interface RowProps extends Spacing {
     /**
      * inline makes Row only as long as needed
      */
     inline?: boolean,
+    /**
+     * defines background color for element
+     */
+    backgroundColor?: string,
 }
 
 export const Row = styled.div<RowProps>`
     display: ${ p => p.inline ? "inline-flex" : "flex"};
     ${space}
+    ${backgroundColor}
 `

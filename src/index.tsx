@@ -1,10 +1,7 @@
-/**
- * @class ExampleComponent
- */
-
 import * as React from 'react'
 import { Row } from './layout'
 export * from './layout'
+export { baseTheme } from './theme'
 
 export type Props = { text: string }
 
