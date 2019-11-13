@@ -1,7 +1,9 @@
 import * as React from 'react'
 import { Row } from './layout'
+export * from './NailsApp'
 export * from './layout'
-export { baseTheme } from './theme'
+export * from './Responsive'
+export * from './theme'
 
 export type Props = { text: string }
 

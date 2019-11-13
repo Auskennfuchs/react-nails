@@ -1,10 +1,45 @@
 import { css } from 'styled-components'
+import { times } from 'lodash'
 
-const breakPoints = {
-    Small: { maxWidth: 767 },
-    Medium: { minWidth: 768, maxWidth: 1023 },
-    Large: { minWidth: 1024 },
+export enum BreakPoint {
+    Small = "small",
+    Medium = "medium",
+    Large = "large",
+    XLarge = "xlarge",
+    Wide = "wide",
 }
+
+export const breakPoints = {
+    Small: { maxWidth: 767 },
+    Medium: { minWidth: 768, maxWidth: 991 },
+    Large: { minWidth: 992, maxWidth: 1199 },
+    XLarge: { minWidth: 1200, maxWidth: 1919 },
+    Wide: { minWidth: 1920 },
+}
+
+export type MediaQueryFunc = (value?: any) => any
+
+export const applyMediaQuery = (func: MediaQueryFunc, propName: string): any => (props: any) => {
+    const mediaBreakPoints: string[] = Object.keys(BreakPoint)
+    const propObject: any = props[propName]
+    if (!propObject) {
+        return null
+    }
+    if (Array.isArray(propObject)) {
+        if (propObject.length > 0 && propObject.length < mediaBreakPoints.length) {
+            const lastValue: any = propObject[propObject.length - 1]
+            times(mediaBreakPoints.length - propObject.length, () => propObject.push(lastValue))
+        }
+        return propObject.reduce<any>((res, s, idx): any => css`
+                ${res}
+                ${MediaQuery[mediaBreakPoints[idx]]`
+                    ${func(s)}
+                `}
+            `, undefined)
+    }
+    return func(propObject)
+}
+
 
 const MediaQuery = {
     breakPoints,

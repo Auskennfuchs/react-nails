@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components'
-import { times } from 'lodash'
-import MediaQuery from './MediaQuery'
+import { applyMediaQuery } from './MediaQuery'
 
 export enum SpacingType {
     Small = "small",
@@ -25,32 +24,9 @@ const singleSpace = (space?: SpacingType) => css`
     `}
 `
 
-const singleBackgroundColor = (color?: string) => css`
-    background-color: ${p => p.theme.colors[color || "unknown"]};
+const singleBackgroundColor = (color: string = "unknown") => css`
+    background-color: ${p => p.theme.colors[color] || p.theme.palette[color]};
 `
-
-type MediaQueryFunc = (value?: any) => any
-
-const applyMediaQuery = (func: MediaQueryFunc, propName: string): any => (props: any) => {
-    const spaceOrder: string[] = Object.keys(SpacingType)
-    const propObject: any = props[propName]
-    if (!propObject) {
-        return null
-    }
-    if (Array.isArray(propObject)) {
-        if (propObject.length > 0 && propObject.length < spaceOrder.length) {
-            const lastValue: any = propObject[propObject.length - 1]
-            times(spaceOrder.length - propObject.length, () => propObject.push(lastValue))
-        }
-        return propObject.reduce<any>((res, s, idx): any => css`
-           ${MediaQuery[spaceOrder[idx]]`
-                ${func(s)}
-            `}
-            ${res}
-            `, undefined)
-    }
-    return func(propObject)
-}
 
 const space = applyMediaQuery(singleSpace, 'space')
 
@@ -64,7 +40,7 @@ interface RowProps extends Spacing {
     /**
      * defines background color for element
      */
-    backgroundColor?: string,
+    backgroundColor?: string | string[],
 }
 
 export const Row = styled.div<RowProps>`
