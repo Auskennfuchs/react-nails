@@ -8,8 +8,9 @@
     "prop-types": "^15.6.2",
     "react": "link:../node_modules/react",
     "react-dom": "^16.4.1",
+    "react-nails": "link:..",
     "react-scripts": "^1.1.4",
-    "react-nails": "link:.."
+    "styled-components": "^4.4.1"
   },
   "scripts": {
     "start": "react-scripts start",

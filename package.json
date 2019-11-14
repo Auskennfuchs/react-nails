@@ -23,12 +23,18 @@
   },
   "dependencies": {},
   "peerDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
     "lodash": "^4.0.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "styled-components": "^4.0.0"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
     "@svgr/rollup": "^2.4.1",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
@@ -44,6 +50,8 @@
     "enzyme-adapter-react-16": "^1.15.1",
     "gh-pages": "^1.2.0",
     "lodash": "^4.17.15",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
     "react-scripts-ts": "^2.16.0",
     "rollup": "^0.62.0",
     "rollup-plugin-babel": "^3.0.7",
