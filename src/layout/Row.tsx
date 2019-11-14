@@ -1,14 +1,23 @@
-import styled from 'styled-components'
-import { resolveSpace, SpacingProps, BackgroundColorProps, resolveBackgroundColor } from './LayoutResolver'
+import styled, { css } from 'styled-components'
+import { resolveSpace, resolveItemSpace, resolveAlignItems, resolveJustifyItems } from './PropertyResolver'
+import { ItemJustifyType, SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProp } from './PropertyTypes'
 
-interface RowProps extends SpacingProps, BackgroundColorProps {
+interface RowProps extends SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProp {
 }
 
 const Row = styled.div<RowProps>`
     display: flex;
     flex-direction: row;
+    ${resolveItemSpace}
     ${resolveSpace}
-    ${resolveBackgroundColor}
+    ${resolveAlignItems}
+    ${resolveJustifyItems}
+
+    ${p => p.justify === ItemJustifyType.Stretch && css`
+        & > * {
+            flex: 1 1 auto;
+        }
+    `}
 `
 
 export default Row

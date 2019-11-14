@@ -67,10 +67,18 @@ const spaces = {
     large: "1em",
 }
 
+const borders = {
+    none: "0",
+    thin: "1px",
+    medium: "2px",
+    thick: "3px",
+}
+
 export const baseTheme = {
     palette,
     colors,
     font,
     spaces,
+    borders,
     borderRadius: "4px",
 }
