@@ -60,9 +60,10 @@ const font = {
 }
 
 const spaces = {
-    none: "0",
-    small: "0.3em",
-    medium: "0.5em",
+    none: "0px",
+    xsmall: "0.3em",
+    small: "0.5em",
+    medium: "0.8em",
     large: "1em",
 }
 
@@ -71,4 +72,5 @@ export const baseTheme = {
     colors,
     font,
     spaces,
+    borderRadius: "4px",
 }

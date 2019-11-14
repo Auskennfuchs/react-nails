@@ -1,4 +1,12 @@
-export * from './Row'
-export * from './MediaQuery'
-export * from './Inline'
-export * from './LayoutResolver'
+import Inline, { InlineProps } from './Inline'
+import Row from './Row'
+import * as MediaQuery from './MediaQuery'
+import * as Layout from './LayoutResolver'
+
+export {
+    Inline,
+    InlineProps,
+    Row,
+    MediaQuery,
+    Layout,
+}

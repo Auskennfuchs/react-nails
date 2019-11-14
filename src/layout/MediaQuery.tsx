@@ -17,12 +17,12 @@ export const breakPoints = {
     Wide: { minWidth: 1920 },
 }
 
-export type MediaQueryFunc = (value?: any) => any
+export type MediaQueryFunc = (value?: any, props?: any) => any
 
-export const applyMediaQuery = (func: MediaQueryFunc, propName: string): any => (props: any) => {
+export const applyMediaQuery = (func: MediaQueryFunc, propName: string, discardNull: boolean = true): any => (props: any) => {
     const mediaBreakPoints: string[] = Object.keys(BreakPoint)
     const propObject: any = props[propName]
-    if (!propObject) {
+    if (discardNull && !propObject) {
         return null
     }
     if (Array.isArray(propObject)) {
@@ -33,13 +33,20 @@ export const applyMediaQuery = (func: MediaQueryFunc, propName: string): any => 
         return propObject.reduce<any>((res, s, idx): any => css`
                 ${res}
                 ${MediaQuery[mediaBreakPoints[idx]]`
-                    ${func(s)}
+                    ${func(s, props)}
                 `}
             `, undefined)
     }
-    return func(propObject)
+    return func(propObject, props)
 }
 
+export const applySingle = (func: MediaQueryFunc, propName: string, discardNull: boolean = true): any => (props: any) => {
+    const propObject: any = props[propName]
+    if (discardNull && !propObject) {
+        return null
+    }
+    return func(propObject, props)
+}
 
 const MediaQuery = {
     breakPoints,

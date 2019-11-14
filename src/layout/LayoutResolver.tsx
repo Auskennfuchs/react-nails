@@ -1,11 +1,21 @@
 import { css } from "styled-components"
-import { applyMediaQuery } from "./MediaQuery";
+import { applyMediaQuery, applySingle } from "./MediaQuery"
 
 export enum SpacingType {
     None = "none",
+    XSmall = "xsmall",
     Small = "small",
     Medium = "medium",
     Large = "large",
+}
+
+export enum ItemAlignType {
+    /**
+     * aligns horizontally centered
+     */
+    Center = "center",    
+    Top = "flex-start",
+    Bottom = "flex-end",
 }
 
 export interface SpacingProps {
@@ -23,6 +33,13 @@ export interface BackgroundColorProps {
     backgroundColor?: string | string[],
 }
 
+export interface AlignItemProps {
+    /**
+     * align containing items
+     */
+    align?: ItemAlignType,
+}
+
 const resolveSpaceSingle = (space: SpacingType = SpacingType.None) => css`
     padding: ${p => p.theme.spaces[space]};
 `
@@ -32,3 +49,9 @@ const resolveBackgroundColorSingle = (color: string = "unknown") => css`
     background-color: ${p => p.theme.colors[color] || p.theme.colors.unknown};
 `
 export const resolveBackgroundColor = applyMediaQuery(resolveBackgroundColorSingle, 'backgroundColor')
+
+const resolveAlignItemsSingle = (align: ItemAlignType = ItemAlignType.Center) => css`
+    align-items: ${align};
+`
+
+export const resolveAlignItems = applySingle(resolveAlignItemsSingle, 'align')
