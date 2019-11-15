@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { resolveSpace,  resolveLineSpace } from './PropertyResolver'
-import { SpacingProps, LineSpaceProps } from './PropertyTypes'
+import { resolveSpace,  resolveLineSpace } from '../properties/PropertyResolver'
+import { SpacingProps, LineSpaceProps } from '../properties/PropertyTypes'
 
 interface ColumnProps extends SpacingProps, LineSpaceProps {
 }

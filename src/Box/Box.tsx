@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
-import {  resolveSpace, resolveBackgroundColor, applySingle, resolveBorder, resolveTextColor } from "../layout/PropertyResolver"
+import {  resolveSpace, resolveBackgroundColor, applySingle, resolveBorder, resolveTextColor } from "../properties/PropertyResolver"
 import { addThemeComponent } from "../theme"
-import { SpacingProps, BackgroundColorProps, BorderProps, TextColorProps } from "../layout/PropertyTypes";
+import { SpacingProps, BackgroundColorProps, BorderProps, TextColorProps } from "../properties/PropertyTypes";
 
 addThemeComponent((theme: { borderRadius: string }) => (['box', {
     borderRadius: theme.borderRadius,

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { applySingle } from "./PropertyResolver"
+import { applySingle } from "../properties/PropertyResolver"
 
 interface FillerProps {
     stretchChild?: boolean,

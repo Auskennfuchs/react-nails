@@ -65,7 +65,7 @@ export default class App extends Component {
                                 <Box backgroundColor={["positive", "positiveLight", "negative", "unknown"]} space={[SpacingType.Small, SpacingType.Small, SpacingType.Medium]}>
                                     Test
                                 </Box>
-                                <Box space={SpacingType.Large} backgroundColor="negativeLight" rounded inline>
+                                <Box space={SpacingType.Medium} backgroundColor="negativeLight" rounded inline>
                                     <Inline itemSpace={SpacingType.Medium} backgroundColor="positiveLight" lineSpace={SpacingType.XSmall}>
                                         <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
                                             {SpacingType.Small}

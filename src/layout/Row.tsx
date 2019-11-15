@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
-import { resolveSpace, resolveItemSpace, resolveAlignItems, resolveJustifyItems } from './PropertyResolver'
-import { ItemJustifyType, SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProp } from './PropertyTypes'
+import { resolveSpace, resolveItemSpace, resolveAlignItems, resolveJustifyItems } from '../properties/PropertyResolver'
+import { ItemJustifyType, SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProp } from '../properties/PropertyTypes'
 
 interface RowProps extends SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProp {
 }
