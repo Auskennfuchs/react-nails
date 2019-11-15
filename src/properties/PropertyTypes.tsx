@@ -6,6 +6,22 @@ export enum SpacingType {
     Large = "large",
 }
 
+export enum TextSizeType {
+    Small = "small",
+    Normal = "normal",
+    Large = "large",
+    XLarge = "xlarge",
+
+}
+
+export enum TextWeightType {
+    Normal = "normal",
+    Bold = "bold",
+    Bolder = "bolder",
+    Light = "light",
+    Lighter = "lighter",
+}
+
 export enum ItemAlignType {
     /**
      * aligns horizontally centered
@@ -93,4 +109,19 @@ export interface TextColorProps {
      * one of defined theme.colors
      */
     textColor?: string,
+}
+
+export interface TextSizeProps {
+    /**
+     * text size
+     */
+    textSize?: TextSizeType,
+}
+
+export interface TextWeightProps {
+    /**
+     * text style
+     * [lighter, light, normal, bold, bolder]
+     */
+    textWeight?: TextWeightType,
 }

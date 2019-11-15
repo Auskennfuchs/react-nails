@@ -1,12 +1,14 @@
 import styled from "styled-components"
-import { TextColorProps } from "../properties/PropertyTypes"
-import { resolveTextColor } from "../properties/PropertyResolver"
+import { TextColorProps, TextSizeProps, TextWeightProps } from "../properties/PropertyTypes"
+import { resolveTextColor, resolveTextSize, resolveTextWeight } from "../properties/PropertyResolver"
 
-interface TextProps extends TextColorProps {
+interface TextProps extends TextColorProps, TextSizeProps, TextWeightProps {
 }
 
 const Text = styled.span<TextProps>`
     ${resolveTextColor}
+    ${resolveTextSize}
+    ${resolveTextWeight}
 `
 
 export default Text

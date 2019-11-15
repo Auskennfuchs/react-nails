@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Row, Types, NailsApp, BodyReset, Inline, Box, Column, Filler, Icon } from 'react-nails'
+import { Row, Types, NailsApp, BodyReset, Inline, Box, Column, Filler, Icon, Text } from 'react-nails'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-library.add({ faCoffee, faChevronUp })
+library.add({ faCoffee, faChevronUp, faTimes })
 
-const { SpacingType, ItemJustifyType, BorderType, ItemAlignType } = Types
+const { SpacingType, ItemJustifyType, BorderType, ItemAlignType, TextSizeType, TextWeightType } = Types
 
 const FullScreenContainer = styled.div`
     width: 100%;
@@ -25,7 +25,7 @@ export default class App extends Component {
             <NailsApp theme={{ font: { baseFontSize: "12px" }, colors: { yellow: "#ff0" }, spaces: { large: "3em" } }}>
                 <BodyReset />
                 <FullScreenContainer>
-                    <HeaderBar backgroundColor="primaryColor" textColor="white" space={SpacingType.Medium}>
+                    <HeaderBar textColor="white" space={SpacingType.Medium}>
                         <Row align={ItemAlignType.Center}>
                             <Filler>
                                 Headerlogo
@@ -63,12 +63,15 @@ export default class App extends Component {
                             </Row>
                             <Column lineSpace={SpacingType.Large}>
                                 <Box backgroundColor={["positive", "positiveLight", "negative", "unknown"]} space={[SpacingType.Small, SpacingType.Small, SpacingType.Medium]}>
-                                    Test
+                                    <Text textColor="white" textSize={TextSizeType.Large} textWeight={TextWeightType.Bold}> Test</Text>
                                 </Box>
                                 <Box space={SpacingType.Medium} backgroundColor="negativeLight" rounded inline>
                                     <Inline itemSpace={SpacingType.Medium} backgroundColor="positiveLight" lineSpace={SpacingType.XSmall}>
-                                        <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
-                                            {SpacingType.Small}
+                                        <Box backgroundColor="primary" space={SpacingType.Small} rounded>
+                                            <Inline align={ItemAlignType.Center} itemSpace={SpacingType.XSmall}>
+                                                <Text textWeight={TextWeightType.Bold}>Badge</Text>
+                                                <Text textSize={TextSizeType.Small}><Icon icon="times" /></Text>
+                                            </Inline>
                                         </Box>
                                         <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
                                             {SpacingType.Medium}
@@ -125,7 +128,7 @@ export default class App extends Component {
                         </div>
                     </Filler>
                 </FullScreenContainer>
-            </ NailsApp>
+            </ NailsApp >
         )
     }
 }

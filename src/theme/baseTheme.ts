@@ -49,7 +49,7 @@ const colors = {
     positiveLight: palette.greenLight,
     unknown: '#f0f',
     brandColor: palette.blue,
-    primaryColor: palette.blueLight,
+    primary: palette.blueLight,
     textColor: palette.grey1,
     white: palette.white,
     black: palette.black,    
@@ -57,9 +57,9 @@ const colors = {
 
 const fontSizes = {
     small: '0.8em',
-    medium: '1em',
-    large: '1.2em',
-    xlarge: '1.5em',
+    normal: '1em',
+    large: '2em',
+    xlarge: '2.5em',
 }
 
 const font = {

@@ -1,7 +1,7 @@
 import { css } from "styled-components"
 import { times } from 'lodash'
 import MediaQuery, { BreakPoint } from "../layout/MediaQuery"
-import { BorderType, SpacingType, ItemAlignType, ItemJustifyType } from "./PropertyTypes"
+import { BorderType, SpacingType, ItemAlignType, ItemJustifyType, TextSizeType, TextWeightType } from "./PropertyTypes"
 
 export type ResolverFunc = (value?: any, props?: any) => any
 export const applySingle = (func: ResolverFunc, propName: string, discardNull: boolean = true): any => (props: any) => {
@@ -114,3 +114,14 @@ const resolveTextColorSingle = (textColor: string = "unknown") => css`
     color: ${p => p.theme.colors[textColor]};
 `
 export const resolveTextColor = applySingle(resolveTextColorSingle, 'textColor')
+
+const resolveTextSizeSingle = (textSize: TextSizeType = TextSizeType.Normal) => css`
+    font-size: ${p => p.theme.font[textSize]};
+`
+export const resolveTextSize = applySingle(resolveTextSizeSingle, 'textSize')
+
+const resolveTextWeightSingle = (textWeight?: TextWeightType) => textWeight ? css`
+    font-weight: ${textWeight};
+`: null
+
+export const resolveTextWeight = applySingle(resolveTextWeightSingle, 'textWeight')
