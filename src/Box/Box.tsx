@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components"
-import {  resolveSpace, resolveBackgroundColor, applySingle, resolveBorder } from "../layout/PropertyResolver"
+import {  resolveSpace, resolveBackgroundColor, applySingle, resolveBorder, resolveTextColor } from "../layout/PropertyResolver"
 import { addThemeComponent } from "../theme"
-import { SpacingProps, BackgroundColorProps, BorderProps } from "../layout/PropertyTypes";
+import { SpacingProps, BackgroundColorProps, BorderProps, TextColorProps } from "../layout/PropertyTypes";
 
 addThemeComponent((theme: { borderRadius: string }) => (['box', {
     borderRadius: theme.borderRadius,
 }]))
 
-export interface BoxProps extends SpacingProps, BackgroundColorProps, BorderProps {
+export interface BoxProps extends SpacingProps, BackgroundColorProps, BorderProps, TextColorProps {
     /**
      * rounded border
      */
@@ -36,6 +36,7 @@ const Box = styled.div<BoxProps>`
     ${resolveBackgroundColor}
     ${resolveRounded}
     ${resolveBorder}
+    ${resolveTextColor}
 `
 
 export default Box

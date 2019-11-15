@@ -37,7 +37,9 @@ const palette = {
     white2: "#cccccc",
     white3: "rgba(255,255,255,0.9)",
     blue: "#135192",
-    blueLight: "4392F1",
+    blueLight: "#4392F1",
+    white: "#fff",
+    black: "#000",
 }
 
 const colors = {
@@ -48,6 +50,9 @@ const colors = {
     unknown: '#f0f',
     brandColor: palette.blue,
     primaryColor: palette.blueLight,
+    textColor: palette.grey1,
+    white: palette.white,
+    black: palette.black,    
 }
 
 const fontSizes = {

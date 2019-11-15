@@ -109,3 +109,8 @@ const resolveBorderSingle = (border: BorderType | BorderType[] = BorderType.None
     return null
 }
 export const resolveBorder = applySingle(resolveBorderSingle, 'border')
+
+const resolveTextColorSingle = (textColor: string = "unknown") => css`
+    color: ${p => p.theme.colors[textColor]};
+`
+export const resolveTextColor = applySingle(resolveTextColorSingle, 'textColor')

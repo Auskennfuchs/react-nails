@@ -15,20 +15,24 @@ const FullScreenContainer = styled.div`
     flex-direction: column;
 `
 
+const HeaderBar = styled(Box)`
+    background-color: ${p => p.theme.colors.brandColor};
+`
+
 export default class App extends Component {
     render() {
         return (
-            <NailsApp theme={{ font: { baseFontSize: "12px" }, colors: { yellow: "#ff0" } }}>
+            <NailsApp theme={{ font: { baseFontSize: "12px" }, colors: { yellow: "#ff0" }, spaces: { large: "3em" } }}>
                 <BodyReset />
                 <FullScreenContainer>
-                    <Box backgroundColor="brandColor">
-                        <Row space={SpacingType.Medium} align={ItemAlignType.Center}>
+                    <HeaderBar backgroundColor="primaryColor" textColor="white" space={SpacingType.Medium}>
+                        <Row align={ItemAlignType.Center}>
                             <Filler>
                                 Headerlogo
                             </Filler>
                             <Icon icon="coffee" />
                         </Row>
-                    </Box>
+                    </HeaderBar>
                     <Filler stretchChild>
                         <div>
                             <Row space={SpacingType.Medium} itemSpace={SpacingType.Large} align={ItemAlignType.Center}>
@@ -57,50 +61,52 @@ export default class App extends Component {
                                     Test
                                 </div>
                             </Row>
-                            <Box backgroundColor={["positive", "positiveLight", "negative", "unknown"]} space={[SpacingType.Small, SpacingType.Small, SpacingType.Medium]}>
-                                Test
-                            </Box>
-                            <Box space={SpacingType.Large} backgroundColor="negativeLight" rounded inline>
-                                <Inline itemSpace={SpacingType.Medium} backgroundColor="positiveLight" lineSpace={SpacingType.XSmall}>
-                                    <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
-                                        {SpacingType.Small}
-                                    </Box>
-                                    <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
-                                        {SpacingType.Medium}
-                                    </Box>
-                                    <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
-                                        {SpacingType.Large}
-                                    </Box>
-                                    <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
-                                        {SpacingType.Small}
-                                    </Box>
-                                    <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
-                                        {SpacingType.Small}
-                                    </Box>
-                                    <Box backgroundColor="blue" space={SpacingType.XSmall}>
-                                        {SpacingType.Small}
-                                    </Box>
-                                    <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
-                                        {SpacingType.Small}
-                                    </Box>
-                                    <Box backgroundColor="blue" space={SpacingType.XSmall}>
-                                        {SpacingType.Small}
-                                    </Box>
-                                    <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
-                                        {SpacingType.Small}
-                                    </Box>
-                                    <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
-                                        {SpacingType.Small}
-                                    </Box>
-                                    <Box backgroundColor="yellow" space={SpacingType.XSmall}>
-                                        {SpacingType.Small}
-                                    </Box>
-                                    <Box backgroundColor="blue" space={SpacingType.XSmall}>
-                                        {SpacingType.Large}
-                                    </Box>
-                                </Inline>
-                                <div>Test</div>
-                            </Box>
+                            <Column lineSpace={SpacingType.Large}>
+                                <Box backgroundColor={["positive", "positiveLight", "negative", "unknown"]} space={[SpacingType.Small, SpacingType.Small, SpacingType.Medium]}>
+                                    Test
+                                </Box>
+                                <Box space={SpacingType.Large} backgroundColor="negativeLight" rounded inline>
+                                    <Inline itemSpace={SpacingType.Medium} backgroundColor="positiveLight" lineSpace={SpacingType.XSmall}>
+                                        <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
+                                            {SpacingType.Small}
+                                        </Box>
+                                        <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
+                                            {SpacingType.Medium}
+                                        </Box>
+                                        <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
+                                            {SpacingType.Large}
+                                        </Box>
+                                        <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
+                                            {SpacingType.Small}
+                                        </Box>
+                                        <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
+                                            {SpacingType.Small}
+                                        </Box>
+                                        <Box backgroundColor="blue" space={SpacingType.XSmall}>
+                                            {SpacingType.Small}
+                                        </Box>
+                                        <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
+                                            {SpacingType.Small}
+                                        </Box>
+                                        <Box backgroundColor="blue" space={SpacingType.XSmall}>
+                                            {SpacingType.Small}
+                                        </Box>
+                                        <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
+                                            {SpacingType.Small}
+                                        </Box>
+                                        <Box backgroundColor="positiveLight" space={SpacingType.XSmall}>
+                                            {SpacingType.Small}
+                                        </Box>
+                                        <Box backgroundColor="yellow" space={SpacingType.XSmall}>
+                                            {SpacingType.Small}
+                                        </Box>
+                                        <Box backgroundColor="blue" space={SpacingType.XSmall}>
+                                            {SpacingType.Large}
+                                        </Box>
+                                    </Inline>
+                                    <div>Test</div>
+                                </Box>
+                            </Column>
                             <Box space={SpacingType.Large} backgroundColor="positiveLight">
                                 <div>Test</div>
                             </Box>

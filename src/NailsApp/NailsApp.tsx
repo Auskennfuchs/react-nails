@@ -5,9 +5,9 @@ import { resolveTheme, addThemeComponent } from "../theme"
 import ResponsiveObserver from '../Responsive/ResponsiveObserver'
 import { GlobalReset } from './Reset'
 
-addThemeComponent((theme: { palette: any }) => (['body', {
+addThemeComponent((theme: { palette: any, colors: any }) => (['body', {
     backgroundColor: theme.palette.white1,
-    color: theme.palette.baseGrey,
+    color: theme.colors.textColor,
 }]))
 
 export const NailsApp = ({ theme, children }: { theme?: any, children?: any }) => {

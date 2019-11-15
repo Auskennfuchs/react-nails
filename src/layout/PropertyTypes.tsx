@@ -86,3 +86,11 @@ export interface LineSpaceProps {
     lineSpace?: SpacingType,
 
 }
+
+export interface TextColorProps {
+    /**
+     * text color
+     * one of defined theme.colors
+     */
+    textColor?: string,
+}
