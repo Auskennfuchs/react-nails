@@ -26,7 +26,7 @@ addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any 
     fontSize: theme.font.normal,
 }])
 
-const ButtonIcon = styled.i``
+const ButtonIcon = styled.span``
 
 const StyledButton = styled.button<ButtonProps>`
     background-color: transparent;
@@ -38,14 +38,21 @@ const StyledButton = styled.button<ButtonProps>`
     letter-spacing: 0.04em;
     font-weight: 600;
     font-size: ${p => p.theme.button.fontSize};
+    outline: 0 none;
 
     & > * {
         pointer-events: none;
     }
 
     &:disabled {
-        opacity: 0.4;
+        opacity: 0.7;
     }
+
+    ${p => !p.secondary && !p.primary && css`
+        &:focus {
+            box-shadow: 0 0 0 2px ${p.theme.button.textColor};
+        }
+    `}
 
     ${p => p.secondary && css`
         background-color: ${p.theme.button.secondaryBackgroundColor};
@@ -54,6 +61,7 @@ const StyledButton = styled.button<ButtonProps>`
         padding: 0.7em 1em;
 
         &:focus {
+            outline: 0 none;
             box-shadow: 0 0 2px 2px ${p => p.theme.button.secondaryBorderColor};
         }
     `}
@@ -66,6 +74,7 @@ const StyledButton = styled.button<ButtonProps>`
         padding: 0.7em 1em;
 
         &:focus {
+            outline: 0 none;
             box-shadow: 0 0 7px 2px ${p => p.theme.button.primaryBackgroundColor};
         }
 

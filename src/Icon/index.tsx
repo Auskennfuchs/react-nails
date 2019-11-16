@@ -1,5 +1,6 @@
-import Icon from './Icon'
+import Icon, { addIcon } from './Icon'
 
 export {
-    Icon
+    Icon,
+    addIcon,
 }

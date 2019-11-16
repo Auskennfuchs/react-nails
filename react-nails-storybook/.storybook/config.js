@@ -1,13 +1,13 @@
 import React from 'react'
 import { configure, addDecorator } from '@storybook/react'
-import { NailsApp, BodyReset } from 'react-nails'
+import { NailsApp, BodyReset, addIcon } from 'react-nails'
 import { withThemesProvider } from 'storybook-addon-styled-component-theme'
 import { withTheme } from 'styled-components'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee, faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
-import {withInfo} from '@storybook/addon-info'
+import { faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faBookmark } from '@fortawesome/free-regular-svg-icons'
+import { withInfo } from '@storybook/addon-info'
 
-library.add({ faCoffee, faChevronUp, faTimes })
+addIcon([faTimes, faChevronUp, { ...faBookmark, iconName: 'bookmark-r' }])
 
 const ThemeWrapper = withTheme(({ theme, children, ...rest }) => (
     <NailsApp theme={theme} {...rest}>

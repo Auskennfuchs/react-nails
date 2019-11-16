@@ -10,8 +10,8 @@ export const text = () => (
   <React.Fragment>
     <Box space="large">
       <Inline itemSpace="large">
-        <Button onClick={action('clicked')} primary icon="times" iconLeft="chevron-up">
-          <Text>Primary</Text>
+        <Button onClick={action('clicked')} primary icon="times" iconLeft="bookmark-r">
+          <Text>PrimaryP</Text>
         </Button>
         <Button onClick={action('clicked')} primary disabled>
           Disabled
@@ -22,13 +22,13 @@ export const text = () => (
         <Button onClick={action('clicked')} secondary disabled>
           Secondary disabled
       </Button>
-        <Button>Test</Button>
+        <Button onClick={action('clicked')}>Test</Button>
       </Inline>
     </Box>
     <Box space="large">
       <Inline itemSpace="xsmall">
         <span>Text</span>
-        <Button>Button</Button>
+        <Button onClick={action('clicked')}>Button</Button>
         <span>More text</span>
       </Inline>
     </Box>

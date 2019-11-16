@@ -10,9 +10,6 @@ export const GlobalReset = styled.div`
     * {
         box-sizing: border-box;
         font-size: inherit;
-        &:active, &:focus {
-            outline: 0 none;
-        }
     }
     input, select, button {
         font-family: inherit;
