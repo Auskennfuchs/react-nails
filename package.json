@@ -1,10 +1,11 @@
 {
   "name": "react-nails",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.2.0",
+  "description": "UI framework based on React and Styled Components",
   "author": "Auskennfuchs",
   "license": "MIT",
-  "repository": "Auskennfuchs/react-nails",
+  "repository": "git@github.com:Auskennfuchs/react-nails.git",
+  "homepage": "https://auskennfuchs.github.io/react-nails/",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -18,8 +19,8 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build"
+    "predeploy": "cd react-nails-storybook && yarn install && yarn run build-storybook",
+    "deploy": "gh-pages -d react-nails-storybook/storybook-static"
   },
   "dependencies": {},
   "peerDependencies": {
@@ -48,6 +49,7 @@
     "enzyme-adapter-react-16": "^1.15.1",
     "gh-pages": "^1.2.0",
     "lodash": "^4.17.15",
+    "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts-ts": "^2.16.0",

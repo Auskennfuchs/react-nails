@@ -17,7 +17,6 @@ export const GlobalReset = styled.div`
     input, select, button {
         font-family: inherit;
         appearance: none;
-        color: inherit;
     }
     select::-ms-expand {
         display: none;
@@ -36,8 +35,6 @@ export const GlobalReset = styled.div`
     }
     button {
         cursor: pointer;
-        border: 0 none;
-        background-color: transparent;
     }
 `
 

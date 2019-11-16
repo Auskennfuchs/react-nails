@@ -7,7 +7,7 @@ export type ThemeFunc = (res: object) => ThemeFuncResult
 const themeFuncs: ThemeFunc[] = []
 
 export const addThemeComponent = (func: ThemeFunc) => {
-    themeFuncs.push(func)
+    themeFuncs.unshift(func)
 }
 
 export const resolveTheme = (theme: object = {}): object => {
@@ -23,7 +23,7 @@ export const resolveTheme = (theme: object = {}): object => {
 const palette = {
     red: "#f00",
     redLight: "#f88",
-    green: "#0f0",
+    green: "#56d9a3",
     greenLight: "#8f8",
     grey1: "#1b2025",
     grey2: "#404b57",
@@ -56,10 +56,11 @@ const colors = {
 }
 
 const fontSizes = {
-    small: '0.8em',
+    small: '0.8666em',
     normal: '1em',
-    large: '2em',
-    xlarge: '2.5em',
+    large: '1.133333em',
+    xlarge: '1.2em',
+    xxlarge: '2.4em',
 }
 
 const font = {
@@ -72,7 +73,7 @@ const spaces = {
     none: "0px",
     xsmall: "0.3em",
     small: "0.5em",
-    medium: "0.8em",
+    medium: "0.7em",
     large: "1em",
 }
 
