@@ -22,6 +22,7 @@ addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any 
     secondaryBackgroundColor: theme.colors.white,
     secondaryBorderColor: theme.colors.primary,
     secondaryTextColor: theme.colors.primary,
+    textColor: theme.colors.primary,
     fontSize: theme.font.normal,
 }])
 
@@ -31,7 +32,7 @@ const StyledButton = styled.button<ButtonProps>`
     background-color: transparent;
     border-radius: ${p => p.theme.button.borderRadius};
     border: 0 none;
-    color: ${p => p.theme.button.primaryColor};
+    color: ${p => p.theme.button.textColor};
     padding: 0;
     user-select: none;
     letter-spacing: 0.04em;

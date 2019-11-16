@@ -1,5 +1,5 @@
-import React from 'react';
-import { action } from '@storybook/addon-actions';
+import React from 'react'
+import { action } from '@storybook/addon-actions'
 import { Button, Box, Text, Inline } from 'react-nails'
 
 export default {
@@ -7,22 +7,32 @@ export default {
 };
 
 export const text = () => (
-  <Box space="large">
-    <Inline itemSpace="large">
-      <Button onClick={action('clicked')} primary icon="times" iconLeft="chevron-up">
-        <Text>Primary</Text>
+  <React.Fragment>
+    <Box space="large">
+      <Inline itemSpace="large">
+        <Button onClick={action('clicked')} primary icon="times" iconLeft="chevron-up">
+          <Text>Primary</Text>
+        </Button>
+        <Button onClick={action('clicked')} primary disabled>
+          Disabled
       </Button>
-      <Button onClick={action('clicked')} primary disabled>
-        Disabled
+        <Button onClick={action('clicked')} secondary>
+          Secondary
       </Button>
-      <Button onClick={action('clicked')} secondary>
-        Secondary
+        <Button onClick={action('clicked')} secondary disabled>
+          Secondary disabled
       </Button>
-      <Button onClick={action('clicked')} secondary disabled>
-        Secondary disabled
-      </Button>
-    </Inline>
-  </Box>
+        <Button>Test</Button>
+      </Inline>
+    </Box>
+    <Box space="large">
+      <Inline itemSpace="xsmall">
+        <span>Text</span>
+        <Button>Button</Button>
+        <span>More text</span>
+      </Inline>
+    </Box>
+  </React.Fragment>
 )
 
 export const emoji = () => (
