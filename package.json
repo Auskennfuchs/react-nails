@@ -1,6 +1,6 @@
 {
   "name": "react-nails",
-  "version": "0.2.0",
+  "version": "0.2.7",
   "description": "UI framework based on React and Styled Components",
   "author": "Auskennfuchs",
   "license": "MIT",
@@ -22,18 +22,17 @@
     "predeploy": "cd react-nails-storybook && yarn install && yarn run build-storybook",
     "deploy": "gh-pages -d react-nails-storybook/storybook-static"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/react-fontawesome": "^0.1.7"
+  },
   "peerDependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.0",
-    "@fortawesome/react-fontawesome": "^0.1.7",
     "lodash": "^4.0.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "styled-components": "^4.0.0"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/react-fontawesome": "^0.1.7",
     "@svgr/rollup": "^2.4.1",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
@@ -42,8 +41,6 @@
     "@types/react": "^16.3.13",
     "@types/react-dom": "^16.0.5",
     "@types/styled-components": "^4.4.0",
-    "babel-core": "^6.26.3",
-    "babel-runtime": "^6.26.0",
     "cross-env": "^5.1.4",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",

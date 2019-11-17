@@ -40,6 +40,8 @@ const palette = {
     blueLight: "#4392F1",
     white: "#fff",
     black: "#000",
+    yellow: "#fddf01",
+    yellowLight: "#fef4c2",
 }
 
 const colors = {
@@ -47,12 +49,15 @@ const colors = {
     negativeLight: palette.redLight,
     positive: palette.green,
     positiveLight: palette.greenLight,
+    info: palette.yellow,
+    infoLight: palette.yellowLight,    
     unknown: '#f0f',
     brandColor: palette.blue,
     primary: palette.blueLight,
     textColor: palette.grey1,
+    textColorMedium: palette.grey2,
     white: palette.white,
-    black: palette.black,    
+    black: palette.black,
 }
 
 const fontSizes = {
@@ -65,7 +70,7 @@ const fontSizes = {
 
 const font = {
     fontFamily: '-apple-system, BlinkMaxSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol"',
-    baseFontSize: '1em',
+    baseFontSize: '15px',
     ...fontSizes,
 }
 

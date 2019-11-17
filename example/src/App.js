@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Row, Types, NailsApp, BodyReset, Inline, Box, Column, Filler, Icon, Text } from 'react-nails'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { Row, Types, NailsApp, BodyReset, Inline, Box, Column, Filler, Icon, Text, addIcon } from 'react-nails'
 import { faCoffee, faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-library.add({ faCoffee, faChevronUp, faTimes })
+addIcon([faCoffee, faChevronUp, faTimes])
 
 const { SpacingType, ItemJustifyType, BorderType, ItemAlignType, TextSizeType, TextWeightType } = Types
 

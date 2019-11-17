@@ -84,7 +84,7 @@ const StyledButton = styled.button<ButtonProps>`
     `}
 `
 
-const Button = ({ primary, secondary, icon, iconLeft, children, ...rest }: ButtonProps) => (
+const Button: React.FC<ButtonProps> = ({ primary, secondary, icon, iconLeft, children, ...rest }: ButtonProps) => (
     <StyledButton primary={primary} secondary={secondary} {...rest}>
         <Inline itemSpace={SpacingType.Medium}>
             {iconLeft && (<ButtonIcon>

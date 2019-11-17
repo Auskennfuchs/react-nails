@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import styled from 'styled-components';
-import { StyleHelper } from '../Style';
-
-const resolverFuncs = {}
+import styled from 'styled-components'
+import { StyleHelper } from '../Style'
+import { TextColorProps } from '../properties/PropertyTypes'
+import { resolveTextColor } from '../properties/PropertyResolver'
 
 export type IconType = string | Array<any> | IconDefinition
 
@@ -14,6 +14,8 @@ type ResolverFuncResult = {
 } | null
 
 type ResolverFunc = (icon: string | IconDefinition) => ResolverFuncResult
+
+const resolverFuncs: { [name: string]: ResolverFuncResult } = {}
 
 const fontAwesomeResolver: ResolverFunc = (icon: IconDefinition) => ({
     icon,
@@ -29,7 +31,7 @@ type AddIconInput = {
     resolver: ResolverFunc
 }
 
-const addIconSingle = ({ id, resolver }: AddIconInput) => {
+const addIconResolver = ({ id, resolver }: AddIconInput) => {
     if (isIconDefinition(id)) {
         resolverFuncs[id.iconName] = (resolver || fontAwesomeResolver)(id)
     } else {
@@ -37,14 +39,18 @@ const addIconSingle = ({ id, resolver }: AddIconInput) => {
     }
 }
 
+const addIconSingle = (icon: AddIconInput): void => {
+    if (isIconDefinition(icon)) {
+        addIconResolver({ id: icon, resolver: fontAwesomeResolver })
+    } else {
+        addIconResolver(icon)
+    }
+}
+
 export const addIcon = (icon: AddIconInput | AddIconInput[]) => {
     if (Array.isArray(icon)) {
         icon.forEach(i => {
-            if (isIconDefinition(i)) {
-                addIconSingle({ id: i, resolver: fontAwesomeResolver })
-            } else {
-                addIconSingle(i)
-            }
+            addIconSingle(i)
         })
     } else {
         addIconSingle(icon)
@@ -64,7 +70,16 @@ const NotFoundIcon = styled.div`
     }
 `
 
-const Icon = ({ icon, ...rest }: { icon: string }) => {
+const IconWrapper = styled.i<TextColorProps>`
+    ${resolveTextColor}
+`
+
+type IconProps = {
+    icon: string,
+    color?: string
+}
+
+const Icon = ({ icon, color, ...rest }: IconProps) => {
     const convertIcon = (iconName: string): ResolverFuncResult => {
         if (resolverFuncs[iconName]) {
             return resolverFuncs[iconName]
@@ -76,7 +91,9 @@ const Icon = ({ icon, ...rest }: { icon: string }) => {
     if (foundIcon) {
         const IconElement: any = foundIcon.element
         return (
-            <IconElement icon={foundIcon.icon} {...rest} />
+            <IconWrapper textColor={color}>
+                <IconElement icon={foundIcon.icon} {...rest} />
+            </IconWrapper>
         )
     }
     return <NotFoundIcon />

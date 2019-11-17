@@ -4,10 +4,11 @@ import { NailsApp, BodyReset, addIcon } from 'react-nails'
 import { withThemesProvider } from 'storybook-addon-styled-component-theme'
 import { withTheme } from 'styled-components'
 import { faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
-import { faBookmark } from '@fortawesome/free-regular-svg-icons'
+import { faBookmark, faSmile } from '@fortawesome/free-regular-svg-icons'
 import { withInfo } from '@storybook/addon-info'
 
-addIcon([faTimes, faChevronUp, { ...faBookmark, iconName: 'bookmark-r' }])
+addIcon(faTimes)
+addIcon([faChevronUp, { ...faBookmark, iconName: 'bookmark-r' }, faSmile])
 
 const ThemeWrapper = withTheme(({ theme, children, ...rest }) => (
     <NailsApp theme={theme} {...rest}>
