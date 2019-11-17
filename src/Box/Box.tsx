@@ -18,22 +18,31 @@ export interface BoxProps extends SpacingProps, BackgroundColorProps, BorderProp
      * inlines element
      */
     inline?: boolean
+
+    /**
+     * sets display mode flex for element
+     */
+    flex?: boolean
 }
 
-const resolveRoundedSingle = (rounded: boolean = false) => rounded ? css`
+const resolveRoundedSingle = (rounded: boolean = false) => rounded && css`
     border-radius: ${p => p.theme.box.borderRadius};
-`: null
-
+`
 const resolveRounded = applySingle(resolveRoundedSingle, 'rounded')
 
-const resolveInlineSingle = (inline: boolean = false) => inline ? css`
+const resolveInlineSingle = (inline: boolean = false) => inline && css`
     display: inline-block;
-`: null
-
+`
 const resolveInline = applySingle(resolveInlineSingle, 'inline')
+
+const resolveFlexSingle = (flex: boolean = false) => flex && css`
+    display: flex;
+`
+const resolveFlex = applySingle(resolveFlexSingle, 'flex')
 
 const Box = styled.div<BoxProps>`
     ${resolveInline}
+    ${resolveFlex}
     ${resolveSpace}
     ${resolveBackgroundColor}
     ${resolveRounded}

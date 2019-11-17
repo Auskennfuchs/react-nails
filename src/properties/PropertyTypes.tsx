@@ -50,6 +50,12 @@ export enum BorderType {
     Thick = "thick",
 }
 
+export enum TextAlignType {
+    Left = "left",
+    Center = "center",
+    Right = "right",
+}
+
 export interface BorderProps {
     /**
      * defines border size
@@ -114,6 +120,7 @@ export interface TextColorProps {
 export interface TextSizeProps {
     /**
      * text size
+     * [small, medium, large, xlarge]
      */
     textSize?: TextSizeType,
 }
@@ -124,4 +131,12 @@ export interface TextWeightProps {
      * [lighter, light, normal, bold, bolder]
      */
     textWeight?: TextWeightType,
+}
+
+export interface TextAlignProps {
+    /**
+     * text alignment
+     * [left, center, right]
+     */
+    textAlign?: TextAlignType,
 }

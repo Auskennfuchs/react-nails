@@ -34,6 +34,7 @@ const darkNailsTheme = {
     name: "ReactNails dark theme",
     colors: {
         primary: "#ff0",
+        crazyColor: "#0ff",
     }
 }
 
