@@ -9,8 +9,8 @@ const GridContainer = styled.div`
     width: 100%;
 `
 
-const Grid = ({ children, ...rest }: GridProps & { children: ReactNode }) => (
-    <GridContext.Provider value={rest}>
+const Grid = ({ columns = 12, children, ...rest }: GridProps & { children: ReactNode }) => (
+    <GridContext.Provider value={{ columns, ...rest }}>
         <GridContainer>
             {children}
         </GridContainer>

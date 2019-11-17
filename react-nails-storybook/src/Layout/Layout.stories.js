@@ -1,5 +1,10 @@
 import React from 'react'
 import { Box, HeaderText, Text, Row, Column, Inline, Filler } from "react-nails"
+import Grid from './Grid'
+
+export {
+    Grid
+}
 
 export default {
     title: 'Layout'

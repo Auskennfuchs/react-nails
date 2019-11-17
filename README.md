@@ -10,6 +10,10 @@
 npm install --save react-nails
 ```
 
+## Documentation
+
+https://auskennfuchs.github.io/react-nails/
+
 ## Usage
 
 ```tsx

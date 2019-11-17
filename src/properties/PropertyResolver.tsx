@@ -51,7 +51,11 @@ export const applyMediaQueryIE11 = (func: ResolverFunc, propName: string, discar
                 `}
             `, undefined)
     }
-    return func(propObject, props)
+    return css`
+        ${MediaQuery.IE11`
+            ${func(propObject, props)}
+        `}        
+    `
 }
 
 const resolveSpaceSingle = (space: SpacingType = SpacingType.None) => css`
