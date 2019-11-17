@@ -10,7 +10,7 @@ export const text = () => (
   <React.Fragment>
     <Box space="large" fullScreen>
       <Column lineSpace="large">
-        <Inline itemSpace="large">
+        <Inline itemSpace="large" lineSpace="medium">
           <Button onClick={action('clicked')} primary icon="times" iconLeft="bookmark-r">
             <Text>PrimaryP</Text>
           </Button>

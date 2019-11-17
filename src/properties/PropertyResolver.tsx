@@ -25,7 +25,7 @@ export const applyMediaQuery = (func: ResolverFunc, propName: string, discardNul
         }
         return propObject.reduce<any>((res, s, idx): any => css`
                 ${res}
-                ${MediaQuery[mediaBreakPoints[idx]]`
+                ${MediaQuery[BreakPoint[mediaBreakPoints[idx]]]`
                     ${func(s, props)}
                 `}
             `, undefined)

@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Row, Types, NailsApp, BodyReset, Inline, Box, Column, Filler, Icon, Text, addIcon } from 'react-nails'
+import { Row, Types, NailsApp, BodyReset, Inline, Box, Column, Filler, Icon, Text, addIcon, FullScreenContainer, MediaQuery } from 'react-nails'
 import { faCoffee, faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 addIcon([faCoffee, faChevronUp, faTimes])
 
 const { SpacingType, ItemJustifyType, BorderType, ItemAlignType, TextSizeType, TextWeightType } = Types
 
-const FullScreenContainer = styled.div`
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-`
+console.log('MediaQuery', MediaQuery)
 
 const HeaderBar = styled(Box)`
     background-color: ${p => p.theme.colors.brandColor};
+
+    ${MediaQuery.small`
+        background-color: #f0f;
+    `}
 `
 
 export default class App extends Component {
@@ -33,11 +32,11 @@ export default class App extends Component {
                         </Row>
                     </HeaderBar>
                     <Filler stretchChild>
-                        <div>
+                        <Box>
                             <Row space={SpacingType.Medium} itemSpace={SpacingType.Large} align={ItemAlignType.Center}>
-                                <div>
+                                <Text>
                                     {SpacingType.Small}
-                                </div>
+                                </Text>
                                 <Filler>
                                     Filler
                                 </Filler>
@@ -124,7 +123,7 @@ export default class App extends Component {
                                 BorderBox
                                 <Icon icon="coffee" />
                             </Box>
-                        </div>
+                        </Box>
                     </Filler>
                 </FullScreenContainer>
             </ NailsApp >
