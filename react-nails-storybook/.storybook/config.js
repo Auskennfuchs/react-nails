@@ -1,10 +1,16 @@
-import React from 'react';
-import { configure, addDecorator } from '@storybook/react';
-import {NailsApp, BodyReset} from 'react-nails';
-import {withThemesProvider} from 'storybook-addon-styled-component-theme'
-import {withTheme} from 'styled-components'
+import React from 'react'
+import { configure, addDecorator } from '@storybook/react'
+import { NailsApp, BodyReset, addIcon } from 'react-nails'
+import { withThemesProvider } from 'storybook-addon-styled-component-theme'
+import { withTheme } from 'styled-components'
+import { faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faBookmark, faSmile } from '@fortawesome/free-regular-svg-icons'
+import { withInfo } from '@storybook/addon-info'
 
-const ThemeWrapper = withTheme(({theme,children,...rest})=>(
+addIcon(faTimes)
+addIcon([faChevronUp, { ...faBookmark, iconName: 'bookmark-r' }, faSmile])
+
+const ThemeWrapper = withTheme(({ theme, children, ...rest }) => (
     <NailsApp theme={theme} {...rest}>
         <BodyReset />
         {children}
@@ -13,13 +19,26 @@ const ThemeWrapper = withTheme(({theme,children,...rest})=>(
 
 const withNailsApp = (storyFn) => (
     <ThemeWrapper>
-            {storyFn()}
+        {storyFn()}
     </ThemeWrapper>
 )
 
 addDecorator(withNailsApp)
+addDecorator(withInfo)
 
-const themes =[{name:"ReactNails base theme",colors:{crazyColor:"#f0f"}}]
+const baseNailsTheme = {
+    name: "ReactNails base theme",
+}
+
+const darkNailsTheme = {
+    name: "ReactNails dark theme",
+    colors: {
+        primary: "#ff0",
+        crazyColor: "#0ff",
+    }
+}
+
+const themes = [baseNailsTheme, darkNailsTheme]
 addDecorator(withThemesProvider(themes))
 
 // automatically import all files ending in *.stories.js

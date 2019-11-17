@@ -1,21 +1,23 @@
 import styled, { css } from "styled-components"
-import { applySingle } from "../properties/PropertyResolver"
+import { applySingle, resolveAlignItems } from "../properties/PropertyResolver"
+import { AlignItemProps } from "../properties/PropertyTypes"
 
-interface FillerProps {
+interface FillerProps extends AlignItemProps {
     stretchChild?: boolean,
+    fillParent?: boolean,
 }
 
-const resolveStretchChildSingle = (stretchChild: boolean = false) => stretchChild ? css`
-    display: flex;
+const resolveStretchChildSingle = (stretchChild: boolean = false) => stretchChild && css`
     & > * {
         flex: 1 1 auto;        
     }
-`: null
-
+`
 const resolveStretchChild = applySingle(resolveStretchChildSingle, 'stretchChild')
 
 const Filler = styled.div<FillerProps>`
+    display: flex;
     flex: 1 1 auto;
+    ${resolveAlignItems}
     ${resolveStretchChild}
 `
 

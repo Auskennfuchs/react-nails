@@ -1,7 +1,7 @@
 import { css } from "styled-components"
 import { times } from 'lodash'
 import MediaQuery, { BreakPoint } from "../layout/MediaQuery"
-import { BorderType, SpacingType, ItemAlignType, ItemJustifyType, TextSizeType, TextWeightType } from "./PropertyTypes"
+import { BorderType, SpacingType, ItemAlignType, ItemJustifyType, TextSizeType, TextWeightType, TextAlignType } from "./PropertyTypes"
 
 export type ResolverFunc = (value?: any, props?: any) => any
 export const applySingle = (func: ResolverFunc, propName: string, discardNull: boolean = true): any => (props: any) => {
@@ -25,7 +25,28 @@ export const applyMediaQuery = (func: ResolverFunc, propName: string, discardNul
         }
         return propObject.reduce<any>((res, s, idx): any => css`
                 ${res}
-                ${MediaQuery[mediaBreakPoints[idx]]`
+                ${MediaQuery[BreakPoint[mediaBreakPoints[idx]]]`
+                    ${func(s, props)}
+                `}
+            `, undefined)
+    }
+    return func(propObject, props)
+}
+
+export const applyMediaQueryIE11 = (func: ResolverFunc, propName: string, discardNull: boolean = true): any => (props: any) => {
+    const mediaBreakPoints: string[] = Object.keys(BreakPoint)
+    const propObject: any = props[propName]
+    if (discardNull && !propObject) {
+        return null
+    }
+    if (Array.isArray(propObject)) {
+        if (propObject.length > 0 && propObject.length < mediaBreakPoints.length) {
+            const lastValue: any = propObject[propObject.length - 1]
+            times(mediaBreakPoints.length - propObject.length, () => propObject.push(lastValue))
+        }
+        return propObject.reduce<any>((res, s, idx): any => css`
+                ${res}
+                ${MediaQuery[`${BreakPoint[mediaBreakPoints[idx]]}IE11`]`
                     ${func(s, props)}
                 `}
             `, undefined)
@@ -66,6 +87,9 @@ export const resolveItemSpace = applyMediaQuery(resolveItemSpaceSingle, 'itemSpa
 const resolveLineSpaceSingle = (lineSpace: SpacingType = SpacingType.None) => css`
     & > * {
         margin-bottom: ${p => p.theme.spaces[lineSpace]};
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 `
 export const resolveLineSpace = applyMediaQuery(resolveLineSpaceSingle, 'lineSpace')
@@ -120,8 +144,12 @@ const resolveTextSizeSingle = (textSize: TextSizeType = TextSizeType.Normal) => 
 `
 export const resolveTextSize = applySingle(resolveTextSizeSingle, 'textSize')
 
-const resolveTextWeightSingle = (textWeight?: TextWeightType) => textWeight ? css`
+const resolveTextWeightSingle = (textWeight?: TextWeightType) => textWeight && css`
     font-weight: ${textWeight};
-`: null
-
+`
 export const resolveTextWeight = applySingle(resolveTextWeightSingle, 'textWeight')
+
+const resolveTextAlignSingle = (textAlign?: TextAlignType) => textAlign && css`
+    text-align: ${textAlign};
+`
+export const resolveTextAlign = applySingle(resolveTextAlignSingle, 'textAlign')

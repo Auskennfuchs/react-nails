@@ -7,7 +7,7 @@ export type ThemeFunc = (res: object) => ThemeFuncResult
 const themeFuncs: ThemeFunc[] = []
 
 export const addThemeComponent = (func: ThemeFunc) => {
-    themeFuncs.push(func)
+    themeFuncs.unshift(func)
 }
 
 export const resolveTheme = (theme: object = {}): object => {
@@ -23,7 +23,7 @@ export const resolveTheme = (theme: object = {}): object => {
 const palette = {
     red: "#f00",
     redLight: "#f88",
-    green: "#0f0",
+    green: "#56d9a3",
     greenLight: "#8f8",
     grey1: "#1b2025",
     grey2: "#404b57",
@@ -40,6 +40,8 @@ const palette = {
     blueLight: "#4392F1",
     white: "#fff",
     black: "#000",
+    yellow: "#fddf01",
+    yellowLight: "#fef4c2",
 }
 
 const colors = {
@@ -47,24 +49,29 @@ const colors = {
     negativeLight: palette.redLight,
     positive: palette.green,
     positiveLight: palette.greenLight,
+    info: palette.yellow,
+    infoLight: palette.yellowLight,    
     unknown: '#f0f',
     brandColor: palette.blue,
     primary: palette.blueLight,
     textColor: palette.grey1,
+    textColorInvert: palette.grey8,
+    textColorMedium: palette.grey2,
     white: palette.white,
-    black: palette.black,    
+    black: palette.black,
 }
 
 const fontSizes = {
-    small: '0.8em',
+    small: '0.8666em',
     normal: '1em',
-    large: '2em',
-    xlarge: '2.5em',
+    large: '1.133333em',
+    xlarge: '1.2em',
+    xxlarge: '2.4em',
 }
 
 const font = {
     fontFamily: '-apple-system, BlinkMaxSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol"',
-    baseFontSize: '1em',
+    baseFontSize: '15px',
     ...fontSizes,
 }
 
@@ -72,7 +79,7 @@ const spaces = {
     none: "0px",
     xsmall: "0.3em",
     small: "0.5em",
-    medium: "0.8em",
+    medium: "0.7em",
     large: "1em",
 }
 
