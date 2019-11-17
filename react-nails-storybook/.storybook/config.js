@@ -1,6 +1,6 @@
 import React from 'react'
 import { configure, addDecorator } from '@storybook/react'
-import { NailsApp, BodyReset, addIcon, FullScreenContainer } from 'react-nails'
+import { NailsApp, BodyReset, addIcon, FullScreenContainer, baseTheme } from 'react-nails'
 import { withThemesProvider } from 'storybook-addon-styled-component-theme'
 import { withTheme } from 'styled-components'
 import { faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -37,6 +37,9 @@ const darkNailsTheme = {
     colors: {
         primary: "#ff0",
         crazyColor: "#0ff",
+    },
+    body: {
+        backgroundColor: baseTheme.palette.grey3,
     }
 }
 

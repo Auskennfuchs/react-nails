@@ -32,6 +32,7 @@ export enum ItemAlignType {
     Top = "flex-start",
     Bottom = "flex-end",
     Stretch = "stretch",
+    Baseline = "baseline",
 }
 
 export enum ItemJustifyType {
@@ -83,7 +84,7 @@ export interface BackgroundColorProps {
 
 export interface AlignItemProps {
     /**
-     * vertically align containing items
+     * vertically align containing items      
      */
     align?: ItemAlignType,
 }

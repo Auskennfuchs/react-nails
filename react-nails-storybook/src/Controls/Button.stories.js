@@ -30,7 +30,7 @@ export const text = () => (
           <Box backgroundColor="infoLight" space="medium" rounded textColor="textColorMedium">
             <Inline itemSpace="medium">
               <Icon icon="smile" />
-              <Text>Wir empfehlen eine Eigenmittelquote von</Text>
+              <Text>Info Message</Text>
             </Inline>
           </Box>
         </Inline>
