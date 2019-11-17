@@ -9,7 +9,9 @@ interface FillerProps extends AlignItemProps {
 
 const resolveStretchChildSingle = (stretchChild: boolean = false) => stretchChild && css`
     & > * {
-        flex: 1 1 auto;        
+        flex: 1 1 auto;
+        max-width: 100%;
+        width: 100%;
     }
 `
 const resolveStretchChild = applySingle(resolveStretchChildSingle, 'stretchChild')

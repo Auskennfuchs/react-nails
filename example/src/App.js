@@ -7,8 +7,6 @@ addIcon([faCoffee, faChevronUp, faTimes])
 
 const { SpacingType, ItemJustifyType, BorderType, ItemAlignType, TextSizeType, TextWeightType } = Types
 
-console.log('MediaQuery', MediaQuery)
-
 const HeaderBar = styled(Box)`
     background-color: ${p => p.theme.colors.brandColor};
 
@@ -128,12 +126,12 @@ export default class App extends Component {
                                 <Icon icon="coffee" />
                             </Box>
                             <Box space="large">
-                                <Grid.Grid columns={12} itemSpace={["small", "medium"]} lineSpace={["small", "medium"]}>
+                                <Grid columns={12} itemSpace={["small", "medium"]} lineSpace={["small", "medium"]}>
                                     <Grid.Row>
                                         <ThemeProps>
                                             {(theme) => (
                                                 Object.entries(theme.colors).map(([col, value]) =>
-                                                    <Grid.Column width={[4, 2]} key={col}>
+                                                    <Grid.Column width={[6, 3, 2]} key={col}>
                                                         <ColorBox backgroundColor={col} space="medium" textColor={col === "textColor" ? "textColorInvert" : "textColor"} rounded>
                                                             <Filler stretchChild>
                                                                 <Column>
@@ -149,7 +147,7 @@ export default class App extends Component {
                                             )}
                                         </ThemeProps>
                                     </Grid.Row>
-                                </Grid.Grid>
+                                </Grid>
                             </Box>
                         </Box>
                     </Filler>

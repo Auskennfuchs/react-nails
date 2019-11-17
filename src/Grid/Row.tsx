@@ -29,6 +29,12 @@ const resolveItemSpaceIE11Single = (space: SpacingType = SpacingType.None) => cs
 `
 const resolveItemSpaceIE11 = applyMediaQueryIE11(resolveItemSpaceIE11Single, 'itemSpace')
 
+const resolveLineSpaceIE11Single = (space: SpacingType = SpacingType.None) => css`
+    margin-top: calc(-${ (p: { theme: { spaces: object } }) => p.theme.spaces[space]} / 2);
+    margin-bottom: calc(-${ (p: { theme: { spaces: object } }) => p.theme.spaces[space]} / 2);
+`
+const resolveLineSpaceIE11 = applyMediaQueryIE11(resolveLineSpaceIE11Single, 'lineSpace')
+
 const RowContainer = styled.div<RowContainerProps>`
     display: grid;
     grid-template-columns: ${p => frGetter(p.columns)};
@@ -43,8 +49,11 @@ const RowContainer = styled.div<RowContainerProps>`
     ${MediaQuery.IE11`
         display: flex;
         flex-wrap: wrap;
+        max-width: 100%;
+        width: 100%;
     `}
     ${resolveItemSpaceIE11}
+    ${resolveLineSpaceIE11}
 `
 
 const Row = ({ equalHeights, children }: { equalHeights?: boolean, children: React.ReactNode }) => (

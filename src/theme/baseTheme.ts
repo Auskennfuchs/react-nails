@@ -21,10 +21,10 @@ export const resolveTheme = (theme: object = {}): object => {
 }
 
 const palette = {
-    red: "#f00",
-    redLight: "#f88",
+    red: "#ff0000",
+    redLight: "#ff8888",
     green: "#56d9a3",
-    greenLight: "#8f8",
+    greenLight: "#88ff88",
     grey1: "#1b2025",
     grey2: "#404b57",
     grey3: "#6b7782",
@@ -32,14 +32,18 @@ const palette = {
     grey5: "#bcc4cc",
     grey6: "#aaaaaa",
     grey7: "#bababa",
-    grey8: "#e8e8e8",
+    grey8: "#cccccc",
+    grey9: "#e8e8e8",
     white1: "#fcfbf9",
-    white2: "#cccccc",
     white3: "rgba(255,255,255,0.9)",
-    blue: "#135192",
-    blueLight: "#4392F1",
-    white: "#fff",
-    black: "#000",
+    white4: "rgba(255,255,255,0.6)",
+    blue1: "#135192",
+    blue2: "#4C93E9",
+    blue3: "#73A8E7",
+    blue4: "#4289DD",
+    blue5: "#4392F1",
+    white: "#ffffff",
+    black: "#000000",
     yellow: "#fddf01",
     yellowLight: "#fef4c2",
 }
@@ -50,15 +54,17 @@ const colors = {
     positive: palette.green,
     positiveLight: palette.greenLight,
     info: palette.yellow,
-    infoLight: palette.yellowLight,    
+    infoLight: palette.yellowLight,
     unknown: '#f0f',
-    brandColor: palette.blue,
-    primary: palette.blueLight,
+    brandColor: palette.blue1,
+    primary: palette.blue5,
     textColor: palette.grey1,
-    textColorInvert: palette.grey8,
+    textColorInvert: palette.grey9,
     textColorMedium: palette.grey2,
+    headerTextColor: palette.blue1,
     white: palette.white,
     black: palette.black,
+    transparent: "transparent",
 }
 
 const fontSizes = {
@@ -69,6 +75,15 @@ const fontSizes = {
     xxlarge: '2.4em',
 }
 
+const headerSizes = {
+    tiny: fontSizes.normal,
+    small: fontSizes.normal,
+    medium: fontSizes.large,
+    large: "1.73333em",
+    huge: "2.133333em",
+    massive: "2.266666em",
+}
+
 const font = {
     fontFamily: '-apple-system, BlinkMaxSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol"',
     baseFontSize: '15px',
@@ -77,10 +92,12 @@ const font = {
 
 const spaces = {
     none: "0px",
-    xsmall: "0.3em",
-    small: "0.5em",
-    medium: "0.7em",
-    large: "1em",
+    xsmall: "0.15em",
+    small: "0.3em",
+    medium: "0.5em",
+    large: "0.7em",
+    xlarge: "1em",
+    xxlarge: "3em",
 }
 
 const borders = {
@@ -97,4 +114,5 @@ export const baseTheme = {
     spaces,
     borders,
     borderRadius: "4px",
+    headerSizes,
 }

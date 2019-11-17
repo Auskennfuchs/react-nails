@@ -15,16 +15,59 @@ type ButtonProps = {
 }
 
 addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any }) => ["button", {
-    primaryBackgroundColor: theme.colors.primary,
     borderRadius: theme.controls.borderRadius,
-    primaryTextColor: theme.colors.white,
-    primaryIconColor: theme.palette.white3,
-    secondaryBackgroundColor: theme.colors.white,
-    secondaryBorderColor: theme.colors.primary,
-    secondaryTextColor: theme.colors.primary,
+
+    primary: {
+        backgroundColor: theme.colors.primary,
+        textColor: theme.colors.white,
+        iconColor: theme.palette.white3,
+        borderColor: theme.colors.primary,
+        hover: {
+            backgroundColor: theme.palette.blue2,
+            textColor: theme.colors.white,
+            borderColor: theme.palette.blue2,
+        },
+        active: {
+            backgroundColor: theme.palette.blue4,
+            textColor: theme.colors.white,
+            borderColor: theme.palette.blue4,
+        },
+        disabled: {
+            backgroundColor: theme.palette.blue3,
+            textColor: theme.colors.white3,
+            borderColor: theme.palette.blue3,
+        }
+    },
+    secondary: {
+        backgroundColor: theme.colors.transparent,
+        textColor: theme.colors.primary,
+        iconColor: theme.colors.primary,
+        borderColor: theme.colors.primary,
+        hover: {
+            backgroundColor: theme.palette.white3,
+            textColor: theme.palette.blue2,
+            borderColor: theme.palette.blue2,
+        },
+        active: {
+            backgroundColor: theme.colors.transparent,
+            textColor: theme.palette.blue4,
+            borderColor: theme.palette.blue4,
+        },
+        disabled: {
+            backgroundColor: theme.palette.white4,
+            textColor: theme.palette.blue3,
+            borderColor: theme.palette.primary,
+        }
+    },
     textColor: theme.colors.primary,
     fontSize: theme.font.normal,
 }])
+
+const applyState = (state: { backgroundColor: string, textColor: string, borderColor: string }) => css`
+    background-color: ${state.backgroundColor};
+    color: ${state.textColor};
+    border-color: ${state.borderColor};
+`
 
 const ButtonIcon = styled.span``
 
@@ -44,10 +87,6 @@ const StyledButton = styled.button<ButtonProps>`
         pointer-events: none;
     }
 
-    &:disabled {
-        opacity: 0.7;
-    }
-
     ${p => !p.secondary && !p.primary && css`
         &:focus {
             box-shadow: 0 0 0 2px ${p.theme.button.textColor};
@@ -55,31 +94,47 @@ const StyledButton = styled.button<ButtonProps>`
     `}
 
     ${p => p.secondary && css`
-        background-color: ${p.theme.button.secondaryBackgroundColor};
-        color: ${p.theme.button.secondaryTextColor};
-        border: 1px solid ${p.theme.button.secondaryBorderColor};
+        border: 1px solid ${p.theme.button.secondary.borderColor};
+        ${applyState(p.theme.button.secondary)}
         padding: 0.7em 1em;
 
-        &:focus {
+        &:hover,&:focus {
             outline: 0 none;
-            box-shadow: 0 0 2px 2px ${p => p.theme.button.secondaryBorderColor};
+            ${applyState(p.theme.button.secondary.hover)}
+        }
+
+        &:active {
+            ${applyState(p.theme.button.secondary.active)}
+        }
+
+        &:disabled {
+            ${applyState(p.theme.button.secondary.disabled)}
+            cursor: not-allowed;
         }
     `}
 
     ${p => p.primary && css`
-        background-color: ${p.theme.button.primaryBackgroundColor};
-        color: ${p.theme.button.primaryTextColor};
-        border: 1px solid ${p.theme.button.primaryBackgroundColor};
+        border: 1px solid ${p.theme.button.primary.borderColor};
+        ${applyState(p.theme.button.primary)}
         box-shadow: 0 0 7px 2px rgba(0,0,0,0.1);
         padding: 0.7em 1em;
 
-        &:focus {
+        &:hover, &:focus {
             outline: 0 none;
-            box-shadow: 0 0 7px 2px ${p => p.theme.button.primaryBackgroundColor};
+            ${applyState(p.theme.button.primary.hover)}
+        }
+
+        &:active {
+            ${applyState(p.theme.button.primary.active)}
+        }
+
+        &:disabled {
+            ${applyState(p.theme.button.primary.disabled)}
+            cursor: not-allowed;
         }
 
         ${ButtonIcon} {
-            color: ${p.theme.button.primaryIconColor};
+            color: ${p.theme.button.primary.iconColor};
         }
     `}
 `

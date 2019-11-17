@@ -9,8 +9,4 @@ export * from './properties'
 export * from './Controls'
 export * from './Style'
 export * from './FullScreenContainer'
-import * as Grid from './Grid'
-
-export {
-    Grid
-}
+export * from './Grid'

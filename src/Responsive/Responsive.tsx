@@ -12,7 +12,7 @@ interface ResponsiveInput {
     onHide: () => any,
 }
 
-const Responsive = ({ as = 'div', children, minWidth = 0, maxWidth = 99999, onShow = () => { }, onHide = () => { } }: ResponsiveInput) => {
+const Responsive = ({ as = 'div', children, minWidth = 0, maxWidth = 99999, onShow = () => null, onHide = () => null }: ResponsiveInput) => {
     const dimension = useContext(ResponsiveContext)
     const [show, setShow] = useState(false)
 

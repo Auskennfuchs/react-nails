@@ -1,6 +1,6 @@
 import React from 'react'
 import { configure, addDecorator } from '@storybook/react'
-import { NailsApp, BodyReset, addIcon } from 'react-nails'
+import { NailsApp, BodyReset, addIcon, FullScreenContainer } from 'react-nails'
 import { withThemesProvider } from 'storybook-addon-styled-component-theme'
 import { withTheme } from 'styled-components'
 import { faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -13,7 +13,9 @@ addIcon([faChevronUp, { ...faBookmark, iconName: 'bookmark-r' }, faSmile])
 const ThemeWrapper = withTheme(({ theme, children, ...rest }) => (
     <NailsApp theme={theme} {...rest}>
         <BodyReset />
-        {children}
+        <FullScreenContainer>
+            {children}
+        </FullScreenContainer>
     </NailsApp>
 ))
 

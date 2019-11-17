@@ -27,11 +27,19 @@ const resolveItemSpaceIE11Single = (space: SpacingType) => css`
 `
 const resolveItemSpaceIE11 = applyMediaQueryIE11(resolveItemSpaceIE11Single, 'itemSpace')
 
+const resolveLineSpaceIE11Single = (space: SpacingType) => css`
+    padding-top: calc(${ (p: { theme: { spaces: object } }) => p.theme.spaces[space]} / 2);
+    padding-bottom: calc(${ (p: { theme: { spaces: object } }) => p.theme.spaces[space]} / 2);
+`
+const resolveLineSpaceIE11 = applyMediaQueryIE11(resolveLineSpaceIE11Single, 'lineSpace')
+
 const ColumnContainer = styled.div<ColumnType>`
+    flex: 0 1 auto;
     min-width: 0;
     ${resolveWidth}
     ${resolveWidthIE11}
     ${resolveItemSpaceIE11}
+    ${resolveLineSpaceIE11}
 `
 
 const Column = ({ width = 1, children }: { width?: number | number[], children: ReactNode }) => (

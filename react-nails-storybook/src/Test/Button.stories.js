@@ -19,7 +19,7 @@ export const text = () => (
           <Button onClick={action('clicked')} secondary disabled>Secondary disabled</Button>
           <Button onClick={action('clicked')}>Test</Button>
         </Inline>
-        <Box space="large">
+        <Box>
           <Inline itemSpace="xsmall">
             <span>Text</span>
             <Button onClick={action('clicked')}>Button</Button>
@@ -27,10 +27,10 @@ export const text = () => (
           </Inline>
         </Box>
         <Inline>
-          <Box backgroundColor="infoLight" space="small" rounded textColor="textColorMedium">
-            <Inline itemSpace="xsmall">
+          <Box backgroundColor="infoLight" space="medium" rounded textColor="textColorMedium">
+            <Inline itemSpace="medium">
               <Icon icon="smile" />
-              <Text>Info</Text>
+              <Text>Wir empfehlen eine Eigenmittelquote von</Text>
             </Inline>
           </Box>
         </Inline>
