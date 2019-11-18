@@ -59,6 +59,15 @@ export enum TextAlignType {
     Right = "right",
 }
 
+export enum HeaderTextSizeType {
+    Tiny = "tiny",
+    Small = "small",
+    Medium = "medium",
+    Large = "large",
+    Huge = "huge",
+    Massive = "massive",
+}
+
 export interface BorderProps {
     /**
      * defines border size

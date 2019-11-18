@@ -1,4 +1,5 @@
 import { merge, cloneDeep } from 'lodash'
+//import { mergeDeep } from 'immutable'
 
 export type ThemeFuncResult = [string, object]
 
@@ -14,7 +15,7 @@ export const resolveTheme = (theme: object = {}): object => {
     const res: object = merge(cloneDeep(baseTheme), cloneDeep(theme))
     themeFuncs.forEach(tf => {
         const [id, style] = tf(res)
-        res[id] = style
+        res[id] = merge(res[id] || {}, style)
     })
     // override again with specific values
     return merge(res, theme)

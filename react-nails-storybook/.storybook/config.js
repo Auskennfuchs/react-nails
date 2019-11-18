@@ -1,5 +1,7 @@
 import React from 'react'
-import { configure, addDecorator } from '@storybook/react'
+import { configure, addDecorator, addParameters } from '@storybook/react'
+import { create } from '@storybook/theming/create'
+import { themes } from '@storybook/theming'
 import { NailsApp, BodyReset, addIcon, FullScreenContainer, baseTheme } from 'react-nails'
 import { withThemesProvider } from 'storybook-addon-styled-component-theme'
 import { withTheme } from 'styled-components'
@@ -30,6 +32,9 @@ addDecorator(withInfo)
 
 const baseNailsTheme = {
     name: "ReactNails base theme",
+    controls: {
+        testValue: "Test"
+    }
 }
 
 const darkNailsTheme = {
@@ -40,11 +45,24 @@ const darkNailsTheme = {
     },
     body: {
         backgroundColor: baseTheme.palette.grey3,
+    },
+    controls: {
+        testValue: "Test"
     }
 }
 
-const themes = [baseNailsTheme, darkNailsTheme]
-addDecorator(withThemesProvider(themes))
+const nailsThemes = [baseNailsTheme, darkNailsTheme]
+addDecorator(withThemesProvider(nailsThemes))
+
+addParameters({
+    options: {
+        theme: create({
+            base: 'dark',
+            brandTitle: 'React Nails',
+            brandUrl: 'https://github.com/Auskennfuchs/react-nails'
+        }),
+    }
+})
 
 // automatically import all files ending in *.stories.js
 configure(require.context('../src', true, /\.stories\.js$/), module);

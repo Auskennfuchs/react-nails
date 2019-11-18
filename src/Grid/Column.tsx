@@ -34,8 +34,11 @@ const resolveLineSpaceIE11Single = (space: SpacingType) => css`
 const resolveLineSpaceIE11 = applyMediaQueryIE11(resolveLineSpaceIE11Single, 'lineSpace')
 
 const ColumnContainer = styled.div<ColumnType>`
-    flex: 0 1 auto;
     min-width: 0;
+    display: flex;
+    & > * {
+        flex: 1 1 auto;
+    }
     ${resolveWidth}
     ${resolveWidthIE11}
     ${resolveItemSpaceIE11}

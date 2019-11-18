@@ -17,6 +17,10 @@ const HeaderBar = styled(Box)`
 
 const ColorBox = styled(Box).attrs({ flex: true })`
     min-height: 8em;
+    align-items: stretch;
+    & > * {
+        height: 100%;
+    }
 `
 
 export default class App extends Component {

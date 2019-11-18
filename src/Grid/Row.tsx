@@ -26,6 +26,7 @@ const resolveLineSpace = applyMediaQuery(resolveLineSpaceSingle, 'lineSpace')
 const resolveItemSpaceIE11Single = (space: SpacingType = SpacingType.None) => css`
     margin-left: calc(-${ (p: { theme: { spaces: object } }) => p.theme.spaces[space]} / 2);
     margin-right: calc(-${ (p: { theme: { spaces: object } }) => p.theme.spaces[space]} / 2);
+    width: calc(100% + ${ (p: { theme: { spaces: object } }) => p.theme.spaces[space]});
 `
 const resolveItemSpaceIE11 = applyMediaQueryIE11(resolveItemSpaceIE11Single, 'itemSpace')
 
@@ -49,7 +50,6 @@ const RowContainer = styled.div<RowContainerProps>`
     ${MediaQuery.IE11`
         display: flex;
         flex-wrap: wrap;
-        max-width: 100%;
         width: 100%;
     `}
     ${resolveItemSpaceIE11}

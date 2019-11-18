@@ -1,14 +1,14 @@
 import styled, { css } from "styled-components"
-import { resolveSpace, resolveBackgroundColor, applySingle, resolveBorder, resolveTextColor } from "../properties/PropertyResolver"
+import { resolveSpace, resolveBackgroundColor, applySingle, resolveBorder, resolveTextColor, resolveTextAlign } from "../properties/PropertyResolver"
 import { addThemeComponent } from "../theme"
-import { SpacingProps, BackgroundColorProps, BorderProps, TextColorProps } from "../properties/PropertyTypes";
+import { SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps } from "../properties/PropertyTypes";
 
 addThemeComponent((theme: { borderRadius: string }) => (['box', {
     borderRadius: theme.borderRadius,
 }]))
 
 
-export interface BoxProps extends SpacingProps, BackgroundColorProps, BorderProps, TextColorProps {
+export interface BoxProps extends SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps {
     /**
      * rounded border
      */
@@ -17,12 +17,17 @@ export interface BoxProps extends SpacingProps, BackgroundColorProps, BorderProp
     /**
      * inlines element
      */
-    inline?: boolean
+    inline?: boolean,
 
     /**
      * sets display mode flex for element
      */
-    flex?: boolean
+    flex?: boolean,
+
+    /**
+     * expand the element to 100% of height and width
+     */
+    stretch?: boolean,
 }
 
 const resolveRoundedSingle = (rounded: boolean = false) => rounded && css`
@@ -40,7 +45,14 @@ const resolveFlexSingle = (flex: boolean = false) => flex && css`
 `
 const resolveFlex = applySingle(resolveFlexSingle, 'flex')
 
+const resolveStretchSingle = (stretch: boolean = false) => stretch && css`
+    width: 100%;
+    height: 100%;
+`
+const resolveStretch = applySingle(resolveStretchSingle, 'stretch')
+
 const Box = styled.div<BoxProps>`
+    overflow: hidden;
     ${resolveInline}
     ${resolveFlex}
     ${resolveSpace}
@@ -48,6 +60,8 @@ const Box = styled.div<BoxProps>`
     ${resolveRounded}
     ${resolveBorder}
     ${resolveTextColor}
+    ${resolveTextAlign}
+    ${resolveStretch}
 `
 
 export default Box
