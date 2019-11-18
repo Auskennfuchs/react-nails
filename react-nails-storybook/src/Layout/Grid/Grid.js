@@ -23,12 +23,6 @@ const GridItemSpaceExample = ({ name, space }) => (
                 <Grid.Column>
                     <Box backgroundColor="negativeLight" space={SpacingType.Medium} textAlign="right">Column</Box>
                 </Grid.Column>
-                <Grid.Column>
-                    <Box backgroundColor="infoLight" space={SpacingType.Medium} textAlign="center">Column</Box>
-                </Grid.Column>
-                <Grid.Column>
-                    <Box backgroundColor="negativeLight" space={SpacingType.Medium} textAlign="right">Column</Box>
-                </Grid.Column>
             </Grid.Row>
         </Grid>
     </Box >
@@ -65,18 +59,13 @@ const grid = () => (
         <HeaderText size={HeaderTextSizeType.Huge}>Grid</HeaderText>
         A Grid is used to layout multiple elements in rows and columns. A Grid contains at least one Grid.Row element to define a row. With you can control the order of elements in different responsive settings.
         <HeaderText size={HeaderTextSizeType.Large}>Example</HeaderText>
-        <Grid columns={7}>
+        <Grid>
             <Grid.Row equalHeights>
                 <Grid.Column width="4">
-                    <Column>
-                        <Box backgroundColor="positiveLight" space={SpacingType.Medium}>Col1 width 4</Box>
-                        <Filler>
-                            <Box backgroundColor="positive" space={SpacingType.Medium} stretch>Col1 width 4<br />Second row of text</Box>
-                        </Filler>
-                    </Column>
+                    <Box backgroundColor="positiveLight" space={SpacingType.Medium}>Col1 width 4</Box>
                 </Grid.Column>
                 <Grid.Column width="3">
-                    <Box backgroundColor="infoLight" space={SpacingType.Medium} stretch>Col2 width 3<br />Second row of text<br />Second row of text<br />Second row of text</Box>
+                    <Box backgroundColor="infoLight" space={SpacingType.Medium} stretch>Col2 width 3</Box>
                 </Grid.Column>
                 <Grid.Column width="5">
                     <Box backgroundColor="negativeLight" space={SpacingType.Medium} stretch>Col3 width 5</Box>
