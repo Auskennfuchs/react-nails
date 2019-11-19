@@ -20,6 +20,7 @@ const resolveItemSpace = applyMediaQuery(resolveItemSpaceSingle, 'itemSpace')
 
 const resolveLineSpaceSingle = (space: SpacingType) => css`
     grid-row-gap: ${p => p.theme.spaces[space]};
+    margin-bottom: ${p => p.theme.spaces[space]};
 `
 const resolveLineSpace = applyMediaQuery(resolveLineSpaceSingle, 'lineSpace')
 
@@ -51,6 +52,7 @@ const RowContainer = styled.div<RowContainerProps>`
         display: flex;
         flex-wrap: wrap;
         width: 100%;
+        margin-bottom: 0;
     `}
     ${resolveItemSpaceIE11}
     ${resolveLineSpaceIE11}

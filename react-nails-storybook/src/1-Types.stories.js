@@ -18,7 +18,7 @@ const TypeBlock = ({ name, typeDef }) => (
                 {Object.entries(typeDef)
                     .sort((a, b) => a[0].localeCompare(b[0]))
                     .map(([entry, value]) => (
-                        <tr>
+                        <tr key={entry}>
                             <td>{entry}</td>
                             <td>{value}</td>
                         </tr>
@@ -34,6 +34,6 @@ export const types = () => (
         <HeaderText size="huge">Types</HeaderText>
         {Object.entries(Types)
             .sort((a, b) => a[0].localeCompare(b[0]))
-            .map(([name, typeDef]) => <TypeBlock name={name} typeDef={typeDef} />)}
+            .map(([name, typeDef]) => <TypeBlock key={name} name={name} typeDef={typeDef} />)}
     </Box>
 )

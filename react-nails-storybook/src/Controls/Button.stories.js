@@ -1,10 +1,20 @@
 import React from 'react'
+import styled from 'styled-components'
 import { action } from '@storybook/addon-actions'
-import { Button, Box, Text, Inline, Column, Icon } from 'react-nails'
+import { Button, Box, Text, Inline, Column, Icon, HeaderText, Types, Row } from 'react-nails'
+
+const { HeaderTextSizeType } = Types
 
 export default {
   title: 'Controls/Button',
 };
+
+const CustomButton = styled.button`
+  border: 2px solid ${p => p.theme.colors.brandColor};
+  background: ${p => p.theme.colors.brandColor};  
+  color: ${p => p.theme.colors.textColorInvert};
+  padding: ${p=>p.theme.spaces.small} ${p=>p.theme.spaces.medium};
+`
 
 export const text = () => (
   <React.Fragment>
@@ -12,7 +22,7 @@ export const text = () => (
       <Column lineSpace="large">
         <Inline itemSpace="large" lineSpace="medium">
           <Button onClick={action('clicked')} primary icon="times" iconLeft="bookmark-r">
-            <Text>PrimaryP</Text>
+            <Text>Primary</Text>
           </Button>
           <Button onClick={action('clicked')} primary disabled>Disabled</Button>
           <Button onClick={action('clicked')} secondary>Secondary</Button>
@@ -22,7 +32,7 @@ export const text = () => (
         <Box>
           <Inline itemSpace="xsmall">
             <span>Text</span>
-            <Button onClick={action('clicked')}>Button</Button>
+            <Button onClick={action('clicked')}>Default inline Button</Button>
             <span>More text</span>
           </Inline>
         </Box>
@@ -35,16 +45,10 @@ export const text = () => (
           </Box>
         </Inline>
       </Column>
+      <HeaderText size={HeaderTextSizeType.Large}>Custom Rendering</HeaderText>
+      <Row space="medium">
+        <Button as={CustomButton}>CustomButton</Button>
+      </Row>
     </Box>
   </React.Fragment>
-)
-
-export const emoji = () => (
-  <Box backgroundColor="infoLight" rounded>
-    <Button onClick={action('clicked')} primary>
-      <span role="img" aria-label="so cool">
-        😀 😎 👍 💯
-      </span>
-    </Button>
-  </Box>
 )

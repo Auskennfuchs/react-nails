@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, HeaderText, Grid, Types, ThemeProps, Column, Filler } from "react-nails"
+import { Box, HeaderText, Grid, Types, ThemeProps } from "react-nails"
 import { times } from 'lodash'
 import { PropertiesBlock } from '../../common'
 
@@ -59,8 +59,19 @@ const grid = () => (
         <HeaderText size={HeaderTextSizeType.Huge}>Grid</HeaderText>
         A Grid is used to layout multiple elements in rows and columns. A Grid contains at least one Grid.Row element to define a row. With you can control the order of elements in different responsive settings.
         <HeaderText size={HeaderTextSizeType.Large}>Example</HeaderText>
-        <Grid>
-            <Grid.Row equalHeights>
+        <Grid itemSpace="medium" lineSpace="medium">
+            <Grid.Row>
+                <Grid.Column width="4">
+                    <Box backgroundColor="positiveLight" space={SpacingType.Medium}>Col1 width 4</Box>
+                </Grid.Column>
+                <Grid.Column width="3">
+                    <Box backgroundColor="infoLight" space={SpacingType.Medium} stretch>Col2 width 3</Box>
+                </Grid.Column>
+                <Grid.Column width="5">
+                    <Box backgroundColor="negativeLight" space={SpacingType.Medium} stretch>Col3 width 5</Box>
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
                 <Grid.Column width="4">
                     <Box backgroundColor="positiveLight" space={SpacingType.Medium}>Col1 width 4</Box>
                 </Grid.Column>

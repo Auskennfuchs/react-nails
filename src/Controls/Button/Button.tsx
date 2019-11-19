@@ -12,11 +12,13 @@ type ButtonProps = {
     icon?: string,
     iconLeft?: string,
     disabled?: boolean,
+    as: typeof React.Component | React.FunctionComponent,
 }
 
 addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any }) => ["button", {
     borderRadius: theme.controls.borderRadius,
-
+    textColor: theme.colors.primary,
+    fontSize: theme.font.normal,
     primary: {
         backgroundColor: theme.colors.primary,
         textColor: theme.colors.white,
@@ -59,8 +61,6 @@ addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any 
             borderColor: theme.palette.primary,
         }
     },
-    textColor: theme.colors.primary,
-    fontSize: theme.font.normal,
 }])
 
 const applyState = (state: { backgroundColor: string, textColor: string, borderColor: string }) => css`
@@ -71,7 +71,7 @@ const applyState = (state: { backgroundColor: string, textColor: string, borderC
 
 const ButtonIcon = styled.span``
 
-const StyledButton = styled.button<ButtonProps>`
+const NailsButton = styled.button<ButtonProps>`
     background-color: transparent;
     border-radius: ${p => p.theme.button.borderRadius};
     border: 0 none;
@@ -82,6 +82,7 @@ const StyledButton = styled.button<ButtonProps>`
     font-weight: 600;
     font-size: ${p => p.theme.button.fontSize};
     outline: 0 none;
+    min-width: 1em;
 
     & > * {
         pointer-events: none;
@@ -139,8 +140,8 @@ const StyledButton = styled.button<ButtonProps>`
     `}
 `
 
-const Button: React.FC<ButtonProps> = ({ primary, secondary, icon, iconLeft, children, ...rest }: ButtonProps) => (
-    <StyledButton primary={primary} secondary={secondary} {...rest}>
+const Button: React.FC<ButtonProps> = ({ primary, secondary, icon, iconLeft, children, as: Element = NailsButton, ...rest }: ButtonProps) => (
+    <Element primary={primary} secondary={secondary} {...rest}>
         <Inline itemSpace={SpacingType.Medium}>
             {iconLeft && (<ButtonIcon>
                 <Icon icon={iconLeft} />
@@ -150,7 +151,7 @@ const Button: React.FC<ButtonProps> = ({ primary, secondary, icon, iconLeft, chi
                 <Icon icon={icon} />
             </ButtonIcon>)}
         </Inline>
-    </StyledButton>
+    </Element>
 )
 
 export default Button
