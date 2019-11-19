@@ -61,7 +61,7 @@ addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any 
             borderColor: theme.palette.primary,
         }
     },
-}])
+}], 10)
 
 const applyState = (state: { backgroundColor: string, textColor: string, borderColor: string }) => css`
     background-color: ${state.backgroundColor};

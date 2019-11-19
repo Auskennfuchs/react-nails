@@ -12,7 +12,7 @@ export default {
 const CustomButton = styled.button`
   border: 2px solid ${p => p.theme.colors.brandColor};
   background: ${p => p.theme.colors.brandColor};  
-  color: ${p => p.theme.colors.textColorInvert};
+  color: ${p => p.theme.colors.textInvert};
   padding: ${p=>p.theme.spaces.small} ${p=>p.theme.spaces.medium};
 `
 

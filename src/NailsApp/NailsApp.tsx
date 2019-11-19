@@ -7,7 +7,7 @@ import { GlobalReset } from './Reset'
 
 addThemeComponent((theme: { palette: any, colors: any }) => (['body', {
     backgroundColor: theme.palette.white1,
-    color: theme.colors.textColor,
+    color: theme.colors.text,
 }]))
 
 export const NailsApp = ({ theme, children }: { theme?: any, children?: any }) => {

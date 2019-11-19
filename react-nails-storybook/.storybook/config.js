@@ -32,9 +32,6 @@ addDecorator(withInfo)
 
 const baseNailsTheme = {
     name: "ReactNails base theme",
-    controls: {
-        testValue: "Test"
-    }
 }
 
 const darkNailsTheme = {
@@ -46,9 +43,6 @@ const darkNailsTheme = {
     body: {
         backgroundColor: baseTheme.palette.grey3,
     },
-    controls: {
-        testValue: "Test"
-    }
 }
 
 const nailsThemes = [baseNailsTheme, darkNailsTheme]

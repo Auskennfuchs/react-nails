@@ -1,20 +1,34 @@
 import { merge, cloneDeep } from 'lodash'
-//import { mergeDeep } from 'immutable'
 
 export type ThemeFuncResult = [string, object]
 
 export type ThemeFunc = (res: object) => ThemeFuncResult
 
-const themeFuncs: ThemeFunc[] = []
+type ThemeFuncEntry = {
+    priority: number,
+    func: ThemeFunc
+}
+type ThemeFuncList = ThemeFuncEntry[]
 
-export const addThemeComponent = (func: ThemeFunc) => {
-    themeFuncs.unshift(func)
+const themeFuncs: ThemeFuncList = []
+
+/**
+ * adds new Theme declarations to the theme
+ * @param func 
+ * @param priority priority of evaluating function, higher number means later processing
+ */
+export const addThemeComponent = (func: ThemeFunc, priority: number = 0) => {
+    themeFuncs.push({
+        priority,
+        func
+    })
+    themeFuncs.sort((a, b) => a.priority - b.priority)
 }
 
 export const resolveTheme = (theme: object = {}): object => {
     const res: object = merge(cloneDeep(baseTheme), cloneDeep(theme))
     themeFuncs.forEach(tf => {
-        const [id, style] = tf(res)
+        const [id, style] = tf.func(res)
         res[id] = merge(res[id] || {}, style)
     })
     // override again with specific values
@@ -35,6 +49,9 @@ const palette = {
     grey7: "#bababa",
     grey8: "#cccccc",
     grey9: "#e8e8e8",
+    grey10: "#d8dde1",
+    grey11: "rgba(64,75,87,0.6)",
+    grey12: "#f5f4f2",
     white1: "#fcfbf9",
     white3: "rgba(255,255,255,0.9)",
     white4: "rgba(255,255,255,0.6)",
@@ -59,13 +76,15 @@ const colors = {
     unknown: '#f0f',
     brandColor: palette.blue1,
     primary: palette.blue5,
-    textColor: palette.grey1,
-    textColorInvert: palette.grey9,
-    textColorMedium: palette.grey2,
+    text: palette.grey1,
+    textMedium: palette.grey2,
+    textLight: palette.grey10,
+    textInvert: palette.grey9,
     headerTextColor: palette.blue1,
     white: palette.white,
     black: palette.black,
     transparent: "transparent",
+    elemBorder: palette.grey11,
 }
 
 const fontSizes = {

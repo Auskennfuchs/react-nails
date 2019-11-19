@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, HeaderText, Grid, Types } from "react-nails"
 import { PropertiesBlock } from '../../common'
 
-const { HeaderTextSizeType, SpacingType, TextAlignType } = Types
+const { HeaderTextSizeType, SpacingType } = Types
 
 const column = () => (
     <Box space="large">

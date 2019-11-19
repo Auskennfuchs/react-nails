@@ -28,7 +28,7 @@ export const colors = () => (
                             .sort((a, b) => a[0].localeCompare(b[0]))
                             .map(([col, value]) =>
                                 <Grid.Column width={[6, 3, 2]} key={col}>
-                                    <ColorBox backgroundColor={col} space="medium" textColor={col === "textColor" ? "textColorInvert" : "textColor"} rounded>
+                                    <ColorBox backgroundColor={col} space="medium" textColor={col === "text" ? "textInvert" : "text"} rounded>
                                         <Filler stretchChild>
                                             <Column>
                                                 <Text textWeight="bold">{col}</Text>
@@ -53,7 +53,7 @@ export const colors = () => (
                             .sort((a, b) => a[0].localeCompare(b[0]))
                             .map(([col, value]) =>
                                 <Grid.Column width={[3, 2]} key={col}>
-                                    <ColorField backgroundColor={value} space="medium" textColor={value === theme.colors.textColor ? "textColorInvert" : "textColor"} rounded>
+                                    <ColorField backgroundColor={value} space="medium" textColor={value === theme.colors.text ? "textInvert" : "text"} rounded>
                                         <Filler stretchChild>
                                             <Column>
                                                 <Text textWeight="bold">{col}</Text>
