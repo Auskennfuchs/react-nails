@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { IconDefinition, library } from '@fortawesome/fontawesome-svg-core'
 import styled from 'styled-components'
 import { StyleHelper } from '../Style'
 import { TextColorProps } from '../properties/PropertyTypes'
@@ -17,10 +17,13 @@ type ResolverFunc = (icon: string | IconDefinition) => ResolverFuncResult
 
 const resolverFuncs: { [name: string]: ResolverFuncResult } = {}
 
-const fontAwesomeResolver: ResolverFunc = (icon: IconDefinition) => ({
-    icon,
-    element: FontAwesomeIcon,
-})
+const fontAwesomeResolver: ResolverFunc = (icon: IconDefinition) => {
+    library.add(icon)
+    return {
+        icon,
+        element: FontAwesomeIcon,
+    }
+}
 
 const isIconDefinition = (x: any): x is IconDefinition => {
     return x && !!(x as IconDefinition).iconName
@@ -96,7 +99,7 @@ const Icon = ({ icon, color, ...rest }: IconProps) => {
             </IconWrapper>
         )
     }
-    return <NotFoundIcon />
+    return <NotFoundIcon {...rest} />
 }
 
 export default Icon

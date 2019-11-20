@@ -6,8 +6,8 @@ export interface ResponsiveContextType {
 }
 
 const ResponsiveContext: React.Context<ResponsiveContextType> = createContext({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: (typeof window !== "undefined" && window.innerWidth) || 0,
+    height: (typeof window !== "undefined" && window.innerHeight) || 0,
 })
 
 export default ResponsiveContext

@@ -5,8 +5,14 @@ import { Inline } from '../../layout'
 import { SpacingType } from '../../properties/PropertyTypes'
 import { Icon } from '../../Icon'
 
-type ButtonProps = {
+export interface ButtonProps {
+    /**
+     * styles button as primary button
+     */
     primary?: boolean,
+    /**
+     * styles button as secondary button
+     */
     secondary?: boolean,
     children?: React.ReactNode,
     icon?: string,
@@ -71,14 +77,13 @@ const applyState = (state: { backgroundColor: string, textColor: string, borderC
 
 const ButtonIcon = styled.span``
 
-const NailsButton = styled.button<ButtonProps>`
+export const NailsButton = styled.button<ButtonProps>`
     background-color: transparent;
     border-radius: ${p => p.theme.button.borderRadius};
     border: 0 none;
     color: ${p => p.theme.button.textColor};
     padding: 0;
     user-select: none;
-    letter-spacing: 0.04em;
     font-weight: 600;
     font-size: ${p => p.theme.button.fontSize};
     outline: 0 none;
@@ -95,6 +100,7 @@ const NailsButton = styled.button<ButtonProps>`
     `}
 
     ${p => p.secondary && css`
+        letter-spacing: 0.04em;
         border: 1px solid ${p.theme.button.secondary.borderColor};
         ${applyState(p.theme.button.secondary)}
         padding: 0.7em 1em;
@@ -115,6 +121,7 @@ const NailsButton = styled.button<ButtonProps>`
     `}
 
     ${p => p.primary && css`
+        letter-spacing: 0.04em;
         border: 1px solid ${p.theme.button.primary.borderColor};
         ${applyState(p.theme.button.primary)}
         box-shadow: 0 0 7px 2px rgba(0,0,0,0.1);

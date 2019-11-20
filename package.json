@@ -1,6 +1,6 @@
 {
   "name": "react-nails",
-  "version": "0.2.21",
+  "version": "0.2.22",
   "description": "UI framework based on React and Styled Components",
   "author": "Auskennfuchs",
   "license": "MIT",
@@ -59,7 +59,7 @@
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-url": "^1.4.0",
     "styled-components": "^4.4.1",
-    "typescript": "^3.7.2"
+    "typescript": "^3.3.4000"
   },
   "files": [
     "dist"

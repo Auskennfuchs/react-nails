@@ -1,5 +1,6 @@
-import Button from './Button'
+import Button, { NailsButton } from './Button'
 
 export {
-    Button
+    Button,
+    NailsButton,
 }
