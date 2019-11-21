@@ -4,7 +4,7 @@ import { PropertiesBlock } from '../../common'
 
 const { HeaderTextSizeType, SpacingType } = Types
 
-const column = () => (
+export const column = () => (
     <Box space="large">
         <HeaderText size={HeaderTextSizeType.Huge}>Grid.Column</HeaderText>
         A Grid.Column element is used inside a Grid.Row element. It creates a flexbox container.
@@ -30,4 +30,6 @@ const column = () => (
 
 )
 
-export default column
+export default {
+    title: 'Layout/Grid-Column'
+}

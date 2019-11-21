@@ -1,0 +1,20 @@
+---
+name: Hello world
+---
+
+import { Playground, Props } from 'docz'
+import { NailsApp, Button, Inline } from 'react-nails'
+
+# Button
+
+<Props of={Inline} />
+
+Hello, I'm still a mdx file, but now I have a button component !
+<Button onClick={() => { alert("You clicked me"); }}>Click me</Button>
+
+<Playground>
+    <Inline itemSpace="medium">
+        <Button primary>Pimary</Button>
+        <Button secondary>Secondary</Button>
+    </Inline>
+</Playground>

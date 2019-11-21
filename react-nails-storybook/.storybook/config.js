@@ -1,16 +1,11 @@
 import React from 'react'
 import { configure, addDecorator, addParameters } from '@storybook/react'
 import { create } from '@storybook/theming/create'
-import { themes } from '@storybook/theming'
 import { NailsApp, BodyReset, addIcon, FullScreenContainer, baseTheme } from 'react-nails'
 import { withThemesProvider } from 'storybook-addon-styled-component-theme'
 import { withTheme } from 'styled-components'
 import { faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faBookmark, faSmile } from '@fortawesome/free-regular-svg-icons'
-import { withInfo } from '@storybook/addon-info'
-
-addIcon(faTimes)
-addIcon([faChevronUp, { ...faBookmark, iconName: 'bookmark-r' }, faSmile])
 
 const ThemeWrapper = withTheme(({ theme, children, ...rest }) => (
     <NailsApp theme={theme} {...rest}>
@@ -27,9 +22,6 @@ const withNailsApp = (storyFn) => (
     </ThemeWrapper>
 )
 
-addDecorator(withNailsApp)
-addDecorator(withInfo)
-
 const baseNailsTheme = {
     name: "ReactNails base theme",
 }
@@ -45,8 +37,12 @@ const darkNailsTheme = {
     },
 }
 
+addIcon(faTimes)
+addIcon([faChevronUp, { ...faBookmark, iconName: 'bookmark-r' }, faSmile])
+
 const nailsThemes = [baseNailsTheme, darkNailsTheme]
 addDecorator(withThemesProvider(nailsThemes))
+addDecorator(withNailsApp)
 
 addParameters({
     options: {

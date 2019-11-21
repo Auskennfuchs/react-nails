@@ -5,9 +5,11 @@ export interface ResponsiveContextType {
     height: number,
 }
 
+export const checkWindow = () => ((typeof window !== "undefined" && window) || { innerHeight: 0, innerWidth: 0 })
+
 const ResponsiveContext: React.Context<ResponsiveContextType> = createContext({
-    width: (typeof window !== "undefined" && window.innerWidth) || 0,
-    height: (typeof window !== "undefined" && window.innerHeight) || 0,
+    width: checkWindow().innerWidth,
+    height: checkWindow().innerHeight,
 })
 
 export default ResponsiveContext

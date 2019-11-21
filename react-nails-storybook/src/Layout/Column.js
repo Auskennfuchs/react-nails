@@ -10,6 +10,20 @@ const column = () => (
         <Column>
             {createExampleBoxes()}
         </Column>
+        <HeaderText size="large">Code</HeaderText>
+        <p>
+            <pre>
+                <code>
+                    {`
+<Column>
+    <Box backgroundColor="positiveLight" space="medium">Item 1</Box>
+    <Box backgroundColor="infoLight" space="medium">Item 2</Box>
+    <Box backgroundColor="negativeLight" space="medium">Item 3</Box>
+</Column>
+                `}
+                </code>
+            </pre>
+        </p>
     </Box>
 )
 
