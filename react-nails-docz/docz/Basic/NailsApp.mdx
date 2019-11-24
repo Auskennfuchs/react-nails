@@ -1,0 +1,36 @@
+---
+name: NailsApp
+menu: Basic
+---
+
+import { Playground } from "docz";
+import { NailsApp, Box } from "react-nails";
+
+# NailsApp
+
+NailsApp is the main entry point. All other components must be wrapped inside this component. It handles the basic setup and theming. `NailsApp` can be nested to switch themes for parts of the application.
+
+## Example
+```
+<NailsApp theme={{...}}>
+   ...
+</NailsApp>
+```
+
+## Properties
+
+### theme - object
+With `theme` you can customize the basic theme for your needs. Every theme property can be overriden.
+
+## Playground
+
+<Playground>
+        <Box backgroundColor="brandColor" space="medium">
+            default color box
+        </Box>
+    <NailsApp theme={{colors:{brandColor:"#aa0"}}}>
+        <Box backgroundColor="brandColor" space="medium">
+            custom color box
+        </Box>
+    </NailsApp>
+</Playground>

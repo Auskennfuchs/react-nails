@@ -75,6 +75,7 @@ const colors = {
     infoLight: palette.yellowLight,
     unknown: '#f0f',
     brandColor: palette.blue1,
+    brandTextColor: palette.white,
     primary: palette.blue5,
     text: palette.grey1,
     textMedium: palette.grey2,

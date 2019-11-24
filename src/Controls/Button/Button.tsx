@@ -78,6 +78,8 @@ const applyState = (state: { backgroundColor: string, textColor: string, borderC
 const ButtonIcon = styled.span``
 
 export const NailsButton = styled.button<ButtonProps>`
+    display: inline-flex;
+    align-items: center;
     background-color: transparent;
     border-radius: ${p => p.theme.button.borderRadius};
     border: 0 none;
@@ -153,7 +155,9 @@ const Button: React.FC<ButtonProps> = ({ primary, secondary, icon, iconLeft, chi
             {iconLeft && (<ButtonIcon>
                 <Icon icon={iconLeft} />
             </ButtonIcon>)}
-            {children}
+            <span>
+                {children}
+            </span>
             {icon && (<ButtonIcon>
                 <Icon icon={icon} />
             </ButtonIcon>)}

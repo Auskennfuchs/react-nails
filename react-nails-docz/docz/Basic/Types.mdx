@@ -1,0 +1,39 @@
+---
+name: Types
+menu: Basic
+---
+
+import { Playground } from "docz";
+import { Row, Types, HeaderText } from "react-nails";
+
+# Types
+
+React-nails defines a list of general types which are used as property types. This concept is the main key for consistent and customizable frontends.
+
+<React.Fragment>
+    {Object.entries(Types)
+        .sort((a, b) => a[0].localeCompare(b[0]))
+        .map(([name, typeDef]) => (
+            <React.Fragment>
+                <HeaderText size="large">{name}</HeaderText>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Enum</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {Object.entries(typeDef)
+                            .sort((a, b) => a[0].localeCompare(b[0]))
+                            .map(([entry, value]) => (
+                                <tr key={entry}>
+                                    <td>{entry}</td>
+                                    <td>{value}</td>
+                                </tr>
+                            ))}
+                    </tbody>
+                </table>
+            </React.Fragment>
+        ))}
+</React.Fragment>
