@@ -1,0 +1,61 @@
+---
+name: Button
+menu: Controls
+---
+
+import { Playground } from 'docz'
+import { NailsApp, Button, Inline } from 'react-nails'
+import CustomButton from './CustomButton'
+
+# Button
+Creates a primary, secondary or normal button.
+
+## Examples
+<Inline itemSpace="medium">
+    <Button primary icon="times" iconLeft="bookmark-r">
+        <Text>Primary</Text>
+    </Button>
+    <Button primary disabled>Disabled</Button>
+    <Button secondary>Secondary</Button>
+    <Button secondary disabled>Secondary disabled</Button>
+    <Button onClick={() => { alert("You clicked me"); }}>Click me</Button>
+</Inline>
+
+## Properties
+
+### primary - boolean
+Button will be styled as primary button
+
+<Button primary>Primary</Button>
+
+### secondary - boolean
+Button will be styled as secondary button
+
+<Button secondary>Secondary</Button>
+
+### disabled - boolean
+Disables the button.
+<Button primary disabled>Disabled</Button>
+
+### as - Component
+
+The button will be rendered with the provided component. Default component is `NailsButton`
+
+```jsx
+import CustomButton from './CustomButton'
+
+<Button as={CustomButton}>CustomButton</Button>
+```
+
+<Box>
+    <Button as={CustomButton}>CustomButton</Button>
+</Box>
+
+## Playground
+
+<Playground>
+    <Inline itemSpace="medium">
+        <Button primary>Pimary</Button>
+        <Button secondary>Secondary</Button>
+    </Inline>
+</Playground>

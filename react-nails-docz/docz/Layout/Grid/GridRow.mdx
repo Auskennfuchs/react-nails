@@ -1,0 +1,82 @@
+---
+name: Grid.Row
+menu: Grid
+---
+
+import { Playground } from "docz";
+import { times } from "lodash";
+import {
+    NailsApp,
+    Button,
+    Inline,
+    Grid,
+    Box,
+    Types,
+    ThemeProps,
+    HeaderText,
+    Column,
+    Filler
+} from "react-nails";
+
+# Grid.Row
+
+A Grid.Row element is a container for Grid.Column elements. A Grid.Row can contain more items than defined columns. In this case, the overlapping columns will get wrapped to next row.
+
+## Example
+
+<Grid columns={2}>
+    <Grid.Row>
+        <Grid.Column>
+            <Column>
+                <Box backgroundColor="positiveLight" space="medium">
+                    Col1
+                </Box>
+                <Filler>
+                    <Box backgroundColor="positive" space="medium" stretch>
+                        Col
+                        <br />
+                        Second row of text
+                    </Box>
+                </Filler>
+            </Column>
+        </Grid.Column>
+        <Grid.Column>
+            <Box backgroundColor="infoLight" space="medium">
+                Col2
+                <br />
+                Second row of text
+                <br />
+                Second row of text
+                <br />
+                Second row of text
+            </Box>
+        </Grid.Column>
+        <Grid.Column>
+            <Box backgroundColor="negativeLight" space="medium">
+                Col3 next row
+            </Box>
+        </Grid.Column>
+        <Grid.Column>
+            <Box backgroundColor="negative" space="medium">
+                Col4 next row
+            </Box>
+        </Grid.Column>
+    </Grid.Row>
+</Grid>
+
+## Properties
+
+### equalHeights - boolean
+
+Sets all columns to the same size, even if they are wrapped to the next row. Without this options all columns in one visible row have the size of the heighest column.
+
+## Playground
+
+<Playground>
+    <Grid columns={2}>
+        <Grid.Row>
+            <Grid.Column>Col1</Grid.Column>
+            <Grid.Column>Col2</Grid.Column>
+        </Grid.Row>
+    </Grid>
+</Playground>

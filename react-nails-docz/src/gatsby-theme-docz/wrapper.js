@@ -1,16 +1,17 @@
 import React from 'react'
-import { theme, useConfig, ComponentsProvider } from 'docz'
-import { ThemeProvider } from 'theme-ui'
-import { NailsApp, FullScreenContainer } from 'react-nails'
+import { NailsApp, addIcon } from 'react-nails'
+import { faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faBookmark, faSmile } from '@fortawesome/free-regular-svg-icons'
+import './theme.css'
+
+addIcon(faTimes)
+addIcon([faChevronUp, { ...faBookmark, iconName: 'bookmark-r' }, faSmile])
 
 const Theme = ({ children }) => {
-    const config = useConfig()
     return (
-        <ThemeProvider theme={config}>
-            <NailsApp>
-                {children}
-            </NailsApp>
-        </ThemeProvider>
+        <NailsApp>
+            {children}
+        </NailsApp>
     )
 }
 

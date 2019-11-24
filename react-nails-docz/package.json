@@ -2,6 +2,9 @@
   "name": "react-nails-docz",
   "version": "1.0.0",
   "main": "index.js",
+  "author": "Auskennfuchs",
+  "repository": "git@github.com:Auskennfuchs/react-nails.git",
+  "homepage": "https://auskennfuchs.github.io/react-nails/",
   "license": "MIT",
   "scripts": {
     "docz:dev": "docz dev",
@@ -9,7 +12,11 @@
     "docz:serve": "docz build && docz serve"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-regular-svg-icons": "^5.11.2",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "docz": "^2.0.0-rc.75",
+    "lodash": "^4.17.15",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-nails": "link:..",

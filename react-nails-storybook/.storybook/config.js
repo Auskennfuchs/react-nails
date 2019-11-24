@@ -22,6 +22,8 @@ const withNailsApp = (storyFn) => (
     </ThemeWrapper>
 )
 
+addDecorator(withNailsApp)
+
 const baseNailsTheme = {
     name: "ReactNails base theme",
 }
@@ -42,7 +44,6 @@ addIcon([faChevronUp, { ...faBookmark, iconName: 'bookmark-r' }, faSmile])
 
 const nailsThemes = [baseNailsTheme, darkNailsTheme]
 addDecorator(withThemesProvider(nailsThemes))
-addDecorator(withNailsApp)
 
 addParameters({
     options: {

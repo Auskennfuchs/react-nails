@@ -1,0 +1,18 @@
+---
+name: Row
+menu: Layout
+---
+
+import { Playground } from "docz";
+import { NailsApp, Row } from "react-nails";
+
+# Row
+
+A Row creates a full size flex box element. Contained items are aligned horizontally.
+
+## Example
+
+## Properties
+
+## Playground
+

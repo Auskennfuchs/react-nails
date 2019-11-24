@@ -1,0 +1,41 @@
+---
+name: Grid.Column
+menu: Grid
+---
+
+import { Playground } from "docz";
+import { times } from "lodash";
+import {
+    NailsApp,
+    Button,
+    Inline,
+    Grid,
+    Box,
+    Types,
+    ThemeProps,
+    HeaderText,
+    Column,
+    Filler
+} from "react-nails";
+
+# Grid.Column
+
+A Grid.Column element is used inside a Grid.Row element. It creates a flexbox container.
+
+## Properties
+
+### width - number | number[]
+
+Sets the used columns of grid. The value can be set as single value or as responsive array
+
+
+## Playground
+
+<Playground>
+    <Grid columns={4}>
+        <Grid.Row>
+            <Grid.Column width={3}>Col1</Grid.Column>
+            <Grid.Column width={1}>Col2</Grid.Column>
+        </Grid.Row>
+    </Grid>
+</Playground>

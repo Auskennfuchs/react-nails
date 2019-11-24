@@ -1,0 +1,132 @@
+---
+name: Row
+menu: Layout
+---
+
+import { Playground } from "docz";
+import { NailsApp, Row, Box, Text, Filler } from "react-nails";
+import { times } from "lodash";
+
+# Row
+
+A Row creates a full size flex box element. Contained items are aligned horizontally.
+
+## Example
+
+<Row>
+    <Box backgroundColor="positiveLight" space="medium">
+        Item 1
+    </Box>
+    <Box backgroundColor="infoLight" space="medium">
+        Item 2
+    </Box>
+    <Box backgroundColor="negativeLight" space="medium">
+        Item 3
+    </Box>
+</Row>
+
+## Properties
+
+### space - SpacingType | SpacingType[]
+
+Defines the padding to containing items.
+
+<Row>
+    <Box backgroundColor="positiveLight" space="medium">
+        No Space around
+    </Box>
+    <Filler>
+        <Box backgroundColor="infoLight" space="medium" stretch>
+            No Space around
+        </Box>
+    </Filler>
+</Row>
+<Row space="medium">
+    <Box backgroundColor="positiveLight" space="medium">
+        Medium Space around
+    </Box>
+    <Filler>
+        <Box backgroundColor="infoLight" space="medium" stretch>
+            Medium Space around
+        </Box>
+    </Filler>
+</Row>
+
+```jsx
+<Row space="medium">...</Row>
+```
+
+### itemSpace - SpacingType | SpacingType[]
+
+Defines the space between each item of row. The value can be set as single value or as responsive array.
+
+<Row itemSpace="large">
+    <Box backgroundColor="positiveLight" space="medium">
+        Item 1
+    </Box>
+    <Box backgroundColor="infoLight" space="medium">
+        Item 2
+    </Box>
+    <Box backgroundColor="negativeLight" space="medium">
+        Item 3
+    </Box>
+</Row>
+
+```jsx
+<Row itemSpace="large">...</Row>
+```
+
+### align - ItemAlignType
+
+Defines the vertical alignment between the containing items. Default is stretch
+
+<Row itemSpace="medium" align="center">
+    <Box backgroundColor="positiveLight" space="medium">
+        small Item, will be centered
+    </Box>
+    <Box backgroundColor="infoLight" space="medium">
+        big Item
+        <br />
+        Second row
+    </Box>
+</Row>
+<Row itemSpace="medium" align="flex-end">
+    <Box backgroundColor="positiveLight" space="medium">
+        small Item, will aligned on bottom
+    </Box>
+    <Box backgroundColor="infoLight" space="medium">
+        big Item
+        <br />
+        Second row
+    </Box>
+</Row>
+
+```jsx
+<Row align="center">...</Row>
+```
+
+### justify - ItemJustifyType
+
+Justifies horizontally containing elements.
+
+<Row justify="space-between">
+    <Box backgroundColor="positiveLight" space="medium">
+        Item 1
+    </Box>
+    <Box backgroundColor="infoLight" space="medium">
+        Item 2
+    </Box>
+</Row>
+
+```jsx
+    <Row justify="space-between">...</Row>
+```
+
+## Playground
+
+<Playground>
+    <Row itemSpace="medium">
+        <Box backgroundColor="positive">Elem1</Box>
+        <Text textColor="negative">Textelement</Text>
+    </Row>
+</Playground>

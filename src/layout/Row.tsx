@@ -8,6 +8,7 @@ interface RowProps extends SpacingProps, ItemSpaceProps, AlignItemProps, Justify
 const Row = styled.div<RowProps>`
     display: flex;
     flex-direction: row;
+    width: 100%;
     ${resolveItemSpace}
     ${resolveSpace}
     ${resolveAlignItems}
