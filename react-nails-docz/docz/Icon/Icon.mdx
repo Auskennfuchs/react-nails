@@ -1,0 +1,65 @@
+---
+name: Icon
+menu: Icon
+---
+
+import { Playground } from "docz";
+import { Inline, Icon } from "react-nails";
+
+# Icon
+
+This component displays an icon. By default FontAwesome-Icons are used. But you can add custom icon components.
+
+## Example
+
+<Box backgroundColor="infoLight">
+    <Icon icon="times" />
+</Box>
+
+## Properties
+
+### icon - string
+
+Selects the correct icon. If no icon with the provided name is found the default `NotFoundIcon` is displayed.
+
+### color - Color
+
+Sets the color of the icon. Every defined `theme.colors`-value can be used.
+
+## Methods
+
+### addIcon(icons: object | object[])
+
+To add new icons just call the `addIcon` method. For FontAwesome icons you just have to import them and can use them as input directly.
+
+```jsx
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { addIcon } from 'react-nails'
+
+addIcon(faTimes)
+
+<Icon icon="times"/>
+```
+
+Icons can also be renamed. This becomes handy when importing FontAwesome regular and solid icons, where you want to use both icons, but they are named identical
+
+```jsx
+import { faBookmark } from '@fortawesome/free-solid-svg-icons'
+import { faBookmark as faBookmarkR } from '@fortawesome/free-regular-svg-icons'
+import { addIcon } from 'react-nails'
+
+addIcon([faBookmark, {...faBookmarkR, iconName:"bookmark-r"}])
+
+<Icon icon="bookmark" />
+<Icon icon="boomark-r" />
+```
+
+## Playground
+
+<Playground>
+    <Inline itemSpace="medium">
+        <Icon icon="times" />
+        <Icon icon="times" color="negative" />
+        <Icon icon="unknownIcon" />
+    </Inline>
+</Playground>

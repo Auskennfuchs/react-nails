@@ -84,18 +84,13 @@ const Box: React.FC<BoxProps> = ({ as: Element = NailsBox, width, ...rest }: Box
     const [boxWidth, setBoxWidth] = useState<WidthType>(null)
 
     const resolveWidthEntry = (width: string): string | null => {
-        if (width.endsWith('px') || width.endsWith('em')) {
-            return width
-        }
         const parts = width.split("/")
         if (parts.length !== 2) {
-            console.log("no valid ratio value was provided to Box", width)
-            return null
+            return width
         }
         const n1 = Number(parts[0])
         const n2 = Number(parts[1])
         if (isNaN(n1) || isNaN(n2)) {
-
             return null
         }
         return `${n1 / n2 * 100}%`

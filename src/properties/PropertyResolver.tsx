@@ -96,7 +96,7 @@ const resolveLineSpaceSingle = (lineSpace: SpacingType = SpacingType.None) => cs
 export const resolveLineSpace = applyMediaQuery(resolveLineSpaceSingle, 'lineSpace')
 
 const buildBorderEntry = (borderPart: string, border: BorderType, borderColor: string) => css`
-    ${borderPart}: ${p => p.theme.borders[border]} solid ${p => p.theme.colors[borderColor]};
+    ${borderPart}: ${p => p.theme.borders[border] || 0} solid ${p => p.theme.colors[borderColor]};
 `
 
 const resolveBorderSingle = (border: BorderType | BorderType[] = BorderType.None, props: { borderColor: string }) => {

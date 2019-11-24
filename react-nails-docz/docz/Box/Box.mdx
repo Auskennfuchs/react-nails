@@ -4,7 +4,7 @@ menu: Box
 ---
 
 import { Playground } from "docz";
-import { Row, Box, Inline } from "react-nails";
+import { Row, Box } from "react-nails";
 
 # Box
 
@@ -51,6 +51,35 @@ Width defines the width of box, which it tries to consume of the parent element.
     </Row>
 </Box>
 ```
+
+### space - SpacingType | SpacingType[]
+
+Defines the padding to containing items. Can be a single value or a responsive array.
+
+### backgroundColor - Color
+
+Sets the background color for the box. Every defined `theme.colors` can be applied.
+
+### textColor - Color
+
+Sets the text color inside the Box. Every defined `theme.colors` can be applied.
+
+### rounded - boolean
+
+If set the Box has rounded corners.
+
+### inline - boolean
+
+If set the Box only consumes the size of it's content.
+
+### flex - boolean
+
+If set the Box is displayed as a flexbox so containing items can use flex-box properties.
+
+### stretch - boolean
+
+If set the Box tries to consume 100% of height and width of the parent's content.
+
 
 ## Playground
 
