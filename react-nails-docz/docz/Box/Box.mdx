@@ -1,0 +1,66 @@
+---
+name: Box
+menu: Box
+---
+
+import { Playground } from "docz";
+import { Row, Box, Inline } from "react-nails";
+
+# Box
+
+A Box is simple box. 
+
+## Example
+
+<Box space="medium" backgroundColor="infoLight">
+    Box content
+</Box>
+
+## Properties
+
+### width - ratio | ratio[]
+
+Width defines the width of box, which it tries to consume of the parent element. 'px'/'em'-values and also ratio values like "1/2", "3/4" are allowed. The value can set as a responsive array.
+
+<Box backgroundColor="infoLight" space="medium">
+    <Row>
+        <Box backgroundColor="positiveLight" width="1/2" space="small">
+            50% box
+        </Box>
+        <Box backgroundColor="negativeLight" width="1/8" space="small">
+            12.5% box
+        </Box>
+        <Box backgroundColor="info" width="150px" space="small">
+            150px box
+        </Box>
+    </Row>
+</Box>
+
+```jsx
+<Box backgroundColor="infoLight" space="medium">
+    <Row>
+        <Box backgroundColor="positiveLight" width="1/2" space="small">
+            50% box
+        </Box>
+        <Box backgroundColor="negativeLight" width="1/8" space="small">
+            12.5% box
+        </Box>
+        <Box backgroundColor="info" width="150px" space="small">
+            150px box
+        </Box>
+    </Row>
+</Box>
+```
+
+## Playground
+
+<Playground>
+    <Row itemSpace="medium">
+        <Box backgroundColor="positiveLight" space="small" width="1/2">
+            Box 1
+        </Box>
+        <Box backgroundColor="negativeLight" space="small" rounded width={["1/2","1/4"]}>
+            Box 2
+        </Box>
+    </Row>
+</Playground>

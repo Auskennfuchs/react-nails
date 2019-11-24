@@ -1,5 +1,7 @@
+import * as React from 'react'
+import { useEffect, useState } from 'react'
 import styled, { css } from "styled-components"
-import { resolveSpace, resolveBackgroundColor, applySingle, resolveBorder, resolveTextColor, resolveTextAlign } from "../properties/PropertyResolver"
+import { resolveSpace, resolveBackgroundColor, applySingle, resolveBorder, resolveTextColor, resolveTextAlign, applyMediaQuery } from "../properties/PropertyResolver"
 import { addThemeComponent } from "../theme"
 import { SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps } from "../properties/PropertyTypes";
 
@@ -30,38 +32,94 @@ export interface BoxProps extends SpacingProps, BackgroundColorProps, BorderProp
     stretch?: boolean,
 }
 
-const resolveRoundedSingle = (rounded: boolean = false) => rounded && css`
+type WidthType = string | string[] | null | (string | null)[]
+type WidthInputType = string | string[] | null
+
+const resolveRounded = (rounded: boolean = false) => rounded && css`
     border-radius: ${p => p.theme.box.borderRadius};
 `
-const resolveRounded = applySingle(resolveRoundedSingle, 'rounded')
 
-const resolveInlineSingle = (inline: boolean = false) => inline && css`
+const resolveInline = (inline: boolean = false) => inline && css`
     display: inline-block;
 `
-const resolveInline = applySingle(resolveInlineSingle, 'inline')
 
-const resolveFlexSingle = (flex: boolean = false) => flex && css`
+const resolveFlex = (flex: boolean = false) => flex && css`
     display: flex;
 `
-const resolveFlex = applySingle(resolveFlexSingle, 'flex')
 
-const resolveStretchSingle = (stretch: boolean = false) => stretch && css`
+const resolveStretch = (stretch: boolean = false) => stretch && css`
     width: 100%;
     height: 100%;
 `
-const resolveStretch = applySingle(resolveStretchSingle, 'stretch')
 
-const Box = styled.div<BoxProps>`
+const resolveWidth = (boxWidth: string) => `
+    width: ${boxWidth};
+`
+
+export const NailsBox = styled.div<BoxProps & { boxWidth: WidthType }>`
     overflow: hidden;
-    ${resolveInline}
-    ${resolveFlex}
+    ${applySingle(resolveInline, 'inline')}
+    ${applySingle(resolveFlex, 'flex')}
     ${resolveSpace}
     ${resolveBackgroundColor}
-    ${resolveRounded}
+    ${applySingle(resolveRounded, 'rounded')}
     ${resolveBorder}
     ${resolveTextColor}
     ${resolveTextAlign}
-    ${resolveStretch}
+    ${applyMediaQuery(resolveWidth, 'boxWidth')}
+    ${applySingle(resolveStretch, 'stretch')}
 `
+
+const Box: React.FC<BoxProps> = ({ as: Element = NailsBox, width, ...rest }: BoxProps & {
+    /**
+     * rendering element
+     */
+    as: typeof React.Component | React.FunctionComponent,
+    /**
+     * width of box inside container. Has to be a ratio or list of ratios, e.g "1/2"
+     */
+    width: string | string[]
+}) => {
+
+    const [boxWidth, setBoxWidth] = useState<WidthType>(null)
+
+    const resolveWidthEntry = (width: string): string | null => {
+        if (width.endsWith('px') || width.endsWith('em')) {
+            return width
+        }
+        const parts = width.split("/")
+        if (parts.length !== 2) {
+            console.log("no valid ratio value was provided to Box", width)
+            return null
+        }
+        const n1 = Number(parts[0])
+        const n2 = Number(parts[1])
+        if (isNaN(n1) || isNaN(n2)) {
+
+            return null
+        }
+        return `${n1 / n2 * 100}%`
+    }
+
+    const convertBoxWidth = (width: WidthInputType): WidthType => {
+        if (!width || !(typeof width === "string" || Array.isArray(width))) {
+            return null
+        }
+
+        if (Array.isArray(width)) {
+            return width.map(w => resolveWidthEntry(w))
+        } else {
+            return resolveWidthEntry(width)
+        }
+    }
+
+    useEffect(() => {
+        setBoxWidth(convertBoxWidth(width))
+    }, [width])
+
+    return (
+        <Element boxWidth={boxWidth} {...rest} />
+    )
+}
 
 export default Box

@@ -1,5 +1,2 @@
-import Box from './Box'
-
-export {
-    Box
-}
+export * from './Box'
+export { default as Box } from './Box'
