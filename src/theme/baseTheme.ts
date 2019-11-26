@@ -96,15 +96,6 @@ const fontSizes = {
     xxlarge: '2.4em',
 }
 
-const headerSizes = {
-    tiny: fontSizes.normal,
-    small: fontSizes.normal,
-    medium: fontSizes.large,
-    large: "1.73333em",
-    huge: "2.133333em",
-    massive: "2.266666em",
-}
-
 const font = {
     fontFamily: '-apple-system, BlinkMaxSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol"',
     baseFontSize: '15px',
@@ -118,7 +109,7 @@ const spaces = {
     medium: "0.5em",
     large: "0.7em",
     xlarge: "1em",
-    xxlarge: "3em",
+    xxlarge: "1.666667em",
 }
 
 const borders = {
@@ -135,5 +126,4 @@ export const baseTheme = {
     spaces,
     borders,
     borderRadius: "4px",
-    headerSizes,
 }

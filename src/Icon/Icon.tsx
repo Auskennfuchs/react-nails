@@ -1,66 +1,21 @@
 import * as React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconDefinition, library } from '@fortawesome/fontawesome-svg-core'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { StyleHelper } from '../Style'
-import { TextColorProps } from '../properties/PropertyTypes'
-import { resolveTextColor } from '../properties/PropertyResolver'
+import { TextColorProps, SizeProps, SizeType } from '../properties/PropertyTypes'
+import { resolveTextColor, applySingle } from '../properties/PropertyResolver'
+import { addThemeComponent } from '../theme'
+import { ResolverFuncResult, resolverFuncs } from './iconLib'
 
-export type IconType = string | Array<any> | IconDefinition
+addThemeComponent(() => ['icon', {
+    [SizeType.Tiny]: "0.3em",
+    [SizeType.Small]: "0.5em",
+    [SizeType.Medium]: "1.0em",
+    [SizeType.Large]: "2em",
+    [SizeType.Huge]: "4em",
+    [SizeType.Massive]: "8em",
+}])
 
-type ResolverFuncResult = {
-    icon: IconType,
-    element: any
-} | null
-
-type ResolverFunc = (icon: string | IconDefinition) => ResolverFuncResult
-
-const resolverFuncs: { [name: string]: ResolverFuncResult } = {}
-
-const fontAwesomeResolver: ResolverFunc = (icon: IconDefinition) => {
-    library.add(icon)
-    return {
-        icon,
-        element: FontAwesomeIcon,
-    }
-}
-
-const isIconDefinition = (x: any): x is IconDefinition => {
-    return x && !!(x as IconDefinition).iconName
-}
-
-type AddIconInput = {
-    id: string | IconDefinition,
-    resolver: ResolverFunc
-}
-
-const addIconResolver = ({ id, resolver }: AddIconInput) => {
-    if (isIconDefinition(id)) {
-        resolverFuncs[id.iconName] = (resolver || fontAwesomeResolver)(id)
-    } else {
-        resolverFuncs[id] = (resolver || fontAwesomeResolver)(id)
-    }
-}
-
-const addIconSingle = (icon: AddIconInput): void => {
-    if (isIconDefinition(icon)) {
-        addIconResolver({ id: icon, resolver: fontAwesomeResolver })
-    } else {
-        addIconResolver(icon)
-    }
-}
-
-export const addIcon = (icon: AddIconInput | AddIconInput[]) => {
-    if (Array.isArray(icon)) {
-        icon.forEach(i => {
-            addIconSingle(i)
-        })
-    } else {
-        addIconSingle(icon)
-    }
-}
-
-const NotFoundIcon = styled.div`
+const NotFoundIcon = styled.div<any>`
     display: inline-block;
     width: 1em;
     height: 1em;
@@ -73,16 +28,28 @@ const NotFoundIcon = styled.div`
     }
 `
 
-const IconWrapper = styled.i<TextColorProps>`
-    ${resolveTextColor}
+const resolveIconSize = (size: SizeType = SizeType.Medium) => css`
+    font-size: ${p => p.theme.icon[size]};
 `
 
-type IconProps = {
+export const NailsIcon = styled.i<TextColorProps & SizeProps>`
+    font-style: normal;
+    ${resolveTextColor}
+    ${applySingle(resolveIconSize, 'iconSize')}
+`
+
+export interface IconProps extends SizeProps {
+    /**
+     * name of registered icon
+     */
     icon: string,
-    color?: string
+    /**
+     * color of icon
+     */
+    color?: string,
 }
 
-const Icon = ({ icon, color, ...rest }: IconProps) => {
+const Icon = ({ icon, as: Element = NailsIcon, color, size, ...rest }: IconProps) => {
     const convertIcon = (iconName: string): ResolverFuncResult => {
         if (resolverFuncs[iconName]) {
             return resolverFuncs[iconName]
@@ -94,12 +61,16 @@ const Icon = ({ icon, color, ...rest }: IconProps) => {
     if (foundIcon) {
         const IconElement: any = foundIcon.element
         return (
-            <IconWrapper textColor={color}>
+            <Element textColor={color} iconSize={size}>
                 <IconElement icon={foundIcon.icon} {...rest} />
-            </IconWrapper>
+            </Element>
         )
     }
-    return <NotFoundIcon {...rest} />
+    return (
+        <Element textColor={color}>
+            <NotFoundIcon {...rest} />
+        </Element>
+    )
 }
 
 export default Icon

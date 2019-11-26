@@ -13,7 +13,6 @@ export enum TextSizeType {
     Normal = "normal",
     Large = "large",
     XLarge = "xlarge",
-
 }
 
 export enum TextWeightType {
@@ -59,7 +58,7 @@ export enum TextAlignType {
     Right = "right",
 }
 
-export enum HeaderTextSizeType {
+export enum SizeType {
     Tiny = "tiny",
     Small = "small",
     Medium = "medium",
@@ -68,7 +67,12 @@ export enum HeaderTextSizeType {
     Massive = "massive",
 }
 
-export interface BorderProps {
+export interface NailsBaseType {
+    children?: any,
+    [name: string]: any,
+}
+
+export interface BorderProps extends NailsBaseType {
     /**
      * defines border size
      */
@@ -76,7 +80,7 @@ export interface BorderProps {
     borderColor?: string,
 }
 
-export interface SpacingProps {
+export interface SpacingProps extends NailsBaseType {
     /**
      * space set padding for inner elements to own border
      * [none, small, medium, large]
@@ -84,21 +88,21 @@ export interface SpacingProps {
     space?: SpacingType | SpacingType[]
 }
 
-export interface BackgroundColorProps {
+export interface BackgroundColorProps extends NailsBaseType {
     /**
      * defines background color for element
      */
     backgroundColor?: string | string[],
 }
 
-export interface AlignItemProps {
+export interface AlignItemProps extends NailsBaseType {
     /**
      * vertically align containing items      
      */
     align?: ItemAlignType,
 }
 
-export interface JustifyItemProp {
+export interface JustifyItemProp extends NailsBaseType {
     /**
      * horizontally align containing items
      */
@@ -106,14 +110,14 @@ export interface JustifyItemProp {
 
 }
 
-export interface ItemSpaceProps {
+export interface ItemSpaceProps extends NailsBaseType {
     /**
      * gap between containing items
      */
     itemSpace?: SpacingType,
 }
 
-export interface LineSpaceProps {
+export interface LineSpaceProps extends NailsBaseType {
     /**
      * vertical space between items
      */
@@ -121,7 +125,7 @@ export interface LineSpaceProps {
 
 }
 
-export interface TextColorProps {
+export interface TextColorProps extends NailsBaseType {
     /**
      * text color
      * one of defined theme.colors
@@ -129,7 +133,7 @@ export interface TextColorProps {
     textColor?: string,
 }
 
-export interface TextSizeProps {
+export interface TextSizeProps extends NailsBaseType {
     /**
      * text size
      * [small, medium, large, xlarge]
@@ -137,7 +141,7 @@ export interface TextSizeProps {
     textSize?: TextSizeType,
 }
 
-export interface TextWeightProps {
+export interface TextWeightProps extends NailsBaseType {
     /**
      * text style
      * [lighter, light, normal, bold, bolder]
@@ -145,10 +149,18 @@ export interface TextWeightProps {
     textWeight?: TextWeightType,
 }
 
-export interface TextAlignProps {
+export interface TextAlignProps extends NailsBaseType {
     /**
      * text alignment
      * [left, center, right]
      */
     textAlign?: TextAlignType,
+}
+
+export interface SizeProps extends NailsBaseType {
+    /**
+     * size of the element
+     * [tiny, small, medium, large, huge, massive]
+     */
+    size?: SizeType,
 }

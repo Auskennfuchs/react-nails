@@ -18,7 +18,7 @@ export interface ButtonProps {
     icon?: string,
     iconLeft?: string,
     disabled?: boolean,
-    as: typeof React.Component | React.FunctionComponent,
+    as?: typeof React.Component | React.FunctionComponent | any,
 }
 
 addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any }) => ["button", {
@@ -155,9 +155,11 @@ const Button: React.FC<ButtonProps> = ({ primary, secondary, icon, iconLeft, chi
             {iconLeft && (<ButtonIcon>
                 <Icon icon={iconLeft} />
             </ButtonIcon>)}
-            <span>
-                {children}
-            </span>
+            {children && (
+                <span>
+                    {children}
+                </span>
+            )}
             {icon && (<ButtonIcon>
                 <Icon icon={icon} />
             </ButtonIcon>)}

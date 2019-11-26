@@ -1,27 +1,23 @@
 import * as React from 'react'
 import { ReactNode } from "react"
 import styled, { css } from "styled-components"
-import { TextColorProps, TextAlignProps } from "../properties/PropertyTypes"
+import { TextColorProps, TextAlignProps, SizeType, SizeProps } from "../properties/PropertyTypes"
 import { resolveTextColor, applySingle, resolveTextAlign } from '../properties/PropertyResolver'
+import { addThemeComponent } from '../theme'
 
-export enum HeaderTextSizeType {
-    Tiny = "tiny",
-    Small = "small",
-    Medium = "medium",
-    Large = "large",
-    Huge = "huge",
-    Massive = "massive",
+addThemeComponent((theme: { font: { [name: string]: string } }) => ['headerText', {
+    [SizeType.Tiny]: theme.font.normal,
+    [SizeType.Small]: theme.font.normal,
+    [SizeType.Medium]: theme.font.large,
+    [SizeType.Large]: "1.73333em",
+    [SizeType.Huge]: "2.133333em",
+    [SizeType.Massive]: "2.266666em",
+}])
+
+interface HeaderTextProps extends TextColorProps, TextAlignProps,SizeProps {
 }
 
-interface HeaderTextProps extends TextColorProps, TextAlignProps {
-    /**
-     * text size
-     * [tiny, small, medium, large, huge, massive]
-     */
-    size?: HeaderTextSizeType,
-}
-
-const resolveHeaderTextSizeSingle = (size: HeaderTextSizeType = HeaderTextSizeType.Medium) => css`font-size: ${p => p.theme.headerSizes[size]};`
+const resolveHeaderTextSizeSingle = (size: SizeType = SizeType.Medium) => css`font-size: ${p => p.theme.headerText[size]};`
 const resolveHeaderTextSize = applySingle(resolveHeaderTextSizeSingle, 'size')
 
 const resolveNoMarginSingle = (noMargin: boolean = false) => noMargin && css`margin: 0;`
@@ -78,16 +74,16 @@ const HeaderH5 = styled.h5<HeaderTextProps>`
 
 const HeaderText = ({ size, textColor = "headerTextColor", children, ...rest }: HeaderTextProps & { children: ReactNode }) => {
     const elemMap: {
-        [name in HeaderTextSizeType]: any
+        [name in SizeType]: any
     } = {
-        [HeaderTextSizeType.Massive]: HeaderH0,
-        [HeaderTextSizeType.Huge]: HeaderH1,
-        [HeaderTextSizeType.Large]: HeaderH2,
-        [HeaderTextSizeType.Medium]: HeaderH3,
-        [HeaderTextSizeType.Small]: HeaderH4,
-        [HeaderTextSizeType.Tiny]: HeaderH5,
+        [SizeType.Massive]: HeaderH0,
+        [SizeType.Huge]: HeaderH1,
+        [SizeType.Large]: HeaderH2,
+        [SizeType.Medium]: HeaderH3,
+        [SizeType.Small]: HeaderH4,
+        [SizeType.Tiny]: HeaderH5,
     }
-    let Element = size ? elemMap[size] : elemMap[HeaderTextSizeType.Medium]
+    let Element = size ? elemMap[size] : elemMap[SizeType.Medium]
     return (
         <Element size={size} textColor={textColor} {...rest}>{children}</Element>
     )

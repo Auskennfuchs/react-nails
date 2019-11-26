@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Row, Types, NailsApp, BodyReset, Inline, Box, Column, Filler, Icon, Text, addIcon, FullScreenContainer, MediaQuery, Grid, ThemeProps } from 'react-nails'
 import { faCoffee, faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
+import Input from './Input'
+import Dropdown from './Dropdown'
 
 addIcon([faCoffee, faChevronUp, faTimes])
 
@@ -26,7 +28,7 @@ const ColorBox = styled(Box).attrs({ flex: true })`
 export default class App extends Component {
     render() {
         return (
-            <NailsApp theme={{ font: { baseFontSize: "12px" }, colors: { yellow: "#ff0" }, spaces: { large: "3em" } }}>
+            <NailsApp theme={{ font: { baseFontSize: "18px" }, colors: { yellow: "#ff0" }, spaces: { large: "3em" } }}>
                 <BodyReset />
                 <FullScreenContainer>
                     <HeaderBar textColor="white" space={SpacingType.Medium}>
@@ -52,6 +54,10 @@ export default class App extends Component {
                                     {SpacingType.Small}<br />
                                     Test
                                 </div>
+                            </Row>
+                            <Row space={SpacingType.Medium} align="center" itemSpace="xxlarge">
+                                <Input placeholder="TEst" suffix="€" prefix={<Icon icon="times" color="negative" size="small"/>}  textAlign="right"/>
+                                <Dropdown />
                             </Row>
                             <Row space={SpacingType.Medium} itemSpace={SpacingType.Large} justify={ItemJustifyType.Stretch}>
                                 <div>

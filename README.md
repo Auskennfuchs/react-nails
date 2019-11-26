@@ -11,13 +11,13 @@ Easy to use and extentable UI-kit based on ReactJS and styled-components.
 ## Install
 
 ```bash
-npm install --save react-nails
+npm install --save react-nails styled-components
 ```
 
 or
 
 ```
- yarn add react-nails
+ yarn add react-nails styled-components
 ```
 
 ## Documentation

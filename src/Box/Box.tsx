@@ -10,7 +10,7 @@ addThemeComponent((theme: { borderRadius: string }) => (['box', {
 }]))
 
 
-export interface BoxProps extends SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps {
+export interface NailsBoxProps extends SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps {
     /**
      * rounded border
      */
@@ -30,6 +30,17 @@ export interface BoxProps extends SpacingProps, BackgroundColorProps, BorderProp
      * expand the element to 100% of height and width
      */
     stretch?: boolean,
+}
+
+export interface BoxProps extends NailsBoxProps {
+    /**
+     * rendering element
+     */
+    as?: typeof React.Component | React.FunctionComponent | any,
+    /**
+     * width of box inside container. Has to be a ratio or list of ratios, e.g "1/2"
+     */
+    width?: string | string[],
 }
 
 type WidthType = string | string[] | null | (string | null)[]
@@ -56,7 +67,7 @@ const resolveWidth = (boxWidth: string) => `
     width: ${boxWidth};
 `
 
-export const NailsBox = styled.div<BoxProps & { boxWidth: WidthType }>`
+export const NailsBox = styled.div<NailsBoxProps & { boxWidth: WidthType }>`
     overflow: hidden;
     ${applySingle(resolveInline, 'inline')}
     ${applySingle(resolveFlex, 'flex')}
@@ -70,16 +81,7 @@ export const NailsBox = styled.div<BoxProps & { boxWidth: WidthType }>`
     ${applySingle(resolveStretch, 'stretch')}
 `
 
-const Box: React.FC<BoxProps> = ({ as: Element = NailsBox, width, ...rest }: BoxProps & {
-    /**
-     * rendering element
-     */
-    as: typeof React.Component | React.FunctionComponent,
-    /**
-     * width of box inside container. Has to be a ratio or list of ratios, e.g "1/2"
-     */
-    width: string | string[]
-}) => {
+const Box: React.FC<BoxProps> = ({ as: Element = NailsBox, width, innerRef, ref, ...rest }: BoxProps) => {
 
     const [boxWidth, setBoxWidth] = useState<WidthType>(null)
 
@@ -96,7 +98,7 @@ const Box: React.FC<BoxProps> = ({ as: Element = NailsBox, width, ...rest }: Box
         return `${n1 / n2 * 100}%`
     }
 
-    const convertBoxWidth = (width: WidthInputType): WidthType => {
+    const convertBoxWidth = (width: WidthInputType | undefined): WidthType => {
         if (!width || !(typeof width === "string" || Array.isArray(width))) {
             return null
         }
@@ -113,7 +115,7 @@ const Box: React.FC<BoxProps> = ({ as: Element = NailsBox, width, ...rest }: Box
     }, [width])
 
     return (
-        <Element boxWidth={boxWidth} {...rest} />
+        <Element boxWidth={boxWidth} {...rest} ref={innerRef || ref} />
     )
 }
 

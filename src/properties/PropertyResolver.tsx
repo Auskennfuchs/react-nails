@@ -135,22 +135,22 @@ const resolveBorderSingle = (border: BorderType | BorderType[] = BorderType.None
 }
 export const resolveBorder = applySingle(resolveBorderSingle, 'border')
 
-const resolveTextColorSingle = (textColor: string = "unknown") => css`
+export const resolveTextColorSingle = (textColor: string = "unknown") => css`
     color: ${p => p.theme.colors[textColor]};
 `
 export const resolveTextColor = applySingle(resolveTextColorSingle, 'textColor')
 
-const resolveTextSizeSingle = (textSize: TextSizeType = TextSizeType.Normal) => css`
+export const resolveTextSizeSingle = (textSize: TextSizeType = TextSizeType.Normal) => css`
     font-size: ${p => p.theme.font[textSize]};
 `
 export const resolveTextSize = applySingle(resolveTextSizeSingle, 'textSize')
 
-const resolveTextWeightSingle = (textWeight?: TextWeightType) => textWeight && css`
+export const resolveTextWeightSingle = (textWeight?: TextWeightType) => textWeight && css`
     font-weight: ${textWeight};
 `
 export const resolveTextWeight = applySingle(resolveTextWeightSingle, 'textWeight')
 
-const resolveTextAlignSingle = (textAlign?: TextAlignType) => textAlign && css`
+export const resolveTextAlignSingle = (textAlign?: TextAlignType) => textAlign && css`
     text-align: ${textAlign};
 `
 export const resolveTextAlign = applySingle(resolveTextAlignSingle, 'textAlign')
