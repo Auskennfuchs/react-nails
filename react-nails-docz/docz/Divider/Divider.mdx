@@ -1,0 +1,70 @@
+---
+name: Divider
+---
+
+import { Playground } from "docz";
+import { Row, Divider, Column, Box } from "react-nails";
+
+# Divider
+
+A Divider is a horizontal or vertical line to separate blocks.
+
+## Example
+
+<Column>
+    <div>
+        Some Text
+        <br />
+        Some more Text
+    </div>
+    <Divider />
+    <div>New chapter, new text</div>
+</Column>
+
+## Properties
+
+### vertical - boolean
+
+If set the line is vertical
+
+<Row justify="stretch" align="center">
+    <Box backgroundColor="positiveLight" space="medium">
+        Left side text
+        <br />
+        Left side text
+        <br />
+        Left side text
+        <br />
+        Left side text
+        <br />
+    </Box>
+    <Divider vertical space="large" />
+    <Box backgroundColor="negativeLight" space="medium">
+        Right side text
+        <br />
+        Right side text
+        <br />
+        Right side text
+        <br />
+        Right side text
+        <br />
+        Right side text
+        <br />
+        Right side text
+        <br />
+    </Box>
+</Row>
+
+## Playground
+
+<Playground>
+    <Box backgroundColor="positiveLight" space="medium">
+        Some Text
+        <br />
+        Some more Text
+    </Box>
+    <Divider />
+    <Box backgroundColor="negativeLight" space="medium">
+        New chapter, new text
+    </Box>
+</Playground>

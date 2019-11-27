@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Row, Types, NailsApp, BodyReset, Inline, Box, Column, Filler, Icon, Text, addIcon, FullScreenContainer, MediaQuery, Grid, ThemeProps } from 'react-nails'
+import { Row, Types, NailsApp, BodyReset, Inline, Box, Column, Filler, Icon, Text, addIcon, FullScreenContainer, MediaQuery, Grid, ThemeProps, Input } from 'react-nails'
 import { faCoffee, faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
-import Input from './Input'
 import Dropdown from './Dropdown'
 
 addIcon([faCoffee, faChevronUp, faTimes])
@@ -56,7 +55,7 @@ export default class App extends Component {
                                 </div>
                             </Row>
                             <Row space={SpacingType.Medium} align="center" itemSpace="xxlarge">
-                                <Input placeholder="TEst" suffix="€" prefix={<Icon icon="times" color="negative" size="small"/>}  textAlign="right"/>
+                                <Input placeholder="TEst" suffix="€" prefix={<Icon icon="times" color="negative" size="small" />}  textAlign="right"/>
                                 <Dropdown />
                             </Row>
                             <Row space={SpacingType.Medium} itemSpace={SpacingType.Large} justify={ItemJustifyType.Stretch}>

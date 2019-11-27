@@ -2,10 +2,10 @@ import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { addThemeComponent } from '../../theme'
 import { Inline } from '../../layout'
-import { SpacingType } from '../../properties/PropertyTypes'
+import { SpacingType, NailsBaseType } from '../../properties/PropertyTypes'
 import { Icon } from '../../Icon'
 
-export interface ButtonProps {
+export interface ButtonProps extends NailsBaseType {
     /**
      * styles button as primary button
      */

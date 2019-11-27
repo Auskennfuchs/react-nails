@@ -67,7 +67,7 @@ const Icon = ({ icon, as: Element = NailsIcon, color, size, ...rest }: IconProps
         )
     }
     return (
-        <Element textColor={color}>
+        <Element textColor={color} iconSize={size}>
             <NotFoundIcon {...rest} />
         </Element>
     )

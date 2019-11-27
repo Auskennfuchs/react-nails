@@ -14,7 +14,7 @@ import {
     ThemeProps,
     HeaderText
 } from "react-nails";
-const { SpacingType, TextAlignType, HeaderTextSizeType } = Types;
+const { SpacingType, TextAlignType, SizeType } = Types;
 
 # Grid
 
@@ -99,7 +99,7 @@ This property defines the horizontal space between 2 grid columns (horizonal gut
         <Box key={name}>
             <ThemeProps>
                 {theme => (
-                    <HeaderText size={HeaderTextSizeType.Small}>
+                    <HeaderText size={SizeType.Small}>
                         {name} - {theme.spaces[space]}
                     </HeaderText>
                 )}
@@ -147,7 +147,7 @@ This property defines the vertical space between 2 grid rows (vertical gutter). 
         <Box>
             <ThemeProps>
                 {theme => (
-                    <HeaderText size={HeaderTextSizeType.Small}>
+                    <HeaderText size={SizeType.Small}>
                         {name} - {theme.spaces[space]}
                     </HeaderText>
                 )}

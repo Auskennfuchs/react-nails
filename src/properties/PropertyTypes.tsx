@@ -164,3 +164,10 @@ export interface SizeProps extends NailsBaseType {
      */
     size?: SizeType,
 }
+
+export interface FluidProps extends NailsBaseType {
+    /**
+     * if set items tries to fill width of parent
+     */
+    fluid?: boolean,
+}

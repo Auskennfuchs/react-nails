@@ -154,3 +154,8 @@ export const resolveTextAlignSingle = (textAlign?: TextAlignType) => textAlign &
     text-align: ${textAlign};
 `
 export const resolveTextAlign = applySingle(resolveTextAlignSingle, 'textAlign')
+
+export const resolveFluidSingle = (fluid?: boolean) => fluid && css`
+    width: 100%;
+`
+export const resolveFluid = applySingle(resolveFluidSingle, 'fluid')

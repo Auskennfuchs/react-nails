@@ -1,18 +1,32 @@
-import React, { useState } from 'react'
+import * as React from 'react'
+import { useState } from 'react'
 import styled, { css } from 'styled-components'
-import { Inline, addThemeComponent, Icon } from 'react-nails'
+import { TextAlignProps, ItemAlignType, FluidProps } from '../../properties/PropertyTypes'
+import { addThemeComponent } from '../../theme'
+import { Row } from '../../layout'
+import { resolveTextAlign, resolveFluid } from '../../properties/PropertyResolver'
 
-addThemeComponent((theme) => ['input', {
+interface InputProps extends TextAlignProps, FluidProps {
+    prefix?: React.ReactNode,
+    suffix?: React.ReactNode,
+    onFocus?: (e?: Event) => any,
+    onBlur?: (e?: Event) => any,
+}
+
+addThemeComponent((theme: { controls: { backgroundColor: string }, spaces: { small: string } }) => ['input', {
     ...theme.controls,
     afix: {
-
+        backgroundColor: theme.controls.backgroundColor,
+        padding: theme.spaces.small,
     },
 }], 10)
 
-const InputContainer = styled.div`
+const InputContainer = styled.div<any>`
     border: 1px solid ${p => p.theme.input.borderColor};
     border-radius: ${p => p.theme.input.borderRadius};
     background-color: ${p => p.theme.input.backgroundColor};
+    overflow: hidden;
+    ${resolveFluid}
 
     ${p => p.focus && css`
         border-color: ${p.theme.input.focus.borderColor};
@@ -25,6 +39,7 @@ const InputElement = styled.input`
     background-color: transparent;
     font-size: 1em;
     padding: 0.6em 0.4em;
+    width: 100%;
 
     &:focus, &:active {
         outline: 0 none;
@@ -33,33 +48,35 @@ const InputElement = styled.input`
     &::placeholder {
         color: ${p => p.theme.input.placeholderTextColor};
     }
+
+    ${resolveTextAlign}
 `
 
 const AffixContainer = styled.div`
     align-self: stretch;
     display: flex;
     align-items: center;
-    background-color: #f0f;
-    padding: ${p=>p.theme.spaces.small};
+    background-color: ${p => p.theme.input.afix.backgroundColor};
+    padding: ${p => p.theme.input.afix.padding};
 `
 
-const Input = ({ onFocus = () => null, onBlur = () => null, prefix, suffix, ...rest }) => {
+const Input: React.FC<InputProps> = ({ prefix, suffix, onFocus = () => null, onBlur = () => null, fluid, ...rest }: InputProps) => {
 
     const [focus, setFocus] = useState(false)
 
-    const localOnFocus = (e) => {
+    const localOnFocus = (e: any) => {
         setFocus(true)
         onFocus(e)
     }
 
-    const localOnBlur = (e) => {
+    const localOnBlur = (e: any) => {
         setFocus(false)
         onBlur(e)
     }
 
     return (
-        <InputContainer focus={focus}>
-            <Inline itemSpace="small">
+        <InputContainer focus={focus} fluid={fluid}>
+            <Row align={ItemAlignType.Center}>
                 {prefix && (
                     <AffixContainer>{prefix}</AffixContainer>
                 )}
@@ -67,7 +84,7 @@ const Input = ({ onFocus = () => null, onBlur = () => null, prefix, suffix, ...r
                 {suffix && (
                     <AffixContainer>{suffix}</AffixContainer>
                 )}
-            </Inline>
+            </Row>
         </InputContainer>
     )
 }

@@ -1,0 +1,50 @@
+---
+name: Input
+menu: Controls
+---
+
+import { Playground } from "docz";
+import { Row, Input, Icon, Filler, Inline } from "react-nails";
+
+# Input
+
+Creates an input element
+
+## Example
+
+<Inline>
+    <Input suffix="€" />
+</Inline>
+
+## Properties
+
+### prefix, suffix - Element
+
+Sets a prefix or suffix inside the element before or after the input.
+
+<Inline>
+    <Input prefix="P" suffix="S" value="Inputvalue" onChange={() => null} />
+</Inline>
+
+### textAlign - string [left, right, center]
+
+Sets the alignment of the input text.
+
+### fluid - boolean
+
+If set the input element tries to fill the width of the parent container.
+
+## Playground
+
+<Playground>
+    <Row>
+        <Filler>
+            <Input
+                prefix="$"
+                suffix={<Icon icon="times" />}
+                textAlign="right"
+                fluid
+            />
+        </Filler>
+    </Row>
+</Playground>
