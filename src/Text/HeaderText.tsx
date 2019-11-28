@@ -72,7 +72,7 @@ const HeaderH5 = styled.h5<HeaderTextProps>`
     ${applyTextProps}
 `
 
-const HeaderText = ({ size, textColor = "headerTextColor", children, ...rest }: HeaderTextProps & { children: ReactNode }) => {
+const HeaderText = ({ size, textColor = "headerText", children, ...rest }: HeaderTextProps & { children: ReactNode }) => {
     const elemMap: {
         [name in SizeType]: any
     } = {

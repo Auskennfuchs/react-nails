@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import styled, { css } from "styled-components"
 import { resolveSpace, resolveBackgroundColor, applySingle, resolveBorder, resolveTextColor, resolveTextAlign, applyMediaQuery } from "../properties/PropertyResolver"
 import { addThemeComponent } from "../theme"
-import { SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps } from "../properties/PropertyTypes";
+import { SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps } from "../properties/PropertyTypes"
 
 addThemeComponent((theme: { borderRadius: string }) => (['box', {
     borderRadius: theme.borderRadius,
@@ -30,6 +30,11 @@ export interface NailsBoxProps extends SpacingProps, BackgroundColorProps, Borde
      * expand the element to 100% of height and width
      */
     stretch?: boolean,
+
+    /**
+     * set Box to position:relative
+     */
+    relative?: boolean,
 }
 
 export interface BoxProps extends NailsBoxProps {
@@ -67,6 +72,10 @@ const resolveWidth = (boxWidth: string) => `
     width: ${boxWidth};
 `
 
+const resolveRelative = (relative: boolean) => relative && css`
+    position: relative;
+`
+
 export const NailsBox = styled.div<NailsBoxProps & { boxWidth: WidthType }>`
     overflow: hidden;
     ${applySingle(resolveInline, 'inline')}
@@ -79,6 +88,7 @@ export const NailsBox = styled.div<NailsBoxProps & { boxWidth: WidthType }>`
     ${resolveTextAlign}
     ${applyMediaQuery(resolveWidth, 'boxWidth')}
     ${applySingle(resolveStretch, 'stretch')}
+    ${applySingle(resolveRelative, 'relative')}
 `
 
 const Box: React.FC<BoxProps> = ({ as: Element = NailsBox, width, innerRef, ref, ...rest }: BoxProps) => {

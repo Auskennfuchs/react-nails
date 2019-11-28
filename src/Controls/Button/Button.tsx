@@ -2,10 +2,11 @@ import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { addThemeComponent } from '../../theme'
 import { Inline } from '../../layout'
-import { SpacingType, NailsBaseType } from '../../properties/PropertyTypes'
+import { SpacingType, SizeType, TextColorProps } from '../../properties/PropertyTypes'
 import { Icon } from '../../Icon'
+import { Spinner } from '../../Spinner';
 
-export interface ButtonProps extends NailsBaseType {
+export interface ButtonProps extends TextColorProps {
     /**
      * styles button as primary button
      */
@@ -14,11 +15,30 @@ export interface ButtonProps extends NailsBaseType {
      * styles button as secondary button
      */
     secondary?: boolean,
-    children?: React.ReactNode,
+    /**
+     * icon on right side
+     */
     icon?: string,
+    /**
+     * icon on left side
+     */
     iconLeft?: string,
+    /**
+     * disables button
+     */
     disabled?: boolean,
+    /**
+     * button is rendered as this component
+     */
     as?: typeof React.Component | React.FunctionComponent | any,
+    /**
+     * shows spinner instead of content
+     */
+    loading?: boolean,
+    /**
+     * color of loading spinner
+     */
+    loadingSpinnerColor?: string,
 }
 
 addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any }) => ["button", {
@@ -83,13 +103,18 @@ export const NailsButton = styled.button<ButtonProps>`
     background-color: transparent;
     border-radius: ${p => p.theme.button.borderRadius};
     border: 0 none;
-    color: ${p => p.theme.button.textColor};
+    color: ${p => p.theme.colors[p.textColor || ""] || p.theme.button.textColor};
     padding: 0;
     user-select: none;
     font-weight: 600;
     font-size: ${p => p.theme.button.fontSize};
     outline: 0 none;
     min-width: 1em;
+    position: relative;
+
+    &:disabled {
+        cursor: not-allowed;
+    }
 
     & > * {
         pointer-events: none;
@@ -118,7 +143,6 @@ export const NailsButton = styled.button<ButtonProps>`
 
         &:disabled {
             ${applyState(p.theme.button.secondary.disabled)}
-            cursor: not-allowed;
         }
     `}
 
@@ -140,7 +164,6 @@ export const NailsButton = styled.button<ButtonProps>`
 
         &:disabled {
             ${applyState(p.theme.button.primary.disabled)}
-            cursor: not-allowed;
         }
 
         ${ButtonIcon} {
@@ -149,9 +172,16 @@ export const NailsButton = styled.button<ButtonProps>`
     `}
 `
 
-const Button: React.FC<ButtonProps> = ({ primary, secondary, icon, iconLeft, children, as: Element = NailsButton, ...rest }: ButtonProps) => (
+const ChildContainer = styled(Inline)`
+    ${p => p.hideContent && css`
+        visibility: hidden;
+    `}
+`
+
+const Button: React.FC<ButtonProps> = ({ primary, secondary, icon, iconLeft, children, as: Element = NailsButton, loading = false, loadingSpinnerColor = "white", ...rest }: ButtonProps) => (
     <Element primary={primary} secondary={secondary} {...rest}>
-        <Inline itemSpace={SpacingType.Medium}>
+        {loading && <Spinner color={loadingSpinnerColor} size={SizeType.Small} absolute />}
+        <ChildContainer itemSpace={SpacingType.Medium} hideContent={loading}>
             {iconLeft && (<ButtonIcon>
                 <Icon icon={iconLeft} />
             </ButtonIcon>)}
@@ -163,7 +193,7 @@ const Button: React.FC<ButtonProps> = ({ primary, secondary, icon, iconLeft, chi
             {icon && (<ButtonIcon>
                 <Icon icon={icon} />
             </ButtonIcon>)}
-        </Inline>
+        </ChildContainer>
     </Element>
 )
 

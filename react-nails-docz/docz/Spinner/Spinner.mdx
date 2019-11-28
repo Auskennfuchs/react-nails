@@ -1,0 +1,46 @@
+---
+name: Spinner
+---
+
+import { Playground } from "docz";
+import { Row, Spinner, Box, Column, Text, Types } from "react-nails";
+const { SizeType } = Types;
+
+# Spinner
+
+Creates a spinner.
+
+## Example
+
+<Row>
+    <Spinner size="small" />
+</Row>
+
+## Properties
+
+### size - SizeType
+
+Defines the size of the Spinner.
+
+<Column>
+    {Object.entries(SizeType).map(([key, size]) => (
+        <Row itemSpace="medium" key={key} align="center">
+            <Text>{key}</Text>
+            <Spinner size={size} />
+        </Row>
+    ))}
+</Column>
+
+### color - color
+
+Sets the color of the Spinner.
+
+### absolute - boolean
+
+If set the Spinner will be displayed as centered absolute element.
+
+## Playground
+
+<Playground>
+    <Spinner color="brand"/>
+</Playground>

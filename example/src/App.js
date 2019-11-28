@@ -9,7 +9,7 @@ addIcon([faCoffee, faChevronUp, faTimes])
 const { SpacingType, ItemJustifyType, BorderType, ItemAlignType, TextSizeType, TextWeightType } = Types
 
 const HeaderBar = styled(Box)`
-    background-color: ${p => p.theme.colors.brandColor};
+    background-color: ${p => p.theme.colors.brand};
 
     ${MediaQuery.small`
         background-color: #f0f;
