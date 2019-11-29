@@ -1,17 +1,25 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconDefinition, library } from '@fortawesome/fontawesome-svg-core'
-export type IconType = string | Array<any> | IconDefinition
+
+export type IconType = string | IconDefinition
 
 export type ResolverFuncResult = {
     icon: IconType,
-    element: any
+    element: any,
+    [name: string]: any,
 } | null
 
-type ResolverFunc = (icon: string | IconDefinition) => ResolverFuncResult
+export type AddIconInput = {
+    id: string | IconDefinition,
+    resolver: IconResolverFunc,
+    [name: string]: any,
+}
+
+export type IconResolverFunc = (id: string | IconDefinition, icon: AddIconInput) => ResolverFuncResult
 
 export const resolverFuncs: { [name: string]: ResolverFuncResult } = {}
 
-const fontAwesomeResolver: ResolverFunc = (icon: IconDefinition) => {
+const fontAwesomeResolver: IconResolverFunc = (icon: IconDefinition): ResolverFuncResult => {
     library.add(icon)
     return {
         icon,
@@ -23,16 +31,12 @@ const isIconDefinition = (x: any): x is IconDefinition => {
     return x && !!(x as IconDefinition).iconName
 }
 
-type AddIconInput = {
-    id: string | IconDefinition,
-    resolver: ResolverFunc
-}
-
-const addIconResolver = ({ id, resolver }: AddIconInput) => {
+const addIconResolver = (icon: AddIconInput) => {
+    const { id, resolver } = icon
     if (isIconDefinition(id)) {
-        resolverFuncs[id.iconName] = (resolver || fontAwesomeResolver)(id)
+        resolverFuncs[id.iconName] = (resolver || fontAwesomeResolver)(id, icon)
     } else {
-        resolverFuncs[id] = (resolver || fontAwesomeResolver)(id)
+        resolverFuncs[id] = (resolver || fontAwesomeResolver)(id, icon)
     }
 }
 

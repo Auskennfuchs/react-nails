@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
-import { Inline, addThemeComponent, Icon } from 'react-nails'
+import { Row, addThemeComponent, Icon } from 'react-nails'
 
 addThemeComponent((theme) => ['dropdown', {
     ...theme.controls,
@@ -40,11 +40,11 @@ const Dropdown = ({ onFocus = () => null, onBlur = () => null, ...rest }) => {
 
     return (
         <DropdownContainer focus={focus} {...rest}>
-            <Inline itemSpace="small">
+            <Row itemSpace="small" align="center">
                 <Icon icon="times" />
                 <SelectedText >TEst</SelectedText>
                 <Icon icon="times" />
-            </Inline>
+            </Row>
         </DropdownContainer>
     )
 }

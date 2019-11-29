@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Row, Types, NailsApp, BodyReset, Inline, Box, Column, Filler, Icon, Text, addIcon, FullScreenContainer, MediaQuery, Grid, ThemeProps, Input } from 'react-nails'
+import { Row, Types, NailsApp, BodyReset, Inline, Box, Column, Filler, Icon, Text, addIcon, FullScreenContainer, MediaQuery, Grid, ThemeProps, Input, svgIconResolver } from 'react-nails'
 import { faCoffee, faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
 import Dropdown from './Dropdown'
+import { ReactComponent as LogoSvg } from './react-nails-logo.svg'
 
 addIcon([faCoffee, faChevronUp, faTimes])
+
+addIcon({ id: "react-nails-logo", resolver: svgIconResolver, svg: LogoSvg })
 
 const { SpacingType, ItemJustifyType, BorderType, ItemAlignType, TextSizeType, TextWeightType } = Types
 
@@ -26,16 +29,18 @@ const ColorBox = styled(Box).attrs({ flex: true })`
 
 export default class App extends Component {
     render() {
+        console.log('LogoSvg', LogoSvg)
         return (
             <NailsApp theme={{ font: { baseFontSize: "18px" }, colors: { yellow: "#ff0" }, spaces: { large: "3em" } }}>
-                <BodyReset />
+                <BodyReset />                
                 <FullScreenContainer>
                     <HeaderBar textColor="white" space={SpacingType.Medium}>
-                        <Row align={ItemAlignType.Center}>
+                        <Row align={ItemAlignType.Center} itemSpace="medium">
                             <Filler>
                                 Headerlogo
                             </Filler>
-                            <Icon icon="coffee" />
+                            <Icon icon="times" size="medium" />
+                            <Icon icon="react-nails-logo" size="massive" />
                         </Row>
                     </HeaderBar>
                     <Filler stretchChild>
@@ -55,7 +60,7 @@ export default class App extends Component {
                                 </div>
                             </Row>
                             <Row space={SpacingType.Medium} align="center" itemSpace="xxlarge">
-                                <Input placeholder="TEst" suffix="€" prefix={<Icon icon="times" color="negative" size="small" />}  textAlign="right"/>
+                                <Input placeholder="TEst" suffix="€" prefix={<Icon icon="times" color="negative" size="small" />} textAlign="right" />
                                 <Dropdown />
                             </Row>
                             <Row space={SpacingType.Medium} itemSpace={SpacingType.Large} justify={ItemJustifyType.Stretch}>

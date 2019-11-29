@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { StyleHelper } from '../Style'
-import { TextColorProps, SizeProps, SizeType } from '../properties/PropertyTypes'
+import { TextColorProps, SizeProps, SizeType, FluidProps } from '../properties/PropertyTypes'
 import { resolveTextColor, applySingle } from '../properties/PropertyResolver'
 import { addThemeComponent } from '../theme'
 import { ResolverFuncResult, resolverFuncs } from './iconLib'
@@ -32,13 +32,25 @@ const resolveIconSize = (size: SizeType = SizeType.Medium) => css`
     font-size: ${p => p.theme.icon[size]};
 `
 
-export const NailsIcon = styled.i<TextColorProps & SizeProps>`
+const resolveFluid = (fluid: boolean) => fluid && css`
+    width: 100%;
+    height: 100%;
+`
+
+export const NailsIcon = styled.i<TextColorProps & SizeProps & FluidProps>`
     font-style: normal;
     ${resolveTextColor}
     ${applySingle(resolveIconSize, 'iconSize')}
+    ${applySingle(resolveFluid, 'fluid')}
+    line-height: 1em;
+    width: 1em;
+    height: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
-export interface IconProps extends SizeProps {
+export interface IconProps extends SizeProps, FluidProps {
     /**
      * name of registered icon
      */
@@ -49,7 +61,7 @@ export interface IconProps extends SizeProps {
     color?: string,
 }
 
-const Icon = ({ icon, as: Element = NailsIcon, color, size, ...rest }: IconProps) => {
+const Icon = ({ icon, as: Element = NailsIcon, color, size, fluid, ...rest }: IconProps) => {
     const convertIcon = (iconName: string): ResolverFuncResult => {
         if (resolverFuncs[iconName]) {
             return resolverFuncs[iconName]
@@ -59,10 +71,10 @@ const Icon = ({ icon, as: Element = NailsIcon, color, size, ...rest }: IconProps
     }
     const foundIcon: ResolverFuncResult = convertIcon(icon)
     if (foundIcon) {
-        const IconElement: any = foundIcon.element
+        const { element: IconElement, ...iconProps } = foundIcon
         return (
-            <Element textColor={color} iconSize={size}>
-                <IconElement icon={foundIcon.icon} {...rest} />
+            <Element textColor={color} iconSize={size} fluid={fluid}>
+                <IconElement {...iconProps} {...rest} />
             </Element>
         )
     }
