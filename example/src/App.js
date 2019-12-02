@@ -32,7 +32,7 @@ export default class App extends Component {
         console.log('LogoSvg', LogoSvg)
         return (
             <NailsApp theme={{ font: { baseFontSize: "18px" }, colors: { yellow: "#ff0" }, spaces: { large: "3em" } }}>
-                <BodyReset />                
+                <BodyReset />
                 <FullScreenContainer>
                     <HeaderBar textColor="white" space={SpacingType.Medium}>
                         <Row align={ItemAlignType.Center} itemSpace="medium">
@@ -62,6 +62,9 @@ export default class App extends Component {
                             <Row space={SpacingType.Medium} align="center" itemSpace="xxlarge">
                                 <Input placeholder="TEst" suffix="€" prefix={<Icon icon="times" color="negative" size="small" />} textAlign="right" />
                                 <Dropdown />
+                            </Row>
+                            <Row>
+                                <Input placeholder="TEst" suffix="€" prefix={<Icon icon="times" color="negative" size="small" />} textAlign="right" as="textarea" fluid/>
                             </Row>
                             <Row space={SpacingType.Medium} itemSpace={SpacingType.Large} justify={ItemJustifyType.Stretch}>
                                 <div>

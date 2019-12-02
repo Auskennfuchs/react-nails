@@ -25,17 +25,8 @@ export const breakPoints: BreakPointType = {
 
 type MediaQueryType = {
     breakPoints: BreakPointType,
-    [BreakPoint.Small]: (args: any) => any,
-    [BreakPoint.Medium]: (args: any) => any,
-    [BreakPoint.Large]: (args: any) => any,
-    [BreakPoint.XLarge]: (args: any) => any,
-    [BreakPoint.Wide]: (args: any) => any,
     IE11: (strings: any, ...args: any) => any,
-    smallIE11: (args: any) => any,
-    mediumIE11: (args: any) => any,
-    largeIE11: (args: any) => any,
-    xlargeIE11: (args: any) => any,
-    wideIE11: (args: any) => any,
+    [name: string]: any,
 }
 
 const MediaQuery: MediaQueryType = {
@@ -45,16 +36,6 @@ const MediaQuery: MediaQueryType = {
             ${css(strings, args)}
         }
     `,
-    [BreakPoint.Small]: () => null,
-    [BreakPoint.Medium]: () => null,
-    [BreakPoint.Large]: () => null,
-    [BreakPoint.XLarge]: () => null,
-    [BreakPoint.Wide]: () => null,
-    smallIE11: () => null,
-    mediumIE11: () => null,
-    largeIE11: () => null,
-    xlargeIE11: () => null,
-    wideIE11: () => null,
 }
 
 Object.keys(breakPoints).forEach(k => {
@@ -64,6 +45,22 @@ Object.keys(breakPoints).forEach(k => {
             ${css(strings, rules)}
         }
     `
+    if (bp.minWidth) {
+        MediaQuery[`${k}Min`] = (strings: any, ...rules: any[]): any => css`
+            @media screen and (min-width: ${bp.minWidth}px) {
+                ${css(strings, rules)}
+            }
+        `
+    }
+
+    if (bp.maxWidth) {
+        MediaQuery[`${k}Max`] = (strings: any, ...rules: any[]): any => css`
+            @media screen and (max-width: ${bp.maxWidth}px) {
+                ${css(strings, rules)}
+            }
+        `
+    }
+    
     MediaQuery[`${k}IE11`] = (strings: any, ...rules: any[]): any => css`
         @media screen and ${bp.minWidth && `(min-width: ${bp.minWidth}px)`} ${bp.minWidth && bp.maxWidth && ` and `} ${bp.maxWidth && `(max-width: ${bp.maxWidth}px)`} and (-ms-high-contrast: active) and (-ms-high-contrast:none) {
             ${css(strings, rules)}

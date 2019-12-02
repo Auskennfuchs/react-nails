@@ -7,6 +7,8 @@ addThemeComponent((theme: { borderRadius: string, palette: { [name: string]: str
     borderColor: theme.colors.elemBorder,
     placeholderTextColor: theme.colors.textLight,
     backgroundColor: theme.palette.white,
+    textColor: theme.colors.text,
+    lineHeight: "1.15em",
     error: {
         borderColor: theme.colors.negative,
     },

@@ -11,6 +11,7 @@ interface InputProps extends TextAlignProps, FluidProps {
     suffix?: React.ReactNode,
     onFocus?: (e?: Event) => any,
     onBlur?: (e?: Event) => any,
+    inputRef?: React.RefObject<any>,
 }
 
 addThemeComponent((theme: { controls: { backgroundColor: string }, spaces: { small: string } }) => ['input', {
@@ -25,6 +26,8 @@ const InputContainer = styled.div<any>`
     border: 1px solid ${p => p.theme.input.borderColor};
     border-radius: ${p => p.theme.input.borderRadius};
     background-color: ${p => p.theme.input.backgroundColor};
+    color: ${p => p.theme.input.textColor};
+    line-height: 1.15em;
     overflow: hidden;
     ${resolveFluid}
 
@@ -60,7 +63,7 @@ const AffixContainer = styled.div`
     padding: ${p => p.theme.input.afix.padding};
 `
 
-const Input: React.FC<InputProps> = ({ prefix, suffix, onFocus = () => null, onBlur = () => null, fluid, ...rest }: InputProps) => {
+const Input: React.FC<InputProps> = ({ prefix, suffix, onFocus = () => null, onBlur = () => null, fluid,inputRef, ...rest }: InputProps) => {
 
     const [focus, setFocus] = useState(false)
 
@@ -80,7 +83,7 @@ const Input: React.FC<InputProps> = ({ prefix, suffix, onFocus = () => null, onB
                 {prefix && (
                     <AffixContainer>{prefix}</AffixContainer>
                 )}
-                <InputElement onFocus={localOnFocus} onBlur={localOnBlur} {...rest} />
+                <InputElement onFocus={localOnFocus} onBlur={localOnBlur} {...rest} ref={inputRef}  />
                 {suffix && (
                     <AffixContainer>{suffix}</AffixContainer>
                 )}

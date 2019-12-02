@@ -10,10 +10,15 @@ export const GlobalReset = styled.div`
     * {
         box-sizing: border-box;
     }
-    input, select, button {
+    input, select, button, textarea {
         font-family: inherit;
         appearance: none;
     }
+
+    textarea {
+        resize: vertical;
+    }
+
     select::-ms-expand {
         display: none;
     }
