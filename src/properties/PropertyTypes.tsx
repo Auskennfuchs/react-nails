@@ -67,6 +67,14 @@ export enum SizeType {
     Massive = "massive",
 }
 
+export enum StatusType {
+    Normal = "normal",
+    Info = "info",
+    Success = "success",
+    Warning = "warning",
+    Error = "error",
+}
+
 export interface NailsBaseType {
     children?: any,
     [name: string]: any,
@@ -170,4 +178,12 @@ export interface FluidProps extends NailsBaseType {
      * if set items tries to fill width of parent
      */
     fluid?: boolean,
+}
+
+export interface StatusProps extends NailsBaseType {
+    /**
+     * controls styling of component
+     * [error, info, warning, success]
+     */
+    status?: StatusType
 }

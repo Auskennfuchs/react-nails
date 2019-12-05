@@ -1,16 +1,16 @@
 import * as React from 'react'
 import { useState } from 'react'
 import styled, { css } from 'styled-components'
-import { TextAlignProps, ItemAlignType, FluidProps } from '../../properties/PropertyTypes'
+import { TextAlignProps, ItemAlignType, FluidProps, StatusProps, StatusType } from '../../properties/PropertyTypes'
 import { addThemeComponent } from '../../theme'
 import { Row } from '../../layout'
-import { resolveTextAlign, resolveFluid } from '../../properties/PropertyResolver'
+import { resolveTextAlign, resolveFluid, applySingle } from '../../properties/PropertyResolver'
 
-interface InputProps extends TextAlignProps, FluidProps {
+export interface InputProps extends TextAlignProps, FluidProps, StatusProps {
     prefix?: React.ReactNode,
     suffix?: React.ReactNode,
-    onFocus?: (e?: Event) => any,
-    onBlur?: (e?: Event) => any,
+    onFocus?: (e?: React.FormEvent<HTMLInputElement>) => any,
+    onBlur?: (e?: React.FormEvent<HTMLInputElement>) => any,
     inputRef?: React.RefObject<any>,
 }
 
@@ -22,6 +22,25 @@ addThemeComponent((theme: { controls: { backgroundColor: string }, spaces: { sma
     },
 }], 10)
 
+const colorBorder = (color: string) => css`
+    border-color: ${color};
+    box-shadow: 0 0 0 1px ${color};
+`
+
+const resolveStatus = (status: StatusType = StatusType.Normal) => {
+    switch (status) {
+        case StatusType.Error:
+            return css`
+                ${p => colorBorder(p.theme.input.error.borderColor)}
+            `
+        case StatusType.Success:
+            return css`
+                ${p => colorBorder(p.theme.input.success.borderColor)}
+            `
+    }
+    return null
+}
+
 const InputContainer = styled.div<any>`
     border: 1px solid ${p => p.theme.input.borderColor};
     border-radius: ${p => p.theme.input.borderRadius};
@@ -30,11 +49,9 @@ const InputContainer = styled.div<any>`
     line-height: 1.15em;
     overflow: hidden;
     ${resolveFluid}
+    ${applySingle(resolveStatus, 'statusType')}
 
-    ${p => p.focus && css`
-        border-color: ${p.theme.input.focus.borderColor};
-        box-shadow: 0 0 0 1px ${p.theme.input.focus.borderColor};
-    `}
+    ${p => p.focus && colorBorder(p.theme.input.focus.borderColor)}
 `
 
 const InputElement = styled.input`
@@ -63,7 +80,7 @@ const AffixContainer = styled.div`
     padding: ${p => p.theme.input.afix.padding};
 `
 
-const Input: React.FC<InputProps> = ({ prefix, suffix, onFocus = () => null, onBlur = () => null, fluid,inputRef, ...rest }: InputProps) => {
+const Input: React.FC<InputProps> = ({ prefix, suffix, onFocus = () => null, onBlur = () => null, fluid, inputRef, status, ...rest }: InputProps) => {
 
     const [focus, setFocus] = useState(false)
 
@@ -78,12 +95,12 @@ const Input: React.FC<InputProps> = ({ prefix, suffix, onFocus = () => null, onB
     }
 
     return (
-        <InputContainer focus={focus} fluid={fluid}>
+        <InputContainer focus={focus} fluid={fluid} statusType={status} onFocus={localOnFocus} onBlur={localOnBlur}>
             <Row align={ItemAlignType.Center}>
                 {prefix && (
                     <AffixContainer>{prefix}</AffixContainer>
                 )}
-                <InputElement onFocus={localOnFocus} onBlur={localOnBlur} {...rest} ref={inputRef}  />
+                <InputElement {...rest} ref={inputRef} />
                 {suffix && (
                     <AffixContainer>{suffix}</AffixContainer>
                 )}

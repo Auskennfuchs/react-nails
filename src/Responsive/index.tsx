@@ -1,2 +1,7 @@
-export * from "./Responsive"
-export * from './ResponsiveContext'
+import Responsive from './Responsive'
+import ResponsiveContext from './ResponsiveContext'
+
+export {
+    Responsive,
+    ResponsiveContext,
+}

@@ -4,7 +4,8 @@ menu: Controls
 ---
 
 import { Playground } from "docz";
-import { Row, Input, Icon, Filler, Inline } from "react-nails";
+import { Row, Input, Icon, Filler, Inline, QuantityInput } from "react-nails";
+const state = { numValue: 12 };
 
 # Input
 
@@ -34,6 +35,10 @@ Sets the alignment of the input text.
 
 If set the input element tries to fill the width of the parent container.
 
+### status - StatusType
+
+Sets the border color according to state.
+
 ## Playground
 
 <Playground>
@@ -44,7 +49,11 @@ If set the input element tries to fill the width of the parent container.
                 suffix={<Icon icon="times" />}
                 textAlign="right"
                 fluid
+                status="success"
             />
         </Filler>
+    </Row>
+    <Row>
+        <QuantityInput changeAmount={0.1} />
     </Row>
 </Playground>

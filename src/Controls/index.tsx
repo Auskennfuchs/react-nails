@@ -12,6 +12,9 @@ addThemeComponent((theme: { borderRadius: string, palette: { [name: string]: str
     error: {
         borderColor: theme.colors.negative,
     },
+    success: {
+        borderColor: theme.colors.positive,
+    },
     focus: {
         borderColor: theme.colors.primary,
     }
