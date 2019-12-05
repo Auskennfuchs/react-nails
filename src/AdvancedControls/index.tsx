@@ -1,5 +1,7 @@
-import QuantityInput from './QuantityInput'
+import InputQuantity from './InputQuantity'
+import InputNumber from './InputNumber'
 
 export {
-    QuantityInput,
+    InputQuantity,
+    InputNumber,
 }

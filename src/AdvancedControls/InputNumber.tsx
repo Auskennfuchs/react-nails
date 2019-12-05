@@ -1,14 +1,11 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import styled from 'styled-components'
 import { isEmpty } from 'lodash'
-import { Input, Button, NailsButton } from '../Controls'
+import { Input } from '../Controls'
 import { InputProps } from '../Controls/Input/Input'
-import { Column } from '../layout'
 import { convertNumberToLocaleNumber, convertLocaleNumberToNumber } from '../locale'
-import { dispatchOnChangeValueEvent } from '../event'
 
-interface QuantityInputProps extends InputProps {
+export interface InputNumberProps extends InputProps {
     /**
      * fraction to increase/decrease current value
      */
@@ -16,21 +13,7 @@ interface QuantityInputProps extends InputProps {
     value?: number,
 }
 
-const ChangeButton = styled(NailsButton).attrs({ tabIndex: -1 })`
-    &:focus {
-        outline: 0 none;
-        box-shadow: none;
-    }
-`
-
-const ChangeButtons = ({ onChange, onFocus }: { onChange: (direction: number) => any, onFocus: any }) => (
-    <Column>
-        <Button type="button" icon="chevron-up" as={ChangeButton} onClick={() => onChange(1)} onFocus={onFocus} onMouseDown={onFocus} />
-        <Button type="button" icon="chevron-down" as={ChangeButton} onClick={() => onChange(-1)} onFocus={onFocus} />
-    </Column>
-)
-
-const QuantityInput = ({ changeAmount = 1, value, onFocus, onBlur, onChange, ...rest }: QuantityInputProps) => {
+const InputNumber = ({ changeAmount = 1, value, onFocus, onBlur, onChange, ...rest }: InputNumberProps) => {
 
     const inputRef: React.RefObject<HTMLInputElement> = React.createRef()
 
@@ -58,21 +41,7 @@ const QuantityInput = ({ changeAmount = 1, value, onFocus, onBlur, onChange, ...
         return Math.round(factor * num) / factor
     }
 
-    const onChangeAmount = (direction: number) => {
-        let curVal = curValue
-        if (curVal === undefined) {
-            curVal = 0
-        }
-        const newValue = roundToNextChangeAmount(curVal + (changeAmount * direction))
-        setCurValue(newValue)
-        setInputValue(convertNumberToLocaleNumber(newValue))
-        dispatchOnChangeValueEvent(inputRef, convertNumberToLocaleNumber(newValue))
-        if (inputRef.current) {
-            inputRef.current.focus()
-        }
-    }
-
-    const sendOnChangeEvent = (e: React.FormEvent<HTMLInputElement>, value?: number | null) => onChange({
+    const sendOnChangeEvent = (e: React.FormEvent<HTMLInputElement>, value?: number | null) => onChange ? onChange({
         ...e,
         target: {
             ...e.target,
@@ -82,7 +51,7 @@ const QuantityInput = ({ changeAmount = 1, value, onFocus, onBlur, onChange, ...
             ...e.currentTarget,
             value,
         }
-    })
+    }) : null
 
     const localOnChange = (e: React.FormEvent<HTMLInputElement>) => {
         const { value } = e.currentTarget
@@ -116,8 +85,8 @@ const QuantityInput = ({ changeAmount = 1, value, onFocus, onBlur, onChange, ...
     }
 
     return (
-        <Input {...rest} value={inputValue} prefix={<ChangeButtons onChange={onChangeAmount} onFocus={onFocus} />} inputRef={inputRef} onChange={localOnChange} onBlur={localOnBlur} />
+        <Input {...rest} value={inputValue} inputRef={inputRef} onChange={localOnChange} onBlur={localOnBlur} />
     )
 }
 
-export default QuantityInput
+export default InputNumber

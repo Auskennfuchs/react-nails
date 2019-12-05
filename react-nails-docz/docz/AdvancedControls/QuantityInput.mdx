@@ -1,20 +1,20 @@
 ---
-name: QuantityInput
+name: InputQuantity
 menu: Advanced Controls
 ---
 
 import { Playground } from "docz";
-import { Row, Inline, QuantityInput,Text } from "react-nails";
-import QuantityExample from "./QuantityExample";
+import { Row, Inline, InputQuantity,Text } from "react-nails";
+import { QuantityExample } from "./Examples";
 
-# QuantityInput
+# InputQuantity
 
 Creates a number input element with up/down arrows
 
 ## Example
 
 <Inline>
-    <QuantityExample changeAmount={0.5} suffix={<Text>€</Text>}/>
+    <QuantityExample changeAmount={0.01} suffix={<Text>€</Text>}/>
 </Inline>
 
 ## Properties
@@ -23,6 +23,6 @@ Creates a number input element with up/down arrows
 
 <Playground>
     <Row>
-        <QuantityInput changeAmount={0.1} suffix={<Text>€</Text>}/>
+        <InputQuantity changeAmount={0.1} suffix={<Text>€</Text>}/>
     </Row>
 </Playground>

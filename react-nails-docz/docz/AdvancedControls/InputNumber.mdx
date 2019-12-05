@@ -1,0 +1,31 @@
+---
+name: InputNumber
+menu: Advanced Controls
+---
+
+import { Playground } from "docz";
+import { Row, Inline, InputNumber,Text } from "react-nails";
+import { InputNumberExample } from "./Examples";
+
+# InputNumber
+
+Creates a number input element 
+
+## Example
+
+<Inline>
+    <InputNumberExample changeAmount={0.01} suffix={<Text>€</Text>}/>
+</Inline>
+
+## Properties
+
+### changeAmount - number
+Input values are restricted to be a fit at least to this amount. All other values get rounded to fit. Default is 1.
+
+## Playground
+
+<Playground>
+    <Row>
+        <InputNumber changeAmount={0.3} suffix={<Text>€</Text>}/>
+    </Row>
+</Playground>
