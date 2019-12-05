@@ -10,12 +10,15 @@ export interface InputNumberProps extends InputProps {
      * fraction to increase/decrease current value
      */
     changeAmount: number,
+    minValue: number,
+    maxValue: number,
     value?: number,
 }
 
-const InputNumber = ({ changeAmount = 1, value, onFocus, onBlur, onChange, ...rest }: InputNumberProps) => {
+const InputNumber = ({ changeAmount = 1, minValue = Number.MIN_VALUE, maxValue = Number.MAX_VALUE,
+    value, onFocus, onBlur, onChange, inputRef, ...rest }: InputNumberProps) => {
 
-    const inputRef: React.RefObject<HTMLInputElement> = React.createRef()
+    const localInputRef: React.RefObject<HTMLInputElement> = inputRef ? inputRef : React.createRef()
 
     const [inputValue, setInputValue] = useState(!isEmpty(value) ? String(value) : "")
     const [curValue, setCurValue] = useState(value)
@@ -24,17 +27,19 @@ const InputNumber = ({ changeAmount = 1, value, onFocus, onBlur, onChange, ...re
         if (value === null || value === undefined) {
             setCurValue(undefined)
         } else {
-            if (inputRef.current && inputRef.current !== document.activeElement) {
+            if (localInputRef.current && localInputRef.current !== document.activeElement) {
                 setInputValue(convertNumberToLocaleNumber(value))
             }
-        }
-        if (typeof value === "string") {
-            setCurValue(Number(value))
-        }
-        if (typeof value === "number") {
-            setCurValue(value)
+            if (typeof value === "string") {
+                setCurValue(minMaxValue(value))
+            }
+            if (typeof value === "number") {
+                setCurValue(minMaxValue(value))
+            }
         }
     }, [value])
+
+    const minMaxValue = (val: number) => Math.min(Math.max(val, minValue), maxValue)
 
     const roundToNextChangeAmount = (num: number): number => {
         const factor = 1.0 / changeAmount
@@ -65,7 +70,7 @@ const InputNumber = ({ changeAmount = 1, value, onFocus, onBlur, onChange, ...re
         if (isNaN(numValue)) {
             return
         }
-        sendOnChangeEvent(e, numValue)
+        sendOnChangeEvent(e, minMaxValue(numValue))
     }
 
     const localOnBlur = (e: React.FormEvent<HTMLInputElement>) => {
@@ -76,8 +81,10 @@ const InputNumber = ({ changeAmount = 1, value, onFocus, onBlur, onChange, ...re
         }
         const targetValue = convertLocaleNumberToNumber(inputValue)
         if (curValue !== undefined && targetValue !== curValue) {
-            console.log('curValue blur', curValue)
             setInputValue(convertNumberToLocaleNumber(curValue))
+        } else {
+            const curInput = convertLocaleNumberToNumber(inputValue)
+            setInputValue(convertNumberToLocaleNumber(curInput))
         }
         if (onBlur) {
             onBlur(e)
@@ -85,7 +92,7 @@ const InputNumber = ({ changeAmount = 1, value, onFocus, onBlur, onChange, ...re
     }
 
     return (
-        <Input {...rest} value={inputValue} inputRef={inputRef} onChange={localOnChange} onBlur={localOnBlur} />
+        <Input {...rest} value={inputValue} inputRef={localInputRef} onChange={localOnChange} onBlur={localOnBlur} />
     )
 }
 
