@@ -15,8 +15,8 @@ export interface InputNumberProps extends InputProps {
     value?: number,
 }
 
-const InputNumber = ({ changeAmount = 1, minValue = Number.MIN_VALUE, maxValue = Number.MAX_VALUE,
-    value, onFocus, onBlur, onChange, inputRef, ...rest }: InputNumberProps) => {
+const InputNumber = ({ changeAmount = 1, minValue = Number.NEGATIVE_INFINITY, maxValue = Number.POSITIVE_INFINITY,
+    value, onBlur, onChange, inputRef, ...rest }: InputNumberProps) => {
 
     const localInputRef: React.RefObject<HTMLInputElement> = inputRef ? inputRef : React.createRef()
 
@@ -82,7 +82,7 @@ const InputNumber = ({ changeAmount = 1, minValue = Number.MIN_VALUE, maxValue =
         const targetValue = convertLocaleNumberToNumber(inputValue)
         if (curValue !== undefined && targetValue !== curValue) {
             setInputValue(convertNumberToLocaleNumber(curValue))
-        } else {
+        } else if (inputValue !== "") {
             const curInput = convertLocaleNumberToNumber(inputValue)
             setInputValue(convertNumberToLocaleNumber(curInput))
         }
@@ -92,7 +92,7 @@ const InputNumber = ({ changeAmount = 1, minValue = Number.MIN_VALUE, maxValue =
     }
 
     return (
-        <Input {...rest} value={inputValue} inputRef={localInputRef} onChange={localOnChange} onBlur={localOnBlur} />
+        <Input {...rest} value={inputValue} inputRef={localInputRef} onChange={localOnChange} onBlur={localOnBlur} inputMode="decimal"/>
     )
 }
 

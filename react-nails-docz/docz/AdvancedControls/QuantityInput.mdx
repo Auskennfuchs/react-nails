@@ -19,10 +19,18 @@ Creates a number input element with up/down arrows as prefix.
 
 ## Properties
 
+### increaseIcon - string
+
+Sets the icon diplayed on increase button.
+
+### decreaseIcon - string
+
+Sets the icon diplayed on decrease button.
+
 ## Playground
 
 <Playground>
     <Row>
-        <InputQuantity changeAmount={0.1} suffix={<Text>€</Text>}/>
+        <InputQuantity changeAmount={0.1} suffix={<Text>€</Text>} increaseIcon="times"/>
     </Row>
 </Playground>
