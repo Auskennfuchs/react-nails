@@ -35,6 +35,11 @@ export interface NailsBoxProps extends SpacingProps, BackgroundColorProps, Borde
      * set Box to position:relative
      */
     relative?: boolean,
+
+    /**
+     * if set the box hides all content outside of it's dimension
+     */
+    hideOverflow?: boolean
 }
 
 export interface BoxProps extends NailsBoxProps {
@@ -76,8 +81,11 @@ const resolveRelative = (relative: boolean) => relative && css`
     position: relative;
 `
 
-export const NailsBox = styled.div<NailsBoxProps & { boxWidth: WidthType }>`
+const resolveHideOverflow = (hideOverflow: boolean) => hideOverflow && css`
     overflow: hidden;
+`
+
+export const NailsBox = styled.div<NailsBoxProps & { boxWidth: WidthType }>`
     ${applySingle(resolveInline, 'inline')}
     ${applySingle(resolveFlex, 'flex')}
     ${resolveSpace}
@@ -89,6 +97,7 @@ export const NailsBox = styled.div<NailsBoxProps & { boxWidth: WidthType }>`
     ${applyMediaQuery(resolveWidth, 'boxWidth')}
     ${applySingle(resolveStretch, 'stretch')}
     ${applySingle(resolveRelative, 'relative')}
+    ${applySingle(resolveHideOverflow, 'hideOverflow')}
 `
 
 const Box: React.FC<BoxProps> = ({ as: Element = NailsBox, width, innerRef, ref, ...rest }: BoxProps) => {

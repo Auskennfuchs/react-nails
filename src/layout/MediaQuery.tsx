@@ -25,45 +25,45 @@ export const breakPoints: BreakPointType = {
 
 type MediaQueryType = {
     breakPoints: BreakPointType,
-    IE11: (strings: any, ...args: any) => any,
+    IE11: (...args: any[]) => any,
     [name: string]: any,
 }
 
 const MediaQuery: MediaQueryType = {
     breakPoints,
-    IE11: (strings, ...args) => css`
+    IE11: (...args: any[]) => css`
         @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-            ${css(strings, args)}
+            ${css.call(undefined, ...args)}
         }
     `,
 }
 
 Object.keys(breakPoints).forEach(k => {
     const bp: { maxWidth?: number, minWidth?: number } = breakPoints[k]
-    MediaQuery[k] = (strings: any, ...rules: any[]): any => css`
+    MediaQuery[k] = (...args: any[]): any => css`
         @media screen and ${bp.minWidth && `(min-width: ${bp.minWidth}px)`} ${bp.minWidth && bp.maxWidth && ` and `} ${bp.maxWidth && `(max-width: ${bp.maxWidth}px)`} {
-            ${css(strings, rules)}
+            ${css.call(undefined, ...args)}
         }
     `
     if (bp.minWidth) {
-        MediaQuery[`${k}Min`] = (strings: any, ...rules: any[]): any => css`
+        MediaQuery[`${k}Min`] = (...args: any[]): any => css`
             @media screen and (min-width: ${bp.minWidth}px) {
-                ${css(strings, rules)}
+                ${css.call(undefined, ...args)}
             }
         `
     }
 
     if (bp.maxWidth) {
-        MediaQuery[`${k}Max`] = (strings: any, ...rules: any[]): any => css`
+        MediaQuery[`${k}Max`] = (...args: any[]): any => css`
             @media screen and (max-width: ${bp.maxWidth}px) {
-                ${css(strings, rules)}
+                ${css.call(undefined, ...args)}
             }
         `
     }
-    
-    MediaQuery[`${k}IE11`] = (strings: any, ...rules: any[]): any => css`
+
+    MediaQuery[`${k}IE11`] = (...args: any[]): any => css`
         @media screen and ${bp.minWidth && `(min-width: ${bp.minWidth}px)`} ${bp.minWidth && bp.maxWidth && ` and `} ${bp.maxWidth && `(max-width: ${bp.maxWidth}px)`} and (-ms-high-contrast: active) and (-ms-high-contrast:none) {
-            ${css(strings, rules)}
+            ${css.call(undefined, ...args)}
         }
     `
 })

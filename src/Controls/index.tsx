@@ -17,5 +17,8 @@ addThemeComponent((theme: { borderRadius: string, palette: { [name: string]: str
     },
     focus: {
         borderColor: theme.colors.primary,
+    },
+    disabled: {
+        textColor: theme.palette.grey4,
     }
 }]))

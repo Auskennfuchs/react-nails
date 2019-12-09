@@ -77,6 +77,7 @@ const colors = {
     brand: palette.blue1,
     brandText: palette.white,
     primary: palette.blue5,
+    primaryText: palette.white,
     text: palette.grey1,
     textMedium: palette.grey2,
     textLight: palette.grey10,
