@@ -7,7 +7,7 @@ import { Playground } from "docz";
 import styled from 'styled-components'
 import { Row,Grid, ThemeProps, Filler, Column,Types, Text, Box, NailsBox } from "react-nails";
 const {ItemAlignType} = Types
-const ColorBox = styled(NailsBox).attrs({flex: true})`
+const ColorBox = styled(NailsBox).attrs(()=>({flex: true}))`
     min-height: 8em;
 `
 const ColorField = styled(ColorBox)`

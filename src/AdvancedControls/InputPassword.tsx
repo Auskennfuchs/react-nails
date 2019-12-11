@@ -19,7 +19,7 @@ interface InputPasswordProps extends InputProps {
 
 addIcon([faEye, faEyeSlash])
 
-const ShowHideButton = styled(NailsButton).attrs({ tabIndex: -1 })`
+const ShowHideButton = styled(NailsButton).attrs(() => ({ tabIndex: -1 }))`
     &:focus {
         outline: 0 none;
         box-shadow: none;

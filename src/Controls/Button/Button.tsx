@@ -128,6 +128,13 @@ export const NailsButton = styled.button<ButtonProps>`
     }
 `
 
+export const NoFocusNailsButton = styled(NailsButton).attrs(() => ({ tabIndex: -1 }))`
+    &:focus, &:active {
+        outline: 0 none;
+        box-shadow: none;
+    }
+`
+
 export const PrimaryNailsButton = styled(NailsButton)`
     font-weight: 600;
     letter-spacing: 0.04em;

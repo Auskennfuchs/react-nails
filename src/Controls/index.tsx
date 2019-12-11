@@ -1,5 +1,6 @@
 export * from './Button'
 export * from './Input'
+export * from './Dropdown'
 import { addThemeComponent } from '../theme'
 
 addThemeComponent((theme: { borderRadius: string, palette: { [name: string]: string }, colors: { [name: string]: string } }) => (['controls', {

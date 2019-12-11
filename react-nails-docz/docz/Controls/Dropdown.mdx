@@ -1,0 +1,48 @@
+---
+name: Dropdown
+menu: Controls
+---
+
+import { Playground } from "docz";
+import { Row, Dropdown } from "react-nails";
+const values = [
+    { value: "AT", label: "Austria" },
+    { value: "DE", label: "Germany" },
+    { value: "CH", label: "Switzerland" },
+    { value: "US", label: "USA" },
+];
+
+# Dropdown
+
+A Row creates a full size flex box element. Contained items are aligned horizontally.
+
+## Example
+
+<Row>
+    <Dropdown
+        id="example_dropdown"
+        placeholder="Please choose..."
+        values={values}
+    />
+</Row>
+
+## Properties
+
+### filtered - boolean
+
+Dropdown value can be filtered via text input.
+
+<Row>
+    <Dropdown
+        id="example_dropdown"
+        placeholder="Please choose..."
+        values={values}
+        filtered
+    />
+</Row>
+
+## Playground
+
+<Playground>
+    <Row>row</Row>
+</Playground>

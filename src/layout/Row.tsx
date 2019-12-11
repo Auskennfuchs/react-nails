@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { resolveSpace, resolveItemSpace, resolveAlignItems, resolveJustifyItems, resolveLineSpace } from '../properties/PropertyResolver'
-import { ItemJustifyType, SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProp, LineSpaceProps } from '../properties/PropertyTypes'
+import { ItemJustifyType, SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProp, LineSpaceProps, ItemAlignType } from '../properties/PropertyTypes'
 
 interface RowProps extends SpacingProps, ItemSpaceProps, AlignItemProps, LineSpaceProps, JustifyItemProp {
     /**
@@ -10,7 +10,9 @@ interface RowProps extends SpacingProps, ItemSpaceProps, AlignItemProps, LineSpa
     wrap?: boolean
 }
 
-const Row = styled(({ wrap, space, justify, itemSpace, align, lineSpace, ...rest }: RowProps) => (<div {...rest} />))`
+const Row = styled(({ wrap, space, justify, itemSpace, align, lineSpace, ...rest }: RowProps) => (<div {...rest} />)).attrs((p: RowProps) => ({
+    align: p.align || ItemAlignType.Center,
+}))`
     display: flex;
     flex-direction: row;
     width: 100%;

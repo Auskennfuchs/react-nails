@@ -19,7 +19,7 @@ const HeaderBar = styled(Box)`
     `}
 `
 
-const ColorBox = styled(Box).attrs({ flex: true })`
+const ColorBox = styled(Box).attrs(() => ({ flex: true }))`
     min-height: 8em;
     align-items: stretch;
     & > * {
@@ -64,7 +64,7 @@ export default class App extends Component {
                                 <Dropdown />
                             </Row>
                             <Row>
-                                <Input placeholder="TEst" suffix="€" prefix={<Icon icon="times" color="negative" size="small" />} textAlign="right" as="textarea" fluid/>
+                                <Input placeholder="TEst" suffix="€" prefix={<Icon icon="times" color="negative" size="small" />} textAlign="right" as="textarea" fluid />
                             </Row>
                             <Row space={SpacingType.Medium} itemSpace={SpacingType.Large} justify={ItemJustifyType.Stretch}>
                                 <div>

@@ -1,12 +1,12 @@
 import * as React from 'react'
-import styled from 'styled-components'
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { Button, NailsButton } from '../Controls'
+import { Button } from '../Controls'
 import { Column } from '../layout'
 import { convertNumberToLocaleNumber } from '../locale'
 import { dispatchOnChangeValueEvent } from '../event'
 import InputNumber, { InputNumberProps } from './InputNumber'
 import { addIcon } from '../Icon'
+import { NoFocusNailsButton } from '../Controls/Button/Button'
 
 interface InputQuantityProps extends InputNumberProps {
     /**
@@ -21,17 +21,10 @@ interface InputQuantityProps extends InputNumberProps {
 
 addIcon([faChevronUp, faChevronDown])
 
-const ChangeButton = styled(NailsButton).attrs({ tabIndex: -1 })`
-    &:focus {
-        outline: 0 none;
-        box-shadow: none;
-    }
-`
-
 const ChangeButtons = ({ onChange, increaseIcon = "chevron-up", decreaseIcon = "chevron-down" }: { onChange: (direction: number) => any, increaseIcon?: string, decreaseIcon?: string }) => (
     <Column>
-        <Button type="button" icon={increaseIcon} as={ChangeButton} onClick={() => onChange(1)} />
-        <Button type="button" icon={decreaseIcon} as={ChangeButton} onClick={() => onChange(-1)} />
+        <Button type="button" icon={increaseIcon} as={NoFocusNailsButton} onClick={() => onChange(1)} />
+        <Button type="button" icon={decreaseIcon} as={NoFocusNailsButton} onClick={() => onChange(-1)} />
     </Column>
 )
 

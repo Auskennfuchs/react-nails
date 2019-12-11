@@ -8,7 +8,7 @@ export interface InlineProps extends AlignItemProps, ItemSpaceProps, LineSpacePr
 const Inline = styled.div<InlineProps>`
     display: inline-flex;
     align-items: center;
-    flex-wrap: wrap;    
+    flex-wrap: wrap;
     ${resolveItemSpace}
     ${resolveAlignItems}
     ${resolveLineSpace}

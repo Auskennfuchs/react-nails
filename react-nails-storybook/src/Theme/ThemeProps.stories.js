@@ -8,7 +8,7 @@ export default {
     title: 'Theme'
 }
 
-const ColorBox = styled(Box).attrs({ flex: true })`
+const ColorBox = styled(Box).attrs(()=>({ flex: true }))`
     min-height: 8em;
 `
 
