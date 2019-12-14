@@ -4,23 +4,35 @@ menu: Controls
 ---
 
 import { Playground } from 'docz'
-import { Button, Inline } from 'react-nails'
+import { Button, Inline, Row,Column } from 'react-nails'
 import CustomButton from './CustomButton'
 
 # Button
 Creates a primary, secondary or normal button.
 
 ## Examples
-<Inline itemSpace="medium">
-    <Button primary icon="times" iconLeft="bookmark-r">
-        <Text>Primary</Text>
-    </Button>
-    <Button primary disabled>Disabled</Button>
-    <Button secondary>Secondary</Button>
-    <Button secondary disabled>Secondary disabled</Button>
-    <Button onClick={() => { alert("You clicked me"); }}>Click me</Button>
-    <Button disabled>Disabled</Button>
-</Inline>
+<Column lineSpace="large">
+    <Inline itemSpace="medium">
+        <Button primary icon="times" iconLeft="bookmark-r">
+            <Text>Primary</Text>
+        </Button>
+        <Button primary disabled>Disabled</Button>
+        <Button secondary>Secondary</Button>
+        <Button secondary disabled>Secondary disabled</Button>
+        <Button onClick={() => { alert("You clicked me"); }}>Click me</Button>
+        <Button disabled>Disabled</Button>
+    </Inline>
+
+    <Row justify="stretch">
+        <Button primary icon="times" iconLeft="bookmark-r">Stretched Primary Button</Button>
+    </Row>
+    <Row justify="stretch">
+        <Button secondary icon="times" iconLeft="bookmark-r">Stretched Secondary Button</Button>
+    </Row>
+    <Row justify="stretch">
+        <Button icon="times" iconLeft="bookmark-r">Stretched Default Button</Button>
+    </Row>
+</Column>
 
 ## Properties
 

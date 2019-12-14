@@ -14,6 +14,7 @@ import {
     ThemeProps,
     HeaderText,
     Column,
+    Text,
     Filler
 } from "react-nails";
 
@@ -27,6 +28,52 @@ A Grid.Column element is used inside a Grid.Row element. It creates a flexbox co
 
 Sets the used columns of grid. The value can be set as single value or as responsive array
 
+
+### align - ItemAlignType
+
+Aligns containing items vertically
+
+### justify - ItemJustifyType
+
+Aligns containing items horizontally
+
+<Grid columns={3}>
+    <Grid.Row justify="center">
+        <Grid.Column align="flex-end">
+            <Text>Small text</Text>
+        </Grid.Column>
+        <Grid.Column justify="flex-end">
+            <Text>default text</Text>
+        </Grid.Column>
+        <Grid.Column>
+            <Text>
+                Long text<br/>
+                Long text<br/>
+                Long text<br/>
+            </Text>
+        </Grid.Column>
+    </Grid.Row>
+</Grid>
+
+```jsx
+<Grid columns={3}>
+    <Grid.Row justify="center">
+        <Grid.Column align="flex-end">
+            <Text>Small text</Text>
+        </Grid.Column>
+        <Grid.Column justify="flex-end">
+            <Text>default text</Text>
+        </Grid.Column>
+        <Grid.Column>
+            <Text>
+                Long text<br/>
+                Long text<br/>
+                Long text<br/>
+            </Text>
+        </Grid.Column>
+    </Grid.Row>
+</Grid>
+```
 
 ## Playground
 

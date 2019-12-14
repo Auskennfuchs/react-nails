@@ -103,6 +103,7 @@ const ButtonIcon = styled.span``
 export const NailsButton = styled.button<ButtonProps>`
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     background-color: transparent;
     border-radius: ${p => p.theme.button.borderRadius};
     border: 0 none;

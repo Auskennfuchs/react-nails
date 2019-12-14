@@ -58,11 +58,13 @@ const RowContainer = styled.div<RowContainerProps>`
     ${resolveLineSpaceIE11}
 `
 
-const Row = ({ equalHeights, children }: { equalHeights?: boolean, children: React.ReactNode }) => (
+const Row = ({ equalHeights, children, ...rest }: RowContainerProps & { children: React.ReactNode }) => (
     <GridContext.Consumer>
         {gridProps => (
-            <RowContainer {...gridProps} equalHeights={equalHeights}>
-                {children}
+            <RowContainer {...gridProps} equalHeights={equalHeights} {...rest}>
+                <GridContext.Provider value={{ ...gridProps, ...rest }}>
+                    {children}
+                </GridContext.Provider>
             </RowContainer>
         )}
     </GridContext.Consumer>

@@ -2,10 +2,10 @@ import * as React from 'react'
 import { ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import GridContext, { GridProps } from './GridContext'
-import { applyMediaQuery, applyMediaQueryIE11 } from '../properties/PropertyResolver'
-import { SpacingType } from '../properties/PropertyTypes'
+import { applyMediaQuery, applyMediaQueryIE11, resolveAlignItems, resolveJustifyItems } from '../properties/PropertyResolver'
+import { SpacingType, ItemJustifyType } from '../properties/PropertyTypes'
 
-type ColumnType = GridProps & {
+type ColumnProps = GridProps & {
     colWidth: number | number[]
 }
 
@@ -33,22 +33,26 @@ const resolveLineSpaceIE11Single = (space: SpacingType) => css`
 `
 const resolveLineSpaceIE11 = applyMediaQueryIE11(resolveLineSpaceIE11Single, 'lineSpace')
 
-const ColumnContainer = styled.div<ColumnType>`
+const ColumnContainer = styled.div<ColumnProps>`
     min-width: 0;
     display: flex;
-    & > * {
-        flex: 1 1 auto;
-    }
+    ${p => p.justify == ItemJustifyType.Stretch && css`
+        & > * {
+            flex: 1 1 auto;
+        }
+    `}
     ${resolveWidth}
     ${resolveWidthIE11}
     ${resolveItemSpaceIE11}
     ${resolveLineSpaceIE11}
+    ${resolveAlignItems}
+    ${resolveJustifyItems}
 `
 
-const Column = ({ width = 1, children }: { width?: number | number[], children: ReactNode }) => (
+const Column = ({ width = 1, children, ...rest }: ColumnProps & { children: ReactNode }) => (
     <GridContext.Consumer>
         {gridProps => (
-            <ColumnContainer {...gridProps} colWidth={width}>
+            <ColumnContainer {...gridProps} colWidth={width} {...rest}>
                 {children}
             </ColumnContainer>
         )}
