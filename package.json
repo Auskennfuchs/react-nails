@@ -1,6 +1,6 @@
 {
   "name": "react-nails",
-  "version": "0.2.47",
+  "version": "0.2.48",
   "description": "UI framework based on React and Styled Components",
   "author": "Auskennfuchs",
   "license": "MIT",
@@ -27,13 +27,14 @@
     "@fortawesome/react-fontawesome": "^0.1.7"
   },
   "peerDependencies": {
-    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "lodash": "^4.0.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "styled-components": "^4.0.0"
   },
   "devDependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@svgr/rollup": "^2.4.1",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",

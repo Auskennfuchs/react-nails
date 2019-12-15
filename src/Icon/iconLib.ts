@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconDefinition, library } from '@fortawesome/fontawesome-svg-core'
 
-export type IconType = string | IconDefinition
+export type IconType = string | IconDefinition | any
 
 export type ResolverFuncResult = {
     icon: IconType,
@@ -48,7 +48,7 @@ const addIconSingle = (icon: AddIconInput | IconDefinition): void => {
     }
 }
 
-export const addIcon = (icon: AddIconInput | IconDefinition | (AddIconInput | IconDefinition)[]) => {
+export const addIcon = (icon: AddIconInput | IconDefinition | (AddIconInput | IconDefinition | any)[]) => {
     if (Array.isArray(icon)) {
         icon.forEach(i => {
             addIconSingle(i)

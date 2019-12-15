@@ -28,11 +28,13 @@ const AffixWrapper = (themeProp: string) => (props: any) => {
         const [localFocus, setFocus] = useState(false)
 
         const localOnFocus = (e: any) => {
+            console.log('affix focus')
             setFocus(true)
             onFocus(e)
         }
 
         const localOnBlur = (e: any) => {
+            console.log('affix blur')
             setFocus(false)
             onBlur(e)
         }
