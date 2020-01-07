@@ -85,12 +85,12 @@ const Input: React.FC<InputProps> = ({ prefix, suffix, onFocus = () => null, onB
     const [focus, setFocus] = useState(false)
 
     const localOnFocus = (e: any) => {
-        setFocus(true)
+        setTimeout(() => setFocus(true))
         onFocus(e)
     }
 
     const localOnBlur = (e: any) => {
-        setFocus(false)
+        setTimeout(() => setFocus(false))
         onBlur(e)
     }
 
