@@ -193,10 +193,10 @@ const ChildContainer = styled(Inline)`
     `}
 `
 
-const Button: React.FC<ButtonProps> = ({ primary, secondary, icon, iconLeft, children, as, loading = false, loadingSpinnerColor = "white", ...rest }: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({ primary, secondary, icon, iconLeft, children, as, loading = false, loadingSpinnerColor = "white", type = "button", ...rest }: ButtonProps) => {
     const Element = as || (primary ? PrimaryNailsButton : secondary ? SecondaryNailsButton : NailsButton)
     return (
-        <Element {...rest}>
+        <Element type={type} {...rest}>
             {loading && <Spinner color={loadingSpinnerColor} size={SizeType.Small} absolute />}
             <ChildContainer itemSpace={SpacingType.Medium} hideContent={loading}>
                 {iconLeft && (<ButtonIcon>
