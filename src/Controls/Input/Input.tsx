@@ -90,13 +90,13 @@ const ClearButton = styled.button.attrs(() => ({ type: 'button', tabIndex: -1 })
     background-color: transparent;
     line-height: 1;
     padding: 0;
-    width: 1em;
-    height: 1em;
     font-size: 0.8em;
     color: ${p => p.theme.colors.textLight};
     &:focus {
         outline: 0 none;
     }
+    align-self: stretch;
+    padding: 0 0.3em;
 `
 
 
@@ -116,7 +116,8 @@ const Input: React.FC<InputProps> = ({ name, prefix, suffix, onFocus = () => nul
     }
 
     const onClickClear = (e: any) => {
-        e.stopPropagation();
+        e.stopPropagation()
+        e.preventDefault()
         dispatchOnChangeValueEvent(localInputRef, "")
         onClear(
             {
@@ -134,7 +135,7 @@ const Input: React.FC<InputProps> = ({ name, prefix, suffix, onFocus = () => nul
                 {prefix && (
                     <AffixContainer>{prefix}</AffixContainer>
                 )}
-                <InputElement {...rest} onChange={onChange} ref={localInputRef} />
+                <InputElement {...rest} name={name} onChange={onChange} ref={localInputRef} />
                 {clearable && (
                     <ClearButton onClick={onClickClear}><Icon icon="times" /></ClearButton>
                 )}
