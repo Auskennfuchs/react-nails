@@ -24,7 +24,14 @@ Creates an input element
 Sets a prefix or suffix inside the element before or after the input.
 
 <Inline>
-    <Input prefix="P" suffix="S" value="Inputvalue" onChange={() => null} />
+    <Input
+        prefix="P"
+        suffix="S"
+        value="Inputvalue"
+        clearable
+        onChange={e => console.log("value", e.target.value)}
+        onClear={() => console.log("clear")}
+    />
 </Inline>
 
 ### textAlign - string [left, right, center]
@@ -50,6 +57,7 @@ Sets the border color according to state.
                 textAlign="right"
                 fluid
                 status="success"
+                clearable
             />
         </Filler>
     </Row>

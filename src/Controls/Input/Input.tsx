@@ -1,17 +1,22 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, createRef } from 'react'
 import styled, { css } from 'styled-components'
 import { TextAlignProps, ItemAlignType, FluidProps, StatusProps, StatusType } from '../../properties/PropertyTypes'
 import { addThemeComponent } from '../../theme'
 import { Row } from '../../layout'
 import { resolveTextAlign, resolveFluid, applySingle } from '../../properties/PropertyResolver'
+import { Icon } from '../../Icon'
+import { dispatchOnChangeValueEvent } from '../../event';
 
 export interface InputProps extends TextAlignProps, FluidProps, StatusProps {
+    name: string,
     prefix?: React.ReactNode,
     suffix?: React.ReactNode,
     onFocus?: (e?: React.FormEvent<HTMLInputElement>) => any,
     onBlur?: (e?: React.FormEvent<HTMLInputElement>) => any,
+    onClear?: (e?: any) => any,
     inputRef?: React.RefObject<any>,
+    clearable?: boolean,
 }
 
 addThemeComponent((theme: { controls: { backgroundColor: string }, spaces: { small: string } }) => ['input', {
@@ -80,9 +85,25 @@ const AffixContainer = styled.div`
     padding: ${p => p.theme.input.afix.padding};
 `
 
-const Input: React.FC<InputProps> = ({ prefix, suffix, onFocus = () => null, onBlur = () => null, fluid, inputRef, status, ...rest }: InputProps) => {
+const ClearButton = styled.button.attrs(() => ({ type: 'button', tabIndex: -1 }))`
+    border: 0 none;
+    background-color: transparent;
+    line-height: 1;
+    padding: 0;
+    width: 1em;
+    height: 1em;
+    font-size: 0.8em;
+    color: ${p => p.theme.colors.textLight};
+    &:focus {
+        outline: 0 none;
+    }
+`
+
+
+const Input: React.FC<InputProps> = ({ name, prefix, suffix, onFocus = () => null, onBlur = () => null, onChange = () => null, onClear = () => null, fluid, inputRef, status, clearable, ...rest }: InputProps) => {
 
     const [focus, setFocus] = useState(false)
+    const localInputRef: React.RefObject<HTMLInputElement> = inputRef || createRef()
 
     const localOnFocus = (e: any) => {
         setTimeout(() => setFocus(true))
@@ -94,13 +115,29 @@ const Input: React.FC<InputProps> = ({ prefix, suffix, onFocus = () => null, onB
         onBlur(e)
     }
 
+    const onClickClear = (e: any) => {
+        e.stopPropagation();
+        dispatchOnChangeValueEvent(localInputRef, "")
+        onClear(
+            {
+                target: {
+                    name,
+                    value: null
+                }
+            }
+        )
+    }
+
     return (
         <InputContainer focus={focus} fluid={fluid} statusType={status} onFocus={localOnFocus} onBlur={localOnBlur}>
             <Row align={ItemAlignType.Center}>
                 {prefix && (
                     <AffixContainer>{prefix}</AffixContainer>
                 )}
-                <InputElement {...rest} ref={inputRef} />
+                <InputElement {...rest} onChange={onChange} ref={localInputRef} />
+                {clearable && (
+                    <ClearButton onClick={onClickClear}><Icon icon="times" /></ClearButton>
+                )}
                 {suffix && (
                     <AffixContainer>{suffix}</AffixContainer>
                 )}

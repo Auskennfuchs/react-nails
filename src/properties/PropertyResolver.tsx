@@ -159,3 +159,7 @@ export const resolveFluidSingle = (fluid?: boolean) => fluid && css`
     width: 100%;
 `
 export const resolveFluid = applySingle(resolveFluidSingle, 'fluid')
+
+export const resolveRelative = (relative: boolean) => relative && css`
+    position: relative;
+`

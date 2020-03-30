@@ -1,16 +1,16 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import styled, { css } from "styled-components"
-import { resolveSpace, resolveBackgroundColor, applySingle, resolveBorder, resolveTextColor, resolveTextAlign, applyMediaQuery } from "../properties/PropertyResolver"
+import { resolveSpace, resolveBackgroundColor, applySingle, resolveBorder, resolveTextColor, resolveTextAlign, applyMediaQuery, resolveRelative } from "../properties/PropertyResolver"
 import { addThemeComponent } from "../theme"
-import { SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps } from "../properties/PropertyTypes"
+import { SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps, RelativeProps } from "../properties/PropertyTypes"
 
 addThemeComponent((theme: { borderRadius: string }) => (['box', {
     borderRadius: theme.borderRadius,
 }]))
 
 
-export interface NailsBoxProps extends SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps {
+export interface NailsBoxProps extends SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps, RelativeProps {
     /**
      * rounded border
      */
@@ -30,11 +30,6 @@ export interface NailsBoxProps extends SpacingProps, BackgroundColorProps, Borde
      * expand the element to 100% of height and width
      */
     stretch?: boolean,
-
-    /**
-     * set Box to position:relative
-     */
-    relative?: boolean,
 
     /**
      * if set the box hides all content outside of it's dimension
@@ -75,10 +70,6 @@ const resolveStretch = (stretch: boolean = false) => stretch && css`
 
 const resolveWidth = (boxWidth: string) => `
     width: ${boxWidth};
-`
-
-const resolveRelative = (relative: boolean) => relative && css`
-    position: relative;
 `
 
 const resolveHideOverflow = (hideOverflow: boolean) => hideOverflow && css`

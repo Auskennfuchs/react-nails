@@ -187,3 +187,10 @@ export interface StatusProps extends NailsBaseType {
      */
     status?: StatusType
 }
+
+export interface RelativeProps extends NailsBaseType {
+    /**
+     * set Box to position:relative
+     */
+    relative?: boolean,
+}

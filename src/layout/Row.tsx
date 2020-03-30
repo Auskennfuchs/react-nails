@@ -1,9 +1,9 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
-import { resolveSpace, resolveItemSpace, resolveAlignItems, resolveJustifyItems, resolveLineSpace } from '../properties/PropertyResolver'
-import { ItemJustifyType, SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProp, LineSpaceProps, ItemAlignType } from '../properties/PropertyTypes'
+import { resolveSpace, resolveItemSpace, resolveAlignItems, resolveJustifyItems, resolveLineSpace, resolveRelative, applySingle } from '../properties/PropertyResolver'
+import { ItemJustifyType, SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProp, LineSpaceProps, ItemAlignType, RelativeProps } from '../properties/PropertyTypes'
 
-interface RowProps extends SpacingProps, ItemSpaceProps, AlignItemProps, LineSpaceProps, JustifyItemProp {
+interface RowProps extends SpacingProps, ItemSpaceProps, AlignItemProps, LineSpaceProps, JustifyItemProp, RelativeProps {
     /**
      * items will wrap to next line if they exceed width
      */
@@ -21,6 +21,7 @@ const Row = styled(({ wrap, space, justify, itemSpace, align, lineSpace, ...rest
     ${resolveAlignItems}
     ${resolveJustifyItems}
     ${resolveLineSpace}
+    ${applySingle(resolveRelative, 'relative')}
 
     ${p => p.justify === ItemJustifyType.Stretch && css`
         & > * {
