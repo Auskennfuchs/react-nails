@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useState, createRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { addThemeComponent } from '../../theme'
-import { FluidProps, TextAlignProps, SpacingType, NailsBaseType } from '../../properties/PropertyTypes'
+import { FluidProps, TextAlignProps, SpacingType } from '../../properties/PropertyTypes'
 import { Text } from '../../Text'
 import AffixWrapper from '../AffixWrapper'
 import { controlContent } from '../controlsCommon'
@@ -15,11 +15,16 @@ type OptionEntryType = {
     label: any
 }
 
-export interface DropdownProps extends TextAlignProps, FluidProps, NailsBaseType {
+export interface DropdownProps extends TextAlignProps, FluidProps {
     placeholder?: string,
     filtered?: boolean,
     values: OptionEntryType[],
     value: any,
+    onFocus?: (e: any) => any,
+    onBlur?: (e: any) => any,
+    id?: string,
+    name?: string,
+    tabIndex?: number,
 }
 
 addThemeComponent((theme: { input: any }) => ['dropdown', {

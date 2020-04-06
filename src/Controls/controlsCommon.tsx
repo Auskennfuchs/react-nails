@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components'
-import { StatusType, StatusProps, FluidProps, NailsBaseType } from '../properties/PropertyTypes'
+import { StatusType, StatusProps, FluidProps } from '../properties/PropertyTypes'
 import { resolveFluid, applySingle, resolveTextAlign } from '../properties/PropertyResolver'
+
+export interface ContainerProps extends FluidProps, StatusProps {
+    focus?: boolean,
+    statusType?: StatusType,
+}
 
 export const colorBorder = (color: string) => css`
     border-color: ${color};
@@ -21,7 +26,7 @@ export const resolveStatus = (themeProp: string = 'input') => (status: StatusTyp
     return null
 }
 
-export const ControlContainer = (themeProp: string) => styled.div<FluidProps & StatusProps & NailsBaseType & { focus?: boolean }>`
+export const ControlContainer = (themeProp: string) => styled.div<ContainerProps>`
     border: 1px solid ${p => p.theme[themeProp].borderColor};
     border-radius: ${p => p.theme[themeProp].borderRadius};
     background-color: ${p => p.theme[themeProp].backgroundColor};

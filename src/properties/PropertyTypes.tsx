@@ -75,9 +75,8 @@ export enum StatusType {
     Error = "error",
 }
 
-export interface NailsBaseType {
+export interface ChildProps {
     children?: any,
-    [name: string]: any,
 }
 
 export interface BorderProps {

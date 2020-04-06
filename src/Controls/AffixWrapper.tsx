@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
-import { FluidProps, StatusProps, ItemAlignType, NailsBaseType } from '../properties/PropertyTypes'
+import { FluidProps, StatusProps, ItemAlignType, ChildProps } from '../properties/PropertyTypes'
 import { Row } from '../layout'
 import { ControlContainer } from './controlsCommon'
 
-export interface AffixProps extends FluidProps, StatusProps, NailsBaseType {
+export interface AffixProps extends FluidProps, StatusProps, ChildProps {
     prefix?: React.ReactNode,
     suffix?: React.ReactNode,
     focus?: boolean,
@@ -28,13 +28,11 @@ const AffixWrapper = (themeProp: string) => (props: any) => {
         const [localFocus, setFocus] = useState(false)
 
         const localOnFocus = (e: any) => {
-            console.log('affix focus')
             setFocus(true)
             onFocus(e)
         }
 
         const localOnBlur = (e: any) => {
-            console.log('affix blur')
             setFocus(false)
             onBlur(e)
         }

@@ -1,12 +1,15 @@
 import * as React from 'react'
-import { ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import GridContext, { GridProps } from './GridContext'
 import { applyMediaQuery, applyMediaQueryIE11, resolveAlignItems, resolveJustifyItems } from '../properties/PropertyResolver'
-import { SpacingType, ItemJustifyType, NailsBaseType } from '../properties/PropertyTypes'
+import { SpacingType, ItemJustifyType, ChildProps } from '../properties/PropertyTypes'
 
-export interface ColumnProps extends GridProps, NailsBaseType {
-    colWidth: number | number[]
+export interface ColumnProps extends GridProps, ChildProps {
+    colWidth: number | number[],
+    /**
+     * colspan of current column 
+     */
+    width?: number,
 }
 
 const calcWidth = (colWidth: number, columns: number) => `${colWidth / columns * 100}%`
@@ -49,7 +52,7 @@ const ColumnContainer = styled.div<ColumnProps>`
     ${resolveJustifyItems}
 `
 
-const Column = ({ width = 1, children, ...rest }: ColumnProps & { children: ReactNode }) => (
+const Column = ({ width = 1, children, ...rest }: ColumnProps) => (
     <GridContext.Consumer>
         {gridProps => (
             <ColumnContainer {...gridProps} colWidth={width} {...rest}>

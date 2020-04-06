@@ -2,11 +2,11 @@ import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { addThemeComponent } from '../../theme'
 import { Inline } from '../../layout'
-import { SpacingType, SizeType, TextColorProps, NailsBaseType } from '../../properties/PropertyTypes'
+import { SpacingType, SizeType, TextColorProps, ChildProps } from '../../properties/PropertyTypes'
 import { Icon } from '../../Icon'
 import { Spinner } from '../../Spinner';
 
-export interface ButtonProps extends TextColorProps, NailsBaseType {
+export interface ButtonProps extends TextColorProps, ChildProps {
     /**
      * styles button as primary button
      */
@@ -39,6 +39,13 @@ export interface ButtonProps extends TextColorProps, NailsBaseType {
      * color of loading spinner
      */
     loadingSpinnerColor?: string,
+
+    /**
+     * type of button
+     */
+    type?: string,
+
+    onClick?: (e: any) => any,
 }
 
 addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any }) => ["button", {

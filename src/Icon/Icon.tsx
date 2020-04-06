@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { StyleHelper } from '../Style'
-import { TextColorProps, SizeProps, SizeType, FluidProps, NailsBaseType } from '../properties/PropertyTypes'
+import { TextColorProps, SizeProps, SizeType, FluidProps } from '../properties/PropertyTypes'
 import { resolveTextColor, applySingle } from '../properties/PropertyResolver'
 import { addThemeComponent } from '../theme'
 import { ResolverFuncResult, resolverFuncs } from './iconLib'
@@ -50,7 +50,7 @@ export const NailsIcon = styled.i<TextColorProps & SizeProps & FluidProps>`
     justify-content: center;
 `
 
-export interface IconProps extends SizeProps, FluidProps, NailsBaseType {
+export interface IconProps extends SizeProps, FluidProps {
     /**
      * name of registered icon
      */
@@ -59,9 +59,10 @@ export interface IconProps extends SizeProps, FluidProps, NailsBaseType {
      * color of icon
      */
     color?: string,
+    as?: any,
 }
 
-const Icon = ({ icon, as: Element = NailsIcon, color, size, fluid, ...rest }: IconProps) => {
+const Icon = ({ icon, as:Element = NailsIcon, color, size, fluid, ...rest }: IconProps) => {
     const convertIcon = (iconName: string): ResolverFuncResult => {
         if (resolverFuncs[iconName]) {
             return resolverFuncs[iconName]

@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react'
 import styled, { css } from "styled-components"
 import { resolveSpace, resolveBackgroundColor, applySingle, resolveBorder, resolveTextColor, resolveTextAlign, applyMediaQuery, resolveRelative } from "../properties/PropertyResolver"
 import { addThemeComponent } from "../theme"
-import { SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps, RelativeProps, NailsBaseType } from "../properties/PropertyTypes"
+import { SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps, RelativeProps } from "../properties/PropertyTypes"
 
 addThemeComponent((theme: { borderRadius: string }) => (['box', {
     borderRadius: theme.borderRadius,
 }]))
 
 
-export interface NailsBoxProps extends SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps, RelativeProps, NailsBaseType {
+export interface NailsBoxProps extends SpacingProps, BackgroundColorProps, BorderProps, TextColorProps, TextAlignProps, RelativeProps {
     /**
      * rounded border
      */
@@ -34,7 +34,10 @@ export interface NailsBoxProps extends SpacingProps, BackgroundColorProps, Borde
     /**
      * if set the box hides all content outside of it's dimension
      */
-    hideOverflow?: boolean
+    hideOverflow?: boolean,
+
+    innerRef?: React.RefObject<any>,
+    ref?: React.RefObject<any>,
 }
 
 export interface BoxProps extends NailsBoxProps {

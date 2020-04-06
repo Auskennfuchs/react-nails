@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
-import { SizeProps, SizeType, NailsBaseType } from "../properties/PropertyTypes"
+import { SizeProps, SizeType } from "../properties/PropertyTypes"
 import { addThemeComponent } from '../theme';
 import { StyleHelper } from '../Style';
 
@@ -26,7 +26,7 @@ interface SpinnerProps extends SizeProps {
     absolute?: boolean,
 }
 
-const SpinnerWrapper = styled.div<SizeProps & { absolute?: boolean } & NailsBaseType>`
+const SpinnerWrapper = styled.div<SizeProps & { absolute?: boolean }>`
     width: ${p => p.theme.spinner.sizes[p.size || SizeType.Medium]};
     height: ${p => p.theme.spinner.sizes[p.size || SizeType.Medium]};
     ${p => p.absolute && css`

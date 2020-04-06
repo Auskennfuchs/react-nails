@@ -1,14 +1,14 @@
 import *as React from 'react'
 import styled, { css } from 'styled-components'
 import { addThemeComponent } from '../theme'
-import { NailsBaseType, SpacingProps, SpacingType } from '../properties/PropertyTypes'
+import { SpacingProps, SpacingType } from '../properties/PropertyTypes'
 import { applyMediaQuery } from '../properties/PropertyResolver'
 
 addThemeComponent((theme: { palette: { grey10: string } }) => ['divider', {
     color: theme.palette.grey10,
 }])
 
-interface DividerProps extends SpacingProps, NailsBaseType {
+interface DividerProps extends SpacingProps {
     /**
      * divider has horizontal line
      */

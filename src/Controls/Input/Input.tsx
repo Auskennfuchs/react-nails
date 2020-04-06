@@ -1,22 +1,26 @@
 import * as React from 'react'
 import { useState, createRef } from 'react'
 import styled, { css } from 'styled-components'
-import { TextAlignProps, ItemAlignType, FluidProps, StatusProps, StatusType, NailsBaseType } from '../../properties/PropertyTypes'
+import { TextAlignProps, ItemAlignType, FluidProps, StatusProps, StatusType } from '../../properties/PropertyTypes'
 import { addThemeComponent } from '../../theme'
 import { Row } from '../../layout'
 import { resolveTextAlign, resolveFluid, applySingle } from '../../properties/PropertyResolver'
 import { Icon } from '../../Icon'
 import { dispatchOnChangeValueEvent } from '../../event';
 
-export interface InputProps extends TextAlignProps, FluidProps, StatusProps, NailsBaseType {
+export interface InputProps extends TextAlignProps, FluidProps, StatusProps {
     name: string,
     prefix?: React.ReactNode,
     suffix?: React.ReactNode,
     onFocus?: (e?: React.FormEvent<HTMLInputElement>) => any,
     onBlur?: (e?: React.FormEvent<HTMLInputElement>) => any,
+    onChange?: (e?: React.ChangeEvent<HTMLInputElement>) => any,
     onClear?: (e?: any) => any,
     inputRef?: React.RefObject<any>,
     clearable?: boolean,
+    value?: any,
+    inputMode?: "text" | "none" | "tel" | "url" | "email" | "numeric" | "decimal" | "search",
+    type?: string,
 }
 
 addThemeComponent((theme: { controls: { backgroundColor: string }, spaces: { small: string } }) => ['input', {
@@ -118,7 +122,7 @@ const Input: React.FC<InputProps> = ({ name, prefix, suffix, onFocus = () => nul
     const onClickClear = (e: any) => {
         e.stopPropagation()
         e.preventDefault()
-        dispatchOnChangeValueEvent(localInputRef, "")
+        dispatchOnChangeValueEvent(localInputRef, null)
         onClear(
             {
                 target: {

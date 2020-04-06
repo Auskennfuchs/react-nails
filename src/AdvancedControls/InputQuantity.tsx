@@ -4,7 +4,7 @@ import { Button } from '../Controls'
 import { Column } from '../layout'
 import { convertNumberToLocaleNumber } from '../locale'
 import { dispatchOnChangeValueEvent } from '../event'
-import InputNumber, { InputNumberProps } from './InputNumber'
+import InputNumber, { InputNumberProps, convertNumValue } from './InputNumber'
 import { addIcon } from '../Icon'
 import { NoFocusNailsButton } from '../Controls/Button/Button'
 
@@ -38,10 +38,7 @@ const InputQuantity = ({ changeAmount = 1, value, increaseIcon, decreaseIcon, ..
     }
 
     const onChangeAmount = (direction: number) => {
-        let curVal = value
-        if (curVal === undefined) {
-            curVal = 0
-        }
+        let curVal: number = convertNumValue(value || 0)
         const newValue = roundToNextChangeAmount(curVal + (changeAmount * direction))
         dispatchOnChangeValueEvent(inputRef, convertNumberToLocaleNumber(newValue))
     }

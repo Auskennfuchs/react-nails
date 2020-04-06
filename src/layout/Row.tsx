@@ -1,16 +1,17 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { resolveSpace, resolveItemSpace, resolveAlignItems, resolveJustifyItems, resolveLineSpace, resolveRelative, applySingle } from '../properties/PropertyResolver'
-import { ItemJustifyType, SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProps, LineSpaceProps, ItemAlignType, RelativeProps, NailsBaseType } from '../properties/PropertyTypes'
+import { ItemJustifyType, SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProps, LineSpaceProps, ItemAlignType, RelativeProps, ChildProps } from '../properties/PropertyTypes'
 
-interface RowProps extends SpacingProps, ItemSpaceProps, AlignItemProps, LineSpaceProps, JustifyItemProps, RelativeProps, NailsBaseType {
+interface RowProps extends SpacingProps, ItemSpaceProps, AlignItemProps, LineSpaceProps, JustifyItemProps, RelativeProps, ChildProps {
     /**
      * items will wrap to next line if they exceed width
      */
-    wrap?: boolean
+    wrap?: boolean,
+    relative?: boolean,
 }
 
-const Row = styled(({ wrap, space, justify, itemSpace, align, lineSpace, ...rest }: RowProps) => (<div {...rest} />)).attrs((p: RowProps) => ({
+const Row = styled(({ wrap, space, justify, itemSpace, align, lineSpace, relative, ...rest }: RowProps) => (<div {...rest} />)).attrs((p: RowProps) => ({
     align: p.align || ItemAlignType.Center,
 }))`
     display: flex;
