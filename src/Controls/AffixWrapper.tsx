@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
-import { FluidProps, StatusProps, ItemAlignType } from '../properties/PropertyTypes'
+import { FluidProps, StatusProps, ItemAlignType, NailsBaseType } from '../properties/PropertyTypes'
 import { Row } from '../layout'
 import { ControlContainer } from './controlsCommon'
 
-export interface AffixProps extends FluidProps, StatusProps {
+export interface AffixProps extends FluidProps, StatusProps, NailsBaseType {
     prefix?: React.ReactNode,
     suffix?: React.ReactNode,
     focus?: boolean,

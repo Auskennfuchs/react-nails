@@ -32,7 +32,7 @@ export const InputNumberExample = ({ value, ...rest }) => {
     return (
         <Column>
             <Inline itemSpace="medium">
-                <InputNumber value={pvalue} onChange={onChange} {...rest} />
+                <InputNumber value={pvalue} onChange={onChange} {...rest} clearable/>
                 <Text>value: {pvalue}</Text>
             </Inline>
             <Inline itemSpace="medium">

@@ -3,9 +3,9 @@ import { ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import GridContext, { GridProps } from './GridContext'
 import { applyMediaQuery, applyMediaQueryIE11, resolveAlignItems, resolveJustifyItems } from '../properties/PropertyResolver'
-import { SpacingType, ItemJustifyType } from '../properties/PropertyTypes'
+import { SpacingType, ItemJustifyType, NailsBaseType } from '../properties/PropertyTypes'
 
-type ColumnProps = GridProps & {
+export interface ColumnProps extends GridProps, NailsBaseType {
     colWidth: number | number[]
 }
 

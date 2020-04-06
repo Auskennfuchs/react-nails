@@ -2,11 +2,11 @@ import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { addThemeComponent } from '../../theme'
 import { Inline } from '../../layout'
-import { SpacingType, SizeType, TextColorProps } from '../../properties/PropertyTypes'
+import { SpacingType, SizeType, TextColorProps, NailsBaseType } from '../../properties/PropertyTypes'
 import { Icon } from '../../Icon'
 import { Spinner } from '../../Spinner';
 
-export interface ButtonProps extends TextColorProps {
+export interface ButtonProps extends TextColorProps, NailsBaseType {
     /**
      * styles button as primary button
      */

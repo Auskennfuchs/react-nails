@@ -1,9 +1,9 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { resolveSpace, resolveItemSpace, resolveAlignItems, resolveJustifyItems, resolveLineSpace, resolveRelative, applySingle } from '../properties/PropertyResolver'
-import { ItemJustifyType, SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProp, LineSpaceProps, ItemAlignType, RelativeProps } from '../properties/PropertyTypes'
+import { ItemJustifyType, SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProps, LineSpaceProps, ItemAlignType, RelativeProps, NailsBaseType } from '../properties/PropertyTypes'
 
-interface RowProps extends SpacingProps, ItemSpaceProps, AlignItemProps, LineSpaceProps, JustifyItemProp, RelativeProps {
+interface RowProps extends SpacingProps, ItemSpaceProps, AlignItemProps, LineSpaceProps, JustifyItemProps, RelativeProps, NailsBaseType {
     /**
      * items will wrap to next line if they exceed width
      */

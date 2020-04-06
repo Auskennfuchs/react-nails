@@ -80,7 +80,7 @@ export interface NailsBaseType {
     [name: string]: any,
 }
 
-export interface BorderProps extends NailsBaseType {
+export interface BorderProps {
     /**
      * defines border size
      */
@@ -88,7 +88,7 @@ export interface BorderProps extends NailsBaseType {
     borderColor?: string,
 }
 
-export interface SpacingProps extends NailsBaseType {
+export interface SpacingProps {
     /**
      * space set padding for inner elements to own border
      * [none, small, medium, large]
@@ -96,21 +96,21 @@ export interface SpacingProps extends NailsBaseType {
     space?: SpacingType | SpacingType[]
 }
 
-export interface BackgroundColorProps extends NailsBaseType {
+export interface BackgroundColorProps {
     /**
      * defines background color for element
      */
     backgroundColor?: string | string[],
 }
 
-export interface AlignItemProps extends NailsBaseType {
+export interface AlignItemProps {
     /**
      * vertically align containing items      
      */
     align?: ItemAlignType,
 }
 
-export interface JustifyItemProp extends NailsBaseType {
+export interface JustifyItemProps {
     /**
      * horizontally align containing items
      */
@@ -118,14 +118,14 @@ export interface JustifyItemProp extends NailsBaseType {
 
 }
 
-export interface ItemSpaceProps extends NailsBaseType {
+export interface ItemSpaceProps {
     /**
      * gap between containing items
      */
     itemSpace?: SpacingType,
 }
 
-export interface LineSpaceProps extends NailsBaseType {
+export interface LineSpaceProps {
     /**
      * vertical space between items
      */
@@ -133,7 +133,7 @@ export interface LineSpaceProps extends NailsBaseType {
 
 }
 
-export interface TextColorProps extends NailsBaseType {
+export interface TextColorProps {
     /**
      * text color
      * one of defined theme.colors
@@ -141,7 +141,7 @@ export interface TextColorProps extends NailsBaseType {
     textColor?: string,
 }
 
-export interface TextSizeProps extends NailsBaseType {
+export interface TextSizeProps {
     /**
      * text size
      * [small, medium, large, xlarge]
@@ -149,7 +149,7 @@ export interface TextSizeProps extends NailsBaseType {
     textSize?: TextSizeType,
 }
 
-export interface TextWeightProps extends NailsBaseType {
+export interface TextWeightProps {
     /**
      * text style
      * [lighter, light, normal, bold, bolder]
@@ -157,7 +157,7 @@ export interface TextWeightProps extends NailsBaseType {
     textWeight?: TextWeightType,
 }
 
-export interface TextAlignProps extends NailsBaseType {
+export interface TextAlignProps {
     /**
      * text alignment
      * [left, center, right]
@@ -165,7 +165,7 @@ export interface TextAlignProps extends NailsBaseType {
     textAlign?: TextAlignType,
 }
 
-export interface SizeProps extends NailsBaseType {
+export interface SizeProps {
     /**
      * size of the element
      * [tiny, small, medium, large, huge, massive]
@@ -173,14 +173,14 @@ export interface SizeProps extends NailsBaseType {
     size?: SizeType,
 }
 
-export interface FluidProps extends NailsBaseType {
+export interface FluidProps {
     /**
      * if set items tries to fill width of parent
      */
     fluid?: boolean,
 }
 
-export interface StatusProps extends NailsBaseType {
+export interface StatusProps {
     /**
      * controls styling of component
      * [error, info, warning, success]
@@ -188,9 +188,16 @@ export interface StatusProps extends NailsBaseType {
     status?: StatusType
 }
 
-export interface RelativeProps extends NailsBaseType {
+export interface RelativeProps {
     /**
      * set Box to position:relative
      */
     relative?: boolean,
+}
+
+export interface ValueProps {
+    /**
+     * value of control
+     */
+    value?: string,    
 }

@@ -3,6 +3,7 @@ import { resolveAlignItems, resolveItemSpace, resolveLineSpace } from "../proper
 import { AlignItemProps, ItemSpaceProps, LineSpaceProps } from "../properties/PropertyTypes"
 
 export interface InlineProps extends AlignItemProps, ItemSpaceProps, LineSpaceProps {
+    hideContent?: boolean,
 }
 
 const Inline = styled.div<InlineProps>`

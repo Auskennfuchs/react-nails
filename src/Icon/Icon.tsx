@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { StyleHelper } from '../Style'
-import { TextColorProps, SizeProps, SizeType, FluidProps } from '../properties/PropertyTypes'
+import { TextColorProps, SizeProps, SizeType, FluidProps, NailsBaseType } from '../properties/PropertyTypes'
 import { resolveTextColor, applySingle } from '../properties/PropertyResolver'
 import { addThemeComponent } from '../theme'
 import { ResolverFuncResult, resolverFuncs } from './iconLib'
@@ -50,7 +50,7 @@ export const NailsIcon = styled.i<TextColorProps & SizeProps & FluidProps>`
     justify-content: center;
 `
 
-export interface IconProps extends SizeProps, FluidProps {
+export interface IconProps extends SizeProps, FluidProps, NailsBaseType {
     /**
      * name of registered icon
      */

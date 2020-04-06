@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { useState, createRef } from 'react'
 import styled, { css } from 'styled-components'
-import { TextAlignProps, ItemAlignType, FluidProps, StatusProps, StatusType } from '../../properties/PropertyTypes'
+import { TextAlignProps, ItemAlignType, FluidProps, StatusProps, StatusType, NailsBaseType } from '../../properties/PropertyTypes'
 import { addThemeComponent } from '../../theme'
 import { Row } from '../../layout'
 import { resolveTextAlign, resolveFluid, applySingle } from '../../properties/PropertyResolver'
 import { Icon } from '../../Icon'
 import { dispatchOnChangeValueEvent } from '../../event';
 
-export interface InputProps extends TextAlignProps, FluidProps, StatusProps {
+export interface InputProps extends TextAlignProps, FluidProps, StatusProps, NailsBaseType {
     name: string,
     prefix?: React.ReactNode,
     suffix?: React.ReactNode,
@@ -100,7 +100,7 @@ const ClearButton = styled.button.attrs(() => ({ type: 'button', tabIndex: -1 })
 `
 
 
-const Input: React.FC<InputProps> = ({ name, prefix, suffix, onFocus = () => null, onBlur = () => null, onChange = () => null, onClear = () => null, fluid, inputRef, status, clearable, ...rest }: InputProps) => {
+const Input: React.FC<InputProps> = ({ name, prefix, suffix, onFocus = () => null, onBlur = () => null, onChange = () => null, onClear = () => null, fluid, inputRef, status, clearable, value, ...rest }: InputProps) => {
 
     const [focus, setFocus] = useState(false)
     const localInputRef: React.RefObject<HTMLInputElement> = inputRef || createRef()
@@ -135,8 +135,8 @@ const Input: React.FC<InputProps> = ({ name, prefix, suffix, onFocus = () => nul
                 {prefix && (
                     <AffixContainer>{prefix}</AffixContainer>
                 )}
-                <InputElement {...rest} name={name} onChange={onChange} ref={localInputRef} />
-                {clearable && (
+                <InputElement {...rest} name={name} onChange={onChange} ref={localInputRef} value={value} />
+                {clearable && value && (
                     <ClearButton onClick={onClickClear}><Icon icon="times" /></ClearButton>
                 )}
                 {suffix && (
