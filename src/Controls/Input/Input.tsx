@@ -69,6 +69,7 @@ const InputElement = styled.input`
     font-size: 1em;
     padding: 0.6em 0.4em;
     width: 100%;
+    min-width: 0;
 
     &:focus, &:active {
         outline: 0 none;
