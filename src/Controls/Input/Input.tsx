@@ -105,10 +105,10 @@ const ClearButton = styled.button.attrs(() => ({ type: 'button', tabIndex: -1 })
 `
 
 
-const Input: React.FC<InputProps> = ({ name, prefix, suffix, onFocus = () => null, onBlur = () => null, onChange = () => null, onClear = () => null, fluid, inputRef, status, clearable, value, ...rest }: InputProps) => {
+const Input: React.FC<InputProps> = React.forwardRef(({ name, prefix, suffix, onFocus = () => null, onBlur = () => null, onChange = () => null, onClear = () => null, fluid, inputRef, status, clearable, value, ...rest }: InputProps, ref: React.RefObject<any>) => {
 
     const [focus, setFocus] = useState(false)
-    const localInputRef: React.RefObject<HTMLInputElement> = inputRef || createRef()
+    const localInputRef: React.RefObject<HTMLInputElement> = inputRef || ref || createRef()
 
     const localOnFocus = (e: any) => {
         setTimeout(() => setFocus(true))
@@ -150,6 +150,6 @@ const Input: React.FC<InputProps> = ({ name, prefix, suffix, onFocus = () => nul
             </Row>
         </InputContainer>
     )
-}
+})
 
 export default Input
