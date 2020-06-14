@@ -14,7 +14,8 @@ export const NailsApp = ({ theme, children }: { theme?: any, children?: any }) =
     const [useTheme, setUseTheme] = useState(resolveTheme({}))
 
     useEffect(() => {
-        setUseTheme(resolveTheme(theme))
+        const newTheme = resolveTheme(theme)
+        setUseTheme(newTheme)
     }, [theme])
 
     return (
