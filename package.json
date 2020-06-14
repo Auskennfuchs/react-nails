@@ -1,6 +1,6 @@
 {
   "name": "react-nails",
-  "version": "0.2.67",
+  "version": "0.2.70",
   "description": "UI framework based on React and Styled Components",
   "author": "Auskennfuchs",
   "license": "MIT",
@@ -48,8 +48,8 @@
     "enzyme-adapter-react-16": "^1.15.1",
     "gh-pages": "^1.2.0",
     "lodash": "^4.17.15",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "react-scripts-ts": "^2.16.0",
     "rollup": "^0.62.0",
     "rollup-plugin-babel": "^3.0.7",
