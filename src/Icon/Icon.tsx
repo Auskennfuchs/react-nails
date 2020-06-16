@@ -41,10 +41,10 @@ export const NailsIcon = styled.i<TextColorProps & SizeProps & FluidProps>`
     font-style: normal;
     ${resolveTextColor}
     ${applySingle(resolveIconSize, 'iconSize')}
-    ${applySingle(resolveFluid, 'fluid')}
     line-height: 1em;
     width: 1em;
     height: 1em;
+    ${applySingle(resolveFluid, 'fluid')}
     display: flex;
     align-items: center;
     justify-content: center;

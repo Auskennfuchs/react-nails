@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { ResolverFuncResult, IconResolverFunc, AddIconInput } from './iconLib'
-import styled from 'styled-components';
-import { StyleHelper } from '../Style';
+import styled from 'styled-components'
+import { StyleHelper } from '../Style'
 
 
 export const svgIconResolver: IconResolverFunc = (id: string, icon: AddIconInput): ResolverFuncResult => {
