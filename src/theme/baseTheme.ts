@@ -1,4 +1,5 @@
 import { merge, cloneDeep } from 'lodash'
+import GlobalState from './GlobalState'
 
 export type ThemeFuncResult = [string, object]
 
@@ -8,9 +9,9 @@ type ThemeFuncEntry = {
     priority: number,
     func: ThemeFunc
 }
-type ThemeFuncList = ThemeFuncEntry[]
+type ThemeFuncList = Array<ThemeFuncEntry>
 
-const themeFuncs: ThemeFuncList = []
+export const globalThemeFuncs: GlobalState<ThemeFuncList> = new GlobalState([])
 
 /**
  * adds new Theme declarations to the theme
@@ -18,19 +19,20 @@ const themeFuncs: ThemeFuncList = []
  * @param priority priority of evaluating function, higher number means later processing
  */
 export const addThemeComponent = (func: ThemeFunc, priority: number = 0) => {
-    themeFuncs.push({
-        priority,
-        func
-    })
-    themeFuncs.sort((a, b) => a.priority - b.priority)
+    const tf: ThemeFuncList = [...globalThemeFuncs.getValue(), {
+        priority, func
+    }]
+    tf.sort((a, b) => a.priority - b.priority)
+    globalThemeFuncs.setValue(tf)
 }
 
 export const resolveTheme = (theme: object = {}): object => {
     const res: object = merge(cloneDeep(baseTheme), cloneDeep(theme))
-    themeFuncs.forEach(tf => {
+    globalThemeFuncs.getValue().forEach((tf: { func: (arg0: object) => [any, any] }) => {
         const [id, style] = tf.func(res)
         res[id] = merge(res[id] || {}, style)
     })
+
     // override again with specific values
     return merge(res, theme)
 }
