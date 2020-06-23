@@ -5,6 +5,7 @@ import { addThemeComponent } from '../theme'
 
 addThemeComponent((theme: { borderRadius: string, palette: { [name: string]: string }, colors: { [name: string]: string } }) => (['controls', {
     borderRadius: theme.borderRadius,
+    borderWidth: "1px",
     borderColor: theme.colors.elemBorder,
     placeholderTextColor: theme.colors.textLight,
     backgroundColor: theme.palette.white,

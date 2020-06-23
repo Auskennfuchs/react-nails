@@ -51,7 +51,7 @@ const resolveStatus = (status: StatusType = StatusType.Normal) => {
 }
 
 const InputContainer = styled.div<any>`
-    border: 1px solid ${p => p.theme.input.borderColor};
+    border: ${p => p.theme.input.borderWidth} solid ${p => p.theme.input.borderColor};
     border-radius: ${p => p.theme.input.borderRadius};
     background-color: ${p => p.theme.input.backgroundColor};
     color: ${p => p.theme.input.textColor};

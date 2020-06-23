@@ -27,7 +27,7 @@ export const resolveStatus = (themeProp: string = 'input') => (status: StatusTyp
 }
 
 export const ControlContainer = (themeProp: string) => styled.div<ContainerProps>`
-    border: 1px solid ${p => p.theme[themeProp].borderColor};
+    border: ${p => p.theme[themeProp].borderWidth} solid ${p => p.theme[themeProp].borderColor};
     border-radius: ${p => p.theme[themeProp].borderRadius};
     background-color: ${p => p.theme[themeProp].backgroundColor};
     color: ${p => p.theme[themeProp].textColor};
