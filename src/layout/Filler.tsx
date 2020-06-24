@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components"
-import { applySingle, resolveAlignItems } from "../properties/PropertyResolver"
-import { AlignItemProps } from "../properties/PropertyTypes"
+import { applySingle, resolveAlignItems, resolveJustifyItems } from "../properties/PropertyResolver"
+import { AlignItemProps, JustifyItemProps } from "../properties/PropertyTypes"
 
-interface FillerProps extends AlignItemProps {
+interface FillerProps extends AlignItemProps, JustifyItemProps {
     stretchChild?: boolean,
     fillParent?: boolean,
 }
@@ -20,6 +20,7 @@ const Filler = styled.div<FillerProps>`
     display: flex;
     flex: 1 1 auto;
     ${resolveAlignItems}
+    ${resolveJustifyItems}
     ${resolveStretchChild}
 `
 
