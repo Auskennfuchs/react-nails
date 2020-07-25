@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components"
-import { TextColorProps, TextSizeProps, TextWeightProps, TextAlignProps } from "../properties/PropertyTypes"
-import { resolveTextColor, resolveTextSize, resolveTextWeight, applySingle, resolveTextAlign } from "../properties/PropertyResolver"
+import styled, { css } from 'styled-components'
+import { TextColorProps, TextSizeProps, TextWeightProps, TextAlignProps } from 'properties/PropertyTypes'
+import { resolveTextColor, resolveTextSize, resolveTextWeight, applySingle, resolveTextAlign } from 'properties/PropertyResolver'
 
 interface TextProps extends TextColorProps, TextSizeProps, TextWeightProps, TextAlignProps {
     /**

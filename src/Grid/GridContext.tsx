@@ -1,5 +1,5 @@
 import { createContext, Context } from 'react'
-import { SpacingType, ItemSpaceProps, LineSpaceProps, AlignItemProps, JustifyItemProps } from '../properties/PropertyTypes'
+import { SpacingType, ItemSpaceProps, LineSpaceProps, AlignItemProps, JustifyItemProps } from 'properties/PropertyTypes'
 
 export interface GridProps extends ItemSpaceProps, LineSpaceProps, AlignItemProps, JustifyItemProps {
     /**

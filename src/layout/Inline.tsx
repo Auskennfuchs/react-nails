@@ -1,6 +1,6 @@
-import styled from "styled-components"
-import { resolveAlignItems, resolveItemSpace, resolveLineSpace } from "../properties/PropertyResolver"
-import { AlignItemProps, ItemSpaceProps, LineSpaceProps } from "../properties/PropertyTypes"
+import styled from 'styled-components'
+import { resolveAlignItems, resolveItemSpace, resolveLineSpace } from 'properties/PropertyResolver'
+import { AlignItemProps, ItemSpaceProps, LineSpaceProps } from 'properties/PropertyTypes'
 
 export interface InlineProps extends AlignItemProps, ItemSpaceProps, LineSpaceProps {
     hideContent?: boolean,

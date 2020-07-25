@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components"
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalReset = styled.div`
     font-family: ${p => p.theme.font.fontFamily};

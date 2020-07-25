@@ -1,9 +1,9 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
+import { SpacingType } from 'properties/PropertyTypes'
+import { applyMediaQuery, applyMediaQueryIE11 } from 'properties/PropertyResolver'
+import { MediaQuery } from 'layout'
 import GridContext, { GridProps } from './GridContext'
-import { SpacingType } from '../properties/PropertyTypes'
-import { applyMediaQuery, applyMediaQueryIE11 } from '../properties/PropertyResolver'
-import { MediaQuery } from '../layout'
 
 type RowContainerProps = GridProps & {
     equalHeights?: boolean,

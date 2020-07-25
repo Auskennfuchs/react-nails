@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
-import { StatusType, StatusProps, FluidProps } from '../properties/PropertyTypes'
-import { resolveFluid, applySingle, resolveTextAlign } from '../properties/PropertyResolver'
+import { StatusType, StatusProps, FluidProps } from 'properties/PropertyTypes'
+import { resolveFluid, applySingle, resolveTextAlign } from 'properties/PropertyResolver'
 
 export interface ContainerProps extends FluidProps, StatusProps {
     focus?: boolean,

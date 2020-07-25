@@ -1,7 +1,7 @@
-import { css } from "styled-components"
+import { css } from 'styled-components'
 import { times } from 'lodash'
-import MediaQuery, { BreakPoint } from "../layout/MediaQuery"
-import { BorderType, SpacingType, ItemAlignType, ItemJustifyType, TextSizeType, TextWeightType, TextAlignType } from "./PropertyTypes"
+import MediaQuery, { BreakPoint } from 'layout/MediaQuery'
+import { BorderType, SpacingType, ItemAlignType, ItemJustifyType, TextSizeType, TextWeightType, TextAlignType } from './PropertyTypes'
 
 export type ResolverFunc = (value?: any, props?: any) => any
 export const applySingle = (func: ResolverFunc, propName: string, discardNull: boolean = true): any => (props: any) => {

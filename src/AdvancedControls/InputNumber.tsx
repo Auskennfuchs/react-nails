@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { isEmpty } from 'lodash'
-import { Input } from '../Controls'
-import { InputProps } from '../Controls/Input/Input'
-import { convertNumberToLocaleNumber, convertLocaleNumberToNumber } from '../locale'
+import { Input } from 'Controls'
+import { InputProps } from 'Controls/Input/Input'
+import { convertNumberToLocaleNumber, convertLocaleNumberToNumber } from 'locale'
 
 export interface InputNumberProps extends InputProps {
     /**

@@ -1,8 +1,8 @@
 import *as React from 'react'
 import styled, { css } from 'styled-components'
-import { addThemeComponent } from '../theme'
-import { SpacingProps, SpacingType } from '../properties/PropertyTypes'
-import { applyMediaQuery } from '../properties/PropertyResolver'
+import { addThemeComponent } from 'theme'
+import { SpacingProps, SpacingType } from 'properties/PropertyTypes'
+import { applyMediaQuery } from 'properties/PropertyResolver'
 
 addThemeComponent((theme: { palette: { grey10: string } }) => ['divider', {
     color: theme.palette.grey10,

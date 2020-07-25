@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { ReactNode } from "react"
-import styled, { css } from "styled-components"
-import { TextColorProps, TextAlignProps, SizeType, SizeProps } from "../properties/PropertyTypes"
-import { resolveTextColor, applySingle, resolveTextAlign } from '../properties/PropertyResolver'
+import { ReactNode } from 'react'
+import styled, { css } from 'styled-components'
+import { TextColorProps, TextAlignProps, SizeType, SizeProps } from 'properties/PropertyTypes'
+import { resolveTextColor, applySingle, resolveTextAlign } from 'properties/PropertyResolver'
 import { addThemeComponent } from '../theme'
 
 addThemeComponent((theme: { font: { [name: string]: string } }) => ['headerText', {

@@ -3,8 +3,8 @@ name: Row
 menu: Layout
 ---
 
-import { Playground } from "docz";
-import { Row } from "react-nails";
+import { Playground } from 'docz';
+import { Row } from 'react-nails';
 
 # Row
 

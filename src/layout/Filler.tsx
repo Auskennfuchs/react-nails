@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components"
-import { applySingle, resolveAlignItems, resolveJustifyItems } from "../properties/PropertyResolver"
-import { AlignItemProps, JustifyItemProps } from "../properties/PropertyTypes"
+import styled, { css } from 'styled-components'
+import { applySingle, resolveAlignItems, resolveJustifyItems } from 'properties/PropertyResolver'
+import { AlignItemProps, JustifyItemProps } from 'properties/PropertyTypes'
 
 interface FillerProps extends AlignItemProps, JustifyItemProps {
     stretchChild?: boolean,

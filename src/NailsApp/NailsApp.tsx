@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { resolveTheme, addThemeComponent, globalThemeFuncs } from "../theme"
-import ResponsiveObserver from '../Responsive/ResponsiveObserver'
+import { resolveTheme, addThemeComponent, globalThemeFuncs } from 'theme'
+import ResponsiveObserver from 'Responsive/ResponsiveObserver'
 import { GlobalReset } from './Reset'
-import { useGlobalState } from '../theme/GlobalState'
+import { useGlobalState } from 'theme/GlobalState'
 
 addThemeComponent((theme: { palette: any, colors: any }) => (['body', {
     backgroundColor: theme.palette.white1,

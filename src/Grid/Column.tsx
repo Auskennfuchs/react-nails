@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import GridContext, { GridProps } from './GridContext'
-import { applyMediaQuery, applyMediaQueryIE11, resolveAlignItems, resolveJustifyItems } from '../properties/PropertyResolver'
-import { SpacingType, ItemJustifyType, ChildProps } from '../properties/PropertyTypes'
+import { applyMediaQuery, applyMediaQueryIE11, resolveAlignItems, resolveJustifyItems } from 'properties/PropertyResolver'
+import { SpacingType, ItemJustifyType, ChildProps } from 'properties/PropertyTypes'
 
 export interface ColumnProps extends GridProps, ChildProps {
     colWidth: number | number[],
@@ -55,7 +55,7 @@ const ColumnContainer = styled.div<ColumnProps>`
 const Column = ({ width = 1, children, ...rest }: ColumnProps) => (
     <GridContext.Consumer>
         {gridProps => (
-            <ColumnContainer {...gridProps} colWidth={width} {...rest}>
+            <ColumnContainer {...gridProps} {...rest} colWidth={width}>
                 {children}
             </ColumnContainer>
         )}

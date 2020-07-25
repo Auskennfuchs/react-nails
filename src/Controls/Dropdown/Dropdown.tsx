@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { useState, createRef, useEffect } from 'react'
 import styled from 'styled-components'
-import { addThemeComponent } from '../../theme'
-import { FluidProps, TextAlignProps, SpacingType } from '../../properties/PropertyTypes'
-import { Text } from '../../Text'
-import AffixWrapper from '../AffixWrapper'
-import { controlContent } from '../controlsCommon'
-import { Button } from '../Button'
-import { NoFocusNailsButton } from '../Button/Button'
-import { Row } from '../../layout';
+import { addThemeComponent } from 'theme'
+import { FluidProps, TextAlignProps, SpacingType } from 'properties/PropertyTypes'
+import { Text } from 'Text'
+import AffixWrapper from 'Controls/AffixWrapper'
+import { controlContent } from 'Controls/controlsCommon'
+import { Button } from 'Controls/Button'
+import { NoFocusNailsButton } from 'Controls/Button/Button'
+import { Row } from 'layout'
 
 type OptionEntryType = {
     value: string | number,

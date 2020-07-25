@@ -1,9 +1,9 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
-import { StyleHelper } from '../Style'
-import { TextColorProps, SizeProps, SizeType, FluidProps } from '../properties/PropertyTypes'
-import { resolveTextColor, applySingle } from '../properties/PropertyResolver'
-import { addThemeComponent } from '../theme'
+import { StyleHelper } from 'Style'
+import { TextColorProps, SizeProps, SizeType, FluidProps } from 'properties/PropertyTypes'
+import { resolveTextColor, applySingle } from 'properties/PropertyResolver'
+import { addThemeComponent } from 'theme'
 import { ResolverFuncResult, resolverFuncs } from './iconLib'
 
 addThemeComponent(() => ['icon', {

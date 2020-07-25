@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { ReactNode } from "react"
-import styled from "styled-components"
-import GridContext, { GridProps } from "./GridContext"
+import { ReactNode } from 'react'
+import styled from 'styled-components'
+import { ItemAlignType, ItemJustifyType } from 'properties/PropertyTypes'
+import GridContext, { GridProps } from './GridContext'
 import Row from './Row'
 import Column from './Column'
-import { ItemAlignType, ItemJustifyType } from '../properties/PropertyTypes'
 
 const GridContainer = styled.div`
     width: 100%;

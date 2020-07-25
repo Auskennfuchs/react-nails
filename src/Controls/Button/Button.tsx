@@ -1,10 +1,11 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { addThemeComponent } from '../../theme'
-import { Inline } from '../../layout'
-import { SpacingType, SizeType, TextColorProps, ChildProps } from '../../properties/PropertyTypes'
+import { Row, Filler } from '../../layout'
+import { SpacingType, SizeType, TextColorProps, ChildProps, ItemJustifyType } from '../../properties/PropertyTypes'
 import { Icon } from '../../Icon'
 import { Spinner } from '../../Spinner';
+import { RowProps } from '../../layout/Row'
 
 export interface ButtonProps extends TextColorProps, ChildProps {
     /**
@@ -55,6 +56,7 @@ addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any 
     disabled: {
         textColor: theme.controls.disabled.textColor,
     },
+    padding: "0.7em 1em",
     primary: {
         backgroundColor: theme.colors.primary,
         textColor: theme.colors.primaryText,
@@ -64,6 +66,11 @@ addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any 
             backgroundColor: theme.palette.blue2,
             textColor: theme.colors.white,
             borderColor: theme.palette.blue2,
+            additionalCss: css`
+                ${ButtonIcon}:last-child {
+                    transform: translateX(10px);
+                }
+            `,
         },
         active: {
             backgroundColor: theme.palette.blue4,
@@ -149,12 +156,14 @@ export const PrimaryNailsButton = styled(NailsButton)`
     border: 1px solid ${p => p.theme.button.primary.borderColor};
     ${p => applyState(p.theme.button.primary)}
     box-shadow: 0 0 7px 2px rgba(0,0,0,0.1);
-    padding: 0.7em 1em;
+    padding: ${p => p.theme.button.padding};
 
     &:hover, &:focus {
         box-shadow: none;
         outline: 0 none;
         ${p => applyState(p.theme.button.primary.hover)}
+
+        ${p => p.theme.button.primary.hover.additionalCss}
     }
 
     &:active {
@@ -194,7 +203,11 @@ export const SecondaryNailsButton = styled(NailsButton)`
     }
 `
 
-const ChildContainer = styled(Inline)`
+const ChildContainer = styled(Row).attrs(() => ({
+    itemSpace: SpacingType.Medium,
+})) <RowProps & {
+    hideContent?: boolean
+}>`
     ${p => p.hideContent && css`
         visibility: hidden;
     `}
@@ -205,15 +218,13 @@ const Button: React.FC<ButtonProps> = ({ primary, secondary, icon, iconLeft, chi
     return (
         <Element type={type} {...rest}>
             {loading && <Spinner color={loadingSpinnerColor} size={SizeType.Small} absolute />}
-            <ChildContainer itemSpace={SpacingType.Medium} hideContent={loading}>
+            <ChildContainer hideContent={loading}>
                 {iconLeft && (<ButtonIcon>
                     <Icon icon={iconLeft} />
                 </ButtonIcon>)}
-                {children && (
-                    <span>
-                        {children}
-                    </span>
-                )}
+                <Filler justify={ItemJustifyType.Center}>
+                    {children}
+                </Filler>
                 {icon && (<ButtonIcon>
                     <Icon icon={icon} />
                 </ButtonIcon>)}

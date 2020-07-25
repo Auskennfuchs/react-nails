@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Column } from '../layout'
+import { Column } from 'layout'
 
 const FullScreenContainer = styled(Column)`
     width: 100%;
