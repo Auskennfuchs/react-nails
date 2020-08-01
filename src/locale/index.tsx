@@ -1,6 +1,6 @@
 const getDecimalSeparator = () => {
     const num = 1.1;
-    if (Intl.NumberFormat().formatToParts) {
+    if (typeof Intl.NumberFormat()['formatToParts'] === 'function') {
         return (Intl.NumberFormat().formatToParts(num).find(part => part.type === 'decimal') || { value: '' }).value
     }
     return legacyGetDecimalSeparator()
@@ -8,19 +8,19 @@ const getDecimalSeparator = () => {
 
 const getThousandSeparator = () => {
     const num = 1000.1;
-    if (Intl.NumberFormat().formatToParts) {
+    if (typeof Intl.NumberFormat()['formatToParts'] === 'function') {
         return (Intl.NumberFormat().formatToParts(num).find(part => part.type === 'group') || { value: '' }).value
     }
     return legacyGetThousandSeparator()
 }
 
 const legacyGetDecimalSeparator = () => {
-    const n=1.1
+    const n = 1.1
     return /^1(.+)1$/.exec(n.toLocaleString())![1]
 }
 
 const legacyGetThousandSeparator = () => {
-    const n=1000
+    const n = 1000
     return /^1(.+)000$/.exec(n.toLocaleString())![1]
 }
 

@@ -84,6 +84,7 @@ const InputQuantity = ({ changeAmount = 1, value, increaseIcon = "chevron-up", d
             )
             break
         case QuantityInputMode.Right:
+        default:
             useSuffix = (
                 <Row itemSpace={SpacingType.Small}>
                     {suffix}
