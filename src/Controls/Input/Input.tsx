@@ -33,7 +33,19 @@ addThemeComponent((theme: { controls: { backgroundColor: string }, spaces: { sma
 
 const colorBorder = (color: string) => css`
     border-color: ${color};
-    box-shadow: 0 0 0 1px ${color};
+    &:after {
+        content: '';
+        z-index: 1;
+        position: absolute;
+        display: block;
+        border-radius: 3px;/*${p => p.theme.input.borderRadius};*/
+        right: 0;
+        bottom: 0;
+        left: 0;
+        top: 0;
+        border: 1px solid ${color};
+        pointer-events: none;
+    }
 `
 
 const resolveStatus = (status: StatusType = StatusType.Normal) => {
@@ -51,6 +63,7 @@ const resolveStatus = (status: StatusType = StatusType.Normal) => {
 }
 
 const InputContainer = styled.div<any>`
+    position: relative;
     border: ${p => p.theme.input.borderWidth} solid ${p => p.theme.input.borderColor};
     border-radius: ${p => p.theme.input.borderRadius};
     background-color: ${p => p.theme.input.backgroundColor};
