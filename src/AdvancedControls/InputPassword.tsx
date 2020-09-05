@@ -1,10 +1,11 @@
 import * as React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 import { addIcon } from '../Icon'
 import Input, { InputProps } from '../Controls/Input/Input'
 import { NailsButton, Button } from '../Controls'
+import { useEffectExceptOnMount } from '../util'
 
 interface InputPasswordProps extends InputProps {
     /**
@@ -34,7 +35,7 @@ const InputPassword = ({ showIcon = "eye", hideIcon = "eye-slash", inputRef, ...
         setShowPass(!showPass)
     }
 
-    useEffect(() => {
+    useEffectExceptOnMount(() => {
         if (localInputRef.current) {
             localInputRef.current.focus()
             const textLength = localInputRef.current.value.length
@@ -43,7 +44,7 @@ const InputPassword = ({ showIcon = "eye", hideIcon = "eye-slash", inputRef, ...
     }, [showPass])
 
     return (
-        <Input {...rest} suffix={<Button as={ShowHideButton} icon={showPass ? hideIcon : showIcon} onClick={toggleShow} />} inputRef={localInputRef} type={showPass ? 'input' : 'password'} />
+        <Input {...rest} suffix={<Button as={ShowHideButton} icon={showPass ? hideIcon : showIcon} onClick={toggleShow} />} ref={localInputRef} type={showPass ? 'input' : 'password'} />
     )
 }
 

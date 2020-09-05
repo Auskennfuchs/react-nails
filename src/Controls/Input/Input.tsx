@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState, createRef } from 'react'
+import { useState } from 'react'
 import styled, { css } from 'styled-components'
 import { TextAlignProps, ItemAlignType, FluidProps, StatusProps, StatusType } from 'properties/PropertyTypes'
 import { addThemeComponent } from 'theme'
@@ -23,27 +23,32 @@ export interface InputProps extends TextAlignProps, FluidProps, StatusProps {
     type?: string,
 }
 
-addThemeComponent((theme: { controls: { backgroundColor: string }, spaces: { small: string } }) => ['input', {
+addThemeComponent((theme: { controls: { backgroundColor: string, focus: any }, spaces: { small: string } }) => ['input', {
     ...theme.controls,
     afix: {
         backgroundColor: theme.controls.backgroundColor,
         padding: theme.spaces.small,
     },
+    focus: {
+        ...theme.controls.focus,
+        borderWidth: "2px",
+    }
 }], 10)
 
 const colorBorder = (color: string) => css`
     border-color: ${color};
+    overflow: visible;
     &:after {
         content: '';
         z-index: 1;
         position: absolute;
         display: block;
-        border-radius: 3px;/*${p => p.theme.input.borderRadius};*/
-        right: 0;
-        bottom: 0;
-        left: 0;
-        top: 0;
-        border: 1px solid ${color};
+        border-radius: ${p => p.theme.input.borderRadius};
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        top: -1px;
+        border: ${p => p.theme.input.focus.borderWidth} solid ${color};
         pointer-events: none;
     }
 `
@@ -118,10 +123,10 @@ const ClearButton = styled.button.attrs(() => ({ type: 'button', tabIndex: -1 })
 `
 
 
-const Input: React.FC<InputProps> = React.forwardRef(({ name, prefix, suffix, onFocus = () => null, onBlur = () => null, onChange = () => null, onClear = () => null, fluid, inputRef, status, clearable, value, ...rest }: InputProps, ref: React.RefObject<any>) => {
+const Input: React.FC<InputProps & React.RefAttributes<any>> = React.forwardRef(({ name, prefix, suffix, onFocus = () => null, onBlur = () => null, onChange = () => null, onClear = () => null, fluid, inputRef, status, clearable, value, ...rest }: InputProps, ref: React.RefObject<any>) => {
 
     const [focus, setFocus] = useState(false)
-    const localInputRef: React.RefObject<HTMLInputElement> = inputRef || ref || createRef()
+    const localInputRef: React.MutableRefObject<any> = inputRef || ref || React.createRef()
 
     const localOnFocus = (e: any) => {
         setTimeout(() => setFocus(true))
@@ -137,14 +142,12 @@ const Input: React.FC<InputProps> = React.forwardRef(({ name, prefix, suffix, on
         e.stopPropagation()
         e.preventDefault()
         dispatchOnChangeValueEvent(localInputRef, null)
-        onClear(
-            {
-                target: {
-                    name,
-                    value: null
-                }
+        onClear({
+            target: {
+                name,
+                value: null
             }
-        )
+        })
     }
 
     return (

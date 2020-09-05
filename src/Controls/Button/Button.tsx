@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { addThemeComponent } from '../../theme'
-import { Row, Filler } from '../../layout'
+import { Row } from '../../layout'
 import { SpacingType, SizeType, TextColorProps, ChildProps, ItemJustifyType } from '../../properties/PropertyTypes'
 import { Icon } from '../../Icon'
 import { Spinner } from '../../Spinner';
@@ -62,12 +62,14 @@ addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any 
         textColor: theme.colors.primaryText,
         iconColor: theme.palette.white3,
         borderColor: theme.colors.primary,
+        stretchText: false,
         hover: {
             backgroundColor: theme.palette.blue2,
             textColor: theme.colors.white,
             borderColor: theme.palette.blue2,
             additionalCss: css`
                 ${ButtonIcon}:last-child {
+                    transition: transform 0.1s linear;
                     transform: translateX(10px);
                 }
             `,
@@ -203,8 +205,9 @@ export const SecondaryNailsButton = styled(NailsButton)`
     }
 `
 
-const ChildContainer = styled(Row).attrs(() => ({
+const ChildContainer = styled(({ hideContent, ...rest }: RowProps & { hideContent?: boolean }) => (<Row {...rest} />)).attrs(() => ({
     itemSpace: SpacingType.Medium,
+    justify: ItemJustifyType.Center,
 })) <RowProps & {
     hideContent?: boolean
 }>`
@@ -213,21 +216,32 @@ const ChildContainer = styled(Row).attrs(() => ({
     `}
 `
 
+const ChildTextContainer = styled.div`
+    display: flex;
+    justify-content: center;  
+`
+
 const Button: React.FC<ButtonProps> = ({ primary, secondary, icon, iconLeft, children, as, loading = false, loadingSpinnerColor = "white", type = "button", ...rest }: ButtonProps) => {
     const Element = as || (primary ? PrimaryNailsButton : secondary ? SecondaryNailsButton : NailsButton)
     return (
         <Element type={type} {...rest}>
             {loading && <Spinner color={loadingSpinnerColor} size={SizeType.Small} absolute />}
             <ChildContainer hideContent={loading}>
-                {iconLeft && (<ButtonIcon>
-                    <Icon icon={iconLeft} />
-                </ButtonIcon>)}
-                <Filler justify={ItemJustifyType.Center}>
-                    {children}
-                </Filler>
-                {icon && (<ButtonIcon>
-                    <Icon icon={icon} />
-                </ButtonIcon>)}
+                {iconLeft && (
+                    <ButtonIcon>
+                        <Icon icon={iconLeft} />
+                    </ButtonIcon>
+                )}
+                {children && (
+                    <ChildTextContainer>
+                        {children}
+                    </ChildTextContainer>
+                )}
+                {icon && (
+                    <ButtonIcon>
+                        <Icon icon={icon} />
+                    </ButtonIcon>
+                )}
             </ChildContainer>
         </Element>
     )

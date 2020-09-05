@@ -1,10 +1,10 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
-import { StyleHelper } from 'Style'
 import { TextColorProps, SizeProps, SizeType, FluidProps } from 'properties/PropertyTypes'
 import { resolveTextColor, applySingle } from 'properties/PropertyResolver'
 import { addThemeComponent } from 'theme'
 import { ResolverFuncResult, resolverFuncs } from './iconLib'
+import NotFoundIcon from './NotFoundIcon'
 
 addThemeComponent(() => ['icon', {
     [SizeType.Tiny]: "0.3em",
@@ -14,19 +14,6 @@ addThemeComponent(() => ['icon', {
     [SizeType.Huge]: "4em",
     [SizeType.Massive]: "8em",
 }])
-
-const NotFoundIcon = styled.div<any>`
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    background: #f0f;    
-    position: relative;
-    &:after {
-        content: '?';
-        color: #fff;
-        ${StyleHelper.centerAbsolute}
-    }
-`
 
 const resolveIconSize = (size: SizeType = SizeType.Medium) => css`
     font-size: ${p => p.theme.icon[size]};

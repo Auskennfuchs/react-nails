@@ -2,7 +2,7 @@ import * as React from 'react'
 import { ResolverFuncResult, IconResolverFunc, AddIconInput } from './iconLib'
 import styled from 'styled-components'
 import { StyleHelper } from 'Style'
-
+import NotFoundIcon from './NotFoundIcon'
 
 export const svgIconResolver: IconResolverFunc = (id: string, icon: AddIconInput): ResolverFuncResult => {
     return {
@@ -27,7 +27,7 @@ const IconWrapper = styled.div`
 
 const SvgIcon = ({ svg: Element }: { svg: any }) => (
     <IconWrapper>
-        <Element />
+        {Element ? <Element /> : <NotFoundIcon />}
     </IconWrapper>
 )
 
