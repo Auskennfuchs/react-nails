@@ -20,7 +20,6 @@ const resolveItemSpace = applyMediaQuery(resolveItemSpaceSingle, 'itemSpace')
 
 const resolveLineSpaceSingle = (space: SpacingType) => css`
     grid-row-gap: ${p => p.theme.spaces[space]};
-    margin-bottom: ${p => p.theme.spaces[space]};
 `
 const resolveLineSpace = applyMediaQuery(resolveLineSpaceSingle, 'lineSpace')
 
