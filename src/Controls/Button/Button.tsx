@@ -67,12 +67,7 @@ addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any 
             backgroundColor: theme.palette.blue2,
             textColor: theme.colors.white,
             borderColor: theme.palette.blue2,
-            additionalCss: css`
-                ${ButtonIcon}:last-child {
-                    transition: transform 0.1s linear;
-                    transform: translateX(10px);
-                }
-            `,
+            additionalCss: null,
         },
         active: {
             backgroundColor: theme.palette.blue4,
@@ -94,6 +89,7 @@ addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any 
             backgroundColor: theme.palette.white3,
             textColor: theme.palette.blue2,
             borderColor: theme.palette.blue2,
+            additionalCss: null,
         },
         active: {
             backgroundColor: theme.colors.transparent,
@@ -114,7 +110,7 @@ const applyState = (state: { backgroundColor: string, textColor: string, borderC
     border-color: ${state.borderColor};
 `
 
-const ButtonIcon = styled.span``
+export const ButtonIcon = styled.span``
 
 export const NailsButton = styled.button<ButtonProps>`
     display: inline-flex;
@@ -187,12 +183,14 @@ export const SecondaryNailsButton = styled(NailsButton)`
     letter-spacing: 0.04em;
     border: 1px solid ${p => p.theme.button.secondary.borderColor};
     ${p => applyState(p.theme.button.secondary)}
-    padding: 0.7em 1em;
+    padding: ${p => p.theme.button.padding};
 
     &:hover,&:focus {
         box-shadow: none;
         outline: 0 none;
         ${p => applyState(p.theme.button.secondary.hover)}
+
+        ${p => p.theme.button.primary.hover.additionalCss}
     }
 
     &:active {

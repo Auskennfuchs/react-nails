@@ -1,8 +1,1 @@
-import Button, { NailsButton, PrimaryNailsButton, SecondaryNailsButton } from './Button'
-
-export {
-    Button,
-    NailsButton,
-    PrimaryNailsButton,
-    SecondaryNailsButton,
-}
+export { default as Button, NailsButton, PrimaryNailsButton, SecondaryNailsButton, ButtonIcon } from './Button'

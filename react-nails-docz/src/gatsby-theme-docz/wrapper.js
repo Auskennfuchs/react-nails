@@ -10,9 +10,12 @@ addIcon([{ ...faBookmarkR, iconName: 'bookmark-r' }, faSmile])
 
 addIcon({ id: "nailsLogo", resolver: svgIconResolver, svg: NailsLogo })
 
+const theme = {
+}
+
 const Theme = ({ children }) => {
     return (
-        <NailsApp theme={{}}>
+        <NailsApp theme={theme}>
             {children}
         </NailsApp>
     )
