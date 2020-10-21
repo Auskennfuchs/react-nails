@@ -4,7 +4,7 @@ import ResponsiveContext from './ResponsiveContext'
 import { breakPoints } from 'layout/MediaQuery'
 
 interface ResponsiveInput {
-    as: React.ReactType<any>,
+    as: React.ElementType<any>,
     minWidth: number,
     maxWidth: number,
     children?: React.ReactNode,
