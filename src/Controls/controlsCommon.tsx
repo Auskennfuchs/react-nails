@@ -43,7 +43,7 @@ export const controlContent = css`
     border: 0 none;
     background-color: transparent;
     font-size: 1em;
-    padding: 0.6em 0.4em;
+    padding: ${p => p.theme.controls.padding};
     width: 100%;
     ${resolveTextAlign}
     line-height: normal;

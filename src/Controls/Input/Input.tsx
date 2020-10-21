@@ -85,7 +85,7 @@ const InputElement = styled.input`
     border: 0 none;
     background-color: transparent;
     font-size: 1em;
-    padding: 0.6em 0.4em;
+    padding: ${p => p.theme.input.padding};
     width: 100%;
     min-width: 0;
 
