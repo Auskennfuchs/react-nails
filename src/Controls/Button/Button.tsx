@@ -53,8 +53,12 @@ addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any 
     borderRadius: theme.controls.borderRadius,
     textColor: theme.colors.primary,
     fontSize: theme.font.normal,
+    lineHeight: 'normal',
     disabled: {
         textColor: theme.controls.disabled.textColor,
+    },
+    hover: {
+        additionalCss: null,
     },
     padding: "0.7em 1em",
     primary: {
@@ -126,6 +130,7 @@ export const NailsButton = styled.button<ButtonProps>`
     outline: 0 none;
     min-width: 1em;
     position: relative;
+    line-height: ${p => p.theme.button.lineHeight};
 
     &:disabled {
         cursor: not-allowed;
@@ -138,6 +143,10 @@ export const NailsButton = styled.button<ButtonProps>`
 
     &:focus {
         box-shadow: 0 0 0 2px ${p => p.theme.button.textColor};
+    }
+
+    &:hover {
+        ${p => p.theme.button.hover.additionalCss}
     }
 `
 

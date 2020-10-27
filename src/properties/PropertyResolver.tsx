@@ -91,6 +91,9 @@ export const resolveItemSpace = applyMediaQuery(resolveItemSpaceSingle, 'itemSpa
 const resolveLineSpaceSingle = (lineSpace: SpacingType = SpacingType.None) => css`
     & > * {
         margin-bottom: ${p => p.theme.spaces[lineSpace]};
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 `
 export const resolveLineSpace = applyMediaQuery(resolveLineSpaceSingle, 'lineSpace')
