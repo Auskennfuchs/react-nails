@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { StyleHelper } from 'Style'
+import { StyleHelper } from '../Style'
 
 const NotFoundIcon = styled.div<any>`
     display: inline-block;

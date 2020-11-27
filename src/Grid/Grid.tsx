@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { ReactNode } from 'react'
 import styled from 'styled-components'
-import { ItemAlignType, ItemJustifyType } from 'properties/PropertyTypes'
+import { ItemAlignType, ItemJustifyType } from '../properties/PropertyTypes'
 import GridContext, { GridProps } from './GridContext'
 import Row from './Row'
 import Column from './Column'

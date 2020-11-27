@@ -2,7 +2,8 @@ import * as React from 'react'
 import { shallow, configure } from 'enzyme'
 import * as Adapter from 'enzyme-adapter-react-16'
 
-import { Row, SpacingType } from './layout'
+import { Row } from './layout'
+import { SpacingType } from './properties/PropertyTypes'
 
 configure({ adapter: new Adapter() })
 

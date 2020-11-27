@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useContext, useState, useEffect } from 'react'
 import ResponsiveContext from './ResponsiveContext'
-import { breakPoints } from 'layout/MediaQuery'
+import { breakPoints } from '../layout/MediaQuery'
 
 interface ResponsiveInput {
     as: React.ElementType<any>,

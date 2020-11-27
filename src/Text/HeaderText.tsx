@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { ReactNode } from 'react'
 import styled, { css } from 'styled-components'
-import { TextColorProps, TextAlignProps, SizeType, SizeProps } from 'properties/PropertyTypes'
-import { resolveTextColor, applySingle, resolveTextAlign } from 'properties/PropertyResolver'
+import { TextColorProps, TextAlignProps, SizeType, SizeProps } from '../properties/PropertyTypes'
+import { resolveTextColor, applySingle, resolveTextAlign } from '../properties/PropertyResolver'
 import { addThemeComponent } from '../theme'
 
 addThemeComponent((theme: { font: { [name: string]: string } }) => ['headerText', {
@@ -14,7 +14,7 @@ addThemeComponent((theme: { font: { [name: string]: string } }) => ['headerText'
     [SizeType.Massive]: "2.266666em",
 }])
 
-interface HeaderTextProps extends TextColorProps, TextAlignProps,SizeProps {
+interface HeaderTextProps extends TextColorProps, TextAlignProps, SizeProps {
 }
 
 const resolveHeaderTextSizeSingle = (size: SizeType = SizeType.Medium) => css`font-size: ${p => p.theme.headerText[size]};`

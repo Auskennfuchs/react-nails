@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import GridContext, { GridProps } from './GridContext'
-import { applyMediaQuery, applyMediaQueryIE11, resolveAlignItems, resolveJustifyItems } from 'properties/PropertyResolver'
-import { SpacingType, ItemJustifyType, ChildProps } from 'properties/PropertyTypes'
+import { applyMediaQuery, applyMediaQueryIE11, resolveAlignItems, resolveJustifyItems } from '../properties/PropertyResolver'
+import { SpacingType, ItemJustifyType, ChildProps } from '../properties/PropertyTypes'
 
 export interface ColumnProps extends GridProps, ChildProps {
     colWidth: number | number[],
@@ -25,14 +25,14 @@ const resolveWidthIE11Single = (colWidth: number, p: { columns: number }) => css
 const resolveWidthIE11 = applyMediaQueryIE11(resolveWidthIE11Single, 'colWidth')
 
 const resolveItemSpaceIE11Single = (space: SpacingType) => css`
-    padding-left: calc(${ (p: { theme: { spaces: object } }) => p.theme.spaces[space]} / 2);
-    padding-right: calc(${ (p: { theme: { spaces: object } }) => p.theme.spaces[space]} / 2);
+    padding-left: calc(${(p: { theme: { spaces: object } }) => p.theme.spaces[space]} / 2);
+    padding-right: calc(${(p: { theme: { spaces: object } }) => p.theme.spaces[space]} / 2);
 `
 const resolveItemSpaceIE11 = applyMediaQueryIE11(resolveItemSpaceIE11Single, 'itemSpace')
 
 const resolveLineSpaceIE11Single = (space: SpacingType) => css`
-    padding-top: calc(${ (p: { theme: { spaces: object } }) => p.theme.spaces[space]} / 2);
-    padding-bottom: calc(${ (p: { theme: { spaces: object } }) => p.theme.spaces[space]} / 2);
+    padding-top: calc(${(p: { theme: { spaces: object } }) => p.theme.spaces[space]} / 2);
+    padding-bottom: calc(${(p: { theme: { spaces: object } }) => p.theme.spaces[space]} / 2);
 `
 const resolveLineSpaceIE11 = applyMediaQueryIE11(resolveLineSpaceIE11Single, 'lineSpace')
 

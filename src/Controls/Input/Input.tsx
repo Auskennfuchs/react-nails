@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { useState } from 'react'
 import styled, { css } from 'styled-components'
-import { TextAlignProps, ItemAlignType, FluidProps, StatusProps, StatusType } from 'properties/PropertyTypes'
-import { addThemeComponent } from 'theme'
-import { Row } from 'layout'
-import { resolveTextAlign, resolveFluid, applySingle } from 'properties/PropertyResolver'
-import { Icon } from 'Icon'
-import { dispatchOnChangeValueEvent } from 'event'
+import { TextAlignProps, ItemAlignType, FluidProps, StatusProps, StatusType } from '../../properties/PropertyTypes'
+import { addThemeComponent } from '../../theme'
+import { Row } from '../../layout'
+import { resolveTextAlign, resolveFluid, applySingle } from '../../properties/PropertyResolver'
+import { Icon } from '../../Icon'
+import { dispatchOnChangeValueEvent } from '../../event'
 
 export interface InputProps extends TextAlignProps, FluidProps, StatusProps {
     name: string,

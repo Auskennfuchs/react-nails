@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
-import { SizeProps, SizeType } from 'properties/PropertyTypes'
-import { addThemeComponent } from 'theme'
-import { StyleHelper } from 'Style'
+import { SizeProps, SizeType } from '../properties/PropertyTypes'
+import { addThemeComponent } from '../theme'
+import { StyleHelper } from '../Style'
 
 addThemeComponent(() => ['spinner', {
     sizes: {

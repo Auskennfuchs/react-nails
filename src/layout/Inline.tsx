@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { resolveAlignItems, resolveItemSpace, resolveLineSpace } from 'properties/PropertyResolver'
-import { Types } from 'properties'
+import { resolveAlignItems, resolveItemSpace, resolveLineSpace } from '../properties/PropertyResolver'
+import { Types } from '../properties'
 
 export type InlineProps = {
-    hideContent?: boolean,    
+    hideContent?: boolean,
 } & Types.AlignItemProps & Types.ItemSpaceProps & Types.LineSpaceProps
 
 const Inline = styled.div<InlineProps>`

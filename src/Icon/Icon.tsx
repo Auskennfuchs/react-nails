@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
-import { TextColorProps, SizeProps, SizeType, FluidProps } from 'properties/PropertyTypes'
-import { resolveTextColor, applySingle } from 'properties/PropertyResolver'
-import { addThemeComponent } from 'theme'
+import { TextColorProps, SizeProps, SizeType, FluidProps } from '../properties/PropertyTypes'
+import { resolveTextColor, applySingle } from '../properties/PropertyResolver'
+import { addThemeComponent } from '../theme'
 import { ResolverFuncResult, resolverFuncs } from './iconLib'
 import NotFoundIcon from './NotFoundIcon'
 
@@ -49,7 +49,7 @@ export interface IconProps extends SizeProps, FluidProps {
     as?: any,
 }
 
-const Icon = ({ icon, as:Element = NailsIcon, color, size, fluid, ...rest }: IconProps) => {
+const Icon = ({ icon, as: Element = NailsIcon, color, size, fluid, ...rest }: IconProps) => {
     const convertIcon = (iconName: string): ResolverFuncResult => {
         if (resolverFuncs[iconName]) {
             return resolverFuncs[iconName]

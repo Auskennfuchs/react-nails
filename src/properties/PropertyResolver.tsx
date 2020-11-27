@@ -1,6 +1,6 @@
 import { css } from 'styled-components'
 import { times } from 'lodash'
-import MediaQuery, { BreakPoint } from 'layout/MediaQuery'
+import MediaQuery, { BreakPoint } from '../layout/MediaQuery'
 import { BorderType, SpacingType, ItemAlignType, ItemJustifyType, TextSizeType, TextWeightType, TextAlignType } from './PropertyTypes'
 
 export type ResolverFunc = (value?: any, props?: any) => any

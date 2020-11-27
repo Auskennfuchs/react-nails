@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
-import { TextColorProps, TextSizeProps, TextWeightProps, TextAlignProps } from 'properties/PropertyTypes'
-import { resolveTextColor, resolveTextSize, resolveTextWeight, applySingle, resolveTextAlign } from 'properties/PropertyResolver'
+import { TextColorProps, TextSizeProps, TextWeightProps, TextAlignProps } from '../properties/PropertyTypes'
+import { resolveTextColor, resolveTextSize, resolveTextWeight, applySingle, resolveTextAlign } from '../properties/PropertyResolver'
 
-interface TextProps extends TextColorProps, TextSizeProps, TextWeightProps, TextAlignProps {
+interface TextProps extends TextAlignProps, TextColorProps, TextSizeProps, TextWeightProps {
     /**
      * displays text as block, not inline
      */
@@ -14,7 +14,7 @@ const resolveBlockSingle = (block: boolean = false) => block && css`
 `
 const resolveBlock = applySingle(resolveBlockSingle, 'block')
 
-const Text = styled.span<TextProps>`
+const Text: React.FC<TextProps> = styled.span<TextProps>`
     ${resolveBlock}
     ${resolveTextColor}
     ${resolveTextSize}
