@@ -23,7 +23,7 @@ export interface InputProps extends TextAlignProps, FluidProps, StatusProps {
     type?: string,
 }
 
-addThemeComponent((theme: { controls: { backgroundColor: string, focus: any }, spaces: { small: string } }) => ['input', {
+addThemeComponent((theme: { controls: { backgroundColor: string, focus: any }, spaces: { small: string }, colors: any }) => ['input', {
     ...theme.controls,
     afix: {
         backgroundColor: theme.controls.backgroundColor,
@@ -32,7 +32,8 @@ addThemeComponent((theme: { controls: { backgroundColor: string, focus: any }, s
     focus: {
         ...theme.controls.focus,
         borderWidth: "2px",
-    }
+    },
+    clearButtonColor: theme.colors.textLight,
 }], 10)
 
 const colorBorder = (color: string) => css`
@@ -114,7 +115,7 @@ const ClearButton = styled.button.attrs(() => ({ type: 'button', tabIndex: -1 })
     line-height: 1;
     padding: 0;
     font-size: 0.8em;
-    color: ${p => p.theme.colors.textLight};
+    color: ${p => p.theme.input.clearButtonColor};
     &:focus {
         outline: 0 none;
     }
