@@ -6,6 +6,9 @@ export const GlobalReset = styled.div`
     background-color: ${p => p.theme.body.backgroundColor};
     color: ${p => p.theme.body.color};
     width: 100%;
+    height: 100%;
+    position: relative;
+    
     * {
         box-sizing: border-box;
     }
