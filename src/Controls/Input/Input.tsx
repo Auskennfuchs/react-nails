@@ -9,7 +9,7 @@ import { Icon } from '../../Icon'
 import { dispatchOnChangeValueEvent } from '../../event'
 
 export interface InputProps extends TextAlignProps, FluidProps, StatusProps, Omit<HTMLAttributes<HTMLInputElement>, 'prefix'> {
-    name: string,
+    name?: string,
     prefix?: React.ReactNode,
     suffix?: React.ReactNode,
     onClear?: (e?: any) => any,
