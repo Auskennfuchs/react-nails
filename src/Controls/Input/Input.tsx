@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { HTMLAttributes } from 'react'
 import { useState } from 'react'
 import styled, { css } from 'styled-components'
 import { TextAlignProps, ItemAlignType, FluidProps, StatusProps, StatusType } from '../../properties/PropertyTypes'
@@ -8,18 +8,14 @@ import { resolveTextAlign, resolveFluid, applySingle } from '../../properties/Pr
 import { Icon } from '../../Icon'
 import { dispatchOnChangeValueEvent } from '../../event'
 
-export interface InputProps extends TextAlignProps, FluidProps, StatusProps {
+export interface InputProps extends TextAlignProps, FluidProps, StatusProps, Omit<HTMLAttributes<HTMLInputElement>, 'prefix'> {
     name: string,
     prefix?: React.ReactNode,
     suffix?: React.ReactNode,
-    onFocus?: (e?: React.FormEvent<HTMLInputElement>) => any,
-    onBlur?: (e?: React.FormEvent<HTMLInputElement>) => any,
-    onChange?: (e?: React.ChangeEvent<HTMLInputElement>) => any,
     onClear?: (e?: any) => any,
     inputRef?: React.RefObject<any>,
     clearable?: boolean,
     value?: any,
-    inputMode?: "text" | "none" | "tel" | "url" | "email" | "numeric" | "decimal" | "search",
     type?: string,
 }
 

@@ -11,8 +11,8 @@ addThemeComponent((theme: { palette: any, colors: any }) => (['body', {
     color: theme.colors.text,
 }]))
 
-export const NailsApp = ({ theme = {}, children }: { theme?: any, children?: any }) => {
-    const [useTheme, setUseTheme] = useState(resolveTheme(theme))
+export const NailsApp = ({ theme, children }: { theme?: any, children?: any }) => {
+    const [useTheme, setUseTheme] = useState(resolveTheme(theme || {}))
 
     const [themeFuncs] = useGlobalState(globalThemeFuncs)
 

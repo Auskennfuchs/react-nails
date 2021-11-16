@@ -77,7 +77,7 @@ const InputNumber = ({ changeAmount = 1, minValue = Number.NEGATIVE_INFINITY, ma
         sendOnChangeEvent(e, String(minMaxValue(numValue)))
     }
 
-    const localOnBlur = (e: React.FormEvent<HTMLInputElement>) => {
+    const localOnBlur = (e: React.FocusEvent<HTMLInputElement>) => {
         const { value } = e.currentTarget
         if (value === "") {
             setInputValue("")

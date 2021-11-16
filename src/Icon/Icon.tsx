@@ -37,7 +37,7 @@ export const NailsIcon = styled.i<TextColorProps & SizeProps & FluidProps>`
     justify-content: center;
 `
 
-export interface IconProps extends SizeProps, FluidProps {
+export interface IconProps extends SizeProps, FluidProps, React.DOMAttributes<HTMLElement> {
     /**
      * name of registered icon
      */
@@ -49,7 +49,7 @@ export interface IconProps extends SizeProps, FluidProps {
     as?: any,
 }
 
-const Icon = ({ icon, as: Element = NailsIcon, color, size, fluid, ...rest }: IconProps) => {
+const Icon: React.FC<IconProps> = ({ icon, as: Element = NailsIcon, color, size, fluid, ...rest }) => {
     const convertIcon = (iconName: string): ResolverFuncResult => {
         if (resolverFuncs[iconName]) {
             return resolverFuncs[iconName]
