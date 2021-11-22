@@ -7,7 +7,7 @@ import { Icon } from '../../Icon'
 import { Spinner } from '../../Spinner';
 import { RowProps } from '../../layout/Row'
 
-export interface ButtonProps extends TextColorProps, ChildProps, Omit<HTMLAttribute<HTMLInputElement>, 'prefix'> {
+export interface ButtonProps extends TextColorProps, ChildProps, Omit<HTMLAttribute<HTMLButtonElement>, 'prefix'> {
     /**
      * styles button as primary button
      */
