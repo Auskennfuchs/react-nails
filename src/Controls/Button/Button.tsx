@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { HTMLAttribute } from 'react'
 import styled, { css } from 'styled-components'
 import { addThemeComponent } from '../../theme'
 import { Row } from '../../layout'
@@ -7,7 +7,7 @@ import { Icon } from '../../Icon'
 import { Spinner } from '../../Spinner';
 import { RowProps } from '../../layout/Row'
 
-export interface ButtonProps extends TextColorProps, ChildProps {
+export interface ButtonProps extends TextColorProps, ChildProps, Omit<HTMLAttribute<HTMLInputElement>, 'prefix'> {
     /**
      * styles button as primary button
      */
