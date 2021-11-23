@@ -1,13 +1,13 @@
-import * as React from 'react'
+import React, { ButtonHTMLAttributes } from 'react'
 import styled, { css } from 'styled-components'
 import { addThemeComponent } from '../../theme'
 import { Row } from '../../layout'
-import { SpacingType, SizeType, TextColorProps, ChildProps, ItemJustifyType } from '../../properties/PropertyTypes'
+import { SpacingType, SizeType, TextColorProps, ItemJustifyType } from '../../properties/PropertyTypes'
 import { Icon } from '../../Icon'
 import { Spinner } from '../../Spinner';
 import { RowProps } from '../../layout/Row'
 
-export interface ButtonProps extends TextColorProps, ChildProps {
+export interface ButtonProps extends TextColorProps, ButtonHTMLAttributes<HTMLButtonElement> {
     /**
      * styles button as primary button
      */
@@ -25,10 +25,6 @@ export interface ButtonProps extends TextColorProps, ChildProps {
      */
     iconLeft?: string,
     /**
-     * disables button
-     */
-    disabled?: boolean,
-    /**
      * button is rendered as this component
      */
     as?: typeof React.Component | React.FunctionComponent | any,
@@ -40,13 +36,6 @@ export interface ButtonProps extends TextColorProps, ChildProps {
      * color of loading spinner
      */
     loadingSpinnerColor?: string,
-
-    /**
-     * type of button
-     */
-    type?: string,
-
-    onClick?: (e: any) => any,
 }
 
 addThemeComponent((theme: { colors: any, controls: any, palette: any, font: any }) => ["button", {
