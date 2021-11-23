@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react'
+import React, { InputHTMLAttributes } from 'react'
 import { useState } from 'react'
 import styled, { css } from 'styled-components'
 import { TextAlignProps, ItemAlignType, FluidProps, StatusProps, StatusType } from '../../properties/PropertyTypes'
@@ -8,7 +8,7 @@ import { resolveTextAlign, resolveFluid, applySingle } from '../../properties/Pr
 import { Icon } from '../../Icon'
 import { dispatchOnChangeValueEvent } from '../../event'
 
-export interface InputProps extends TextAlignProps, FluidProps, StatusProps, Omit<HTMLAttributes<HTMLInputElement>, 'prefix'> {
+export interface InputProps extends TextAlignProps, FluidProps, StatusProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'prefix'> {
     name?: string,
     prefix?: React.ReactNode,
     suffix?: React.ReactNode,

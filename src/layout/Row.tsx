@@ -1,9 +1,9 @@
-import * as React from 'react'
+import { HTMLAttributes } from 'react'
 import styled, { css } from 'styled-components'
 import { resolveSpace, resolveItemSpace, resolveAlignItems, resolveJustifyItems, resolveLineSpace, resolveRelative, applySingle } from '../properties/PropertyResolver'
-import { ItemJustifyType, SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProps, LineSpaceProps, ItemAlignType, RelativeProps, ChildProps } from '../properties/PropertyTypes'
+import { ItemJustifyType, SpacingProps, ItemSpaceProps, AlignItemProps, JustifyItemProps, LineSpaceProps, ItemAlignType, RelativeProps } from '../properties/PropertyTypes'
 
-export interface RowProps extends SpacingProps, ItemSpaceProps, AlignItemProps, LineSpaceProps, JustifyItemProps, RelativeProps, ChildProps {
+export interface RowProps extends SpacingProps, ItemSpaceProps, AlignItemProps, LineSpaceProps, JustifyItemProps, RelativeProps, HTMLAttributes<HTMLDivElement> {
     /**
      * items will wrap to next line if they exceed width
      */
@@ -11,9 +11,9 @@ export interface RowProps extends SpacingProps, ItemSpaceProps, AlignItemProps, 
     relative?: boolean,
 }
 
-const Row = styled(({ wrap, space, justify, itemSpace, align, lineSpace, relative, ...rest }: RowProps) => (<div {...rest} />)).attrs((p: RowProps) => ({
+const Row = styled.div.attrs((p: RowProps) => ({
     align: p.align || ItemAlignType.Center,
-}))`
+})) <RowProps>`
     display: flex;
     flex-direction: row;
     width: 100%;
